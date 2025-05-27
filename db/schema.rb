@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_27_142059) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_27_145515) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,8 +30,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_142059) do
   end
 
   create_table "event_users", force: :cascade do |t|
-    t.bigint "event_id", null: false
     t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_users_on_event_id"
@@ -44,10 +44,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_142059) do
     t.text "description"
     t.integer "people_limit"
     t.date "date"
-    t.bigint "users_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_events_on_users_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_142059) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "content"
     t.index ["event_id"], name: "index_messages_on_event_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -91,7 +92,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_142059) do
   add_foreign_key "event_categories", "events"
   add_foreign_key "event_users", "events"
   add_foreign_key "event_users", "users"
-  add_foreign_key "events", "users", column: "users_id"
+  add_foreign_key "events", "users"
   add_foreign_key "messages", "events"
   add_foreign_key "messages", "users"
   add_foreign_key "reviews", "events"
