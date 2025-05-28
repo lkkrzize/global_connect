@@ -3,6 +3,10 @@ class EventsController < ApplicationController
 
   end
 
+  def new
+    @event = Event.new
+  end
+
   def edit
     @event = Event.find(params[:id])
     redirect_to edit_event_path(@event), alert: "Only event organiser can edit the event" unless @event.user == current_user
