@@ -29,11 +29,55 @@ puts "users created"
 
 puts "Creating Events"
 
-event1 = Event.create!(name: "5 miles hike", location: "london", description: "easy hike", people_limit: 50, date: Date.new(2025, 5, 30), user_id: juan.id )
-event2 = Event.create!(name: "pub crawl", location: "berlin", description: "going to pubs", people_limit: 250, date: Date.new(2025, 6, 11), user_id: shwetha.id)
-event3 = Event.create!(name: "marathon", location: "madeira", description: "running", people_limit: 100, date: Date.new(2025, 8, 24), user_id: vytautas.id)
-event4 = Event.create!(name: "JS event", location: "paris", description: "master JS", people_limit: 500, date: Date.new(2025, 10, 02), user_id: lukasz.id)
-event5 = Event.create!(name: "car show", location: "crete", description: "supercars", people_limit: 900, date: Date.new(2025, 12, 31), user_id: jessica.id )
+event1 = Event.create!(
+  name: "5 Miles Hike",
+  location: "London",
+  description: "Easy hike",
+  people_limit: 50,
+  starts_at: Date.new(2025, 5, 30),
+  ends_at: Date.new(2025, 5, 30),
+  user_id: juan.id
+)
+
+event2 = Event.create!(
+  name: "Pub Crawl",
+  location: "Berlin",
+  description: "Going to pubs",
+  people_limit: 250,
+  starts_at: Date.new(2025, 6, 11),
+  ends_at: Date.new(2025, 6, 11),
+  user_id: shwetha.id
+)
+
+event3 = Event.create!(
+  name: "Marathon",
+  location: "Madeira",
+  description: "Running competition",
+  people_limit: 100,
+  starts_at: Date.new(2025, 8, 24),
+  ends_at: Date.new(2025, 8, 24),
+  user_id: vytautas.id
+)
+
+event4 = Event.create!(
+  name: "JS Event",
+  location: "Paris",
+  description: "Master JavaScript",
+  people_limit: 500,
+  starts_at: Date.new(2025, 10, 2),
+  ends_at: Date.new(2025, 10, 2),
+  user_id: lukasz.id
+)
+
+event5 = Event.create!(
+  name: "Car Show",
+  location: "Crete",
+  description: "Supercars exhibition",
+  people_limit: 900,
+  starts_at: Date.new(2025, 12, 31),
+  ends_at: Date.new(2025, 12, 31),
+  user_id: jessica.id
+)
 
 puts "Events created"
 
