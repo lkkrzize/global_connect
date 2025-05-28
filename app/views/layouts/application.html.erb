@@ -10,13 +10,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    
+  <body class="min-vh-100 flex-column d-flex">
     <% unless pages_home == 'landing' %>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <% end %>
 
-    <%= yield %>
+    <div class="flex-grow-1">
+     <%= yield %>
+    </div>
+
   </body>
 </html>
