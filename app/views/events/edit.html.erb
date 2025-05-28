@@ -1,0 +1,15 @@
+<div class="container w-75">
+  <h1>Change event details</h1>
+  <div class="w-50">
+    <%= simple_form_for @event do |f| %>
+      <%= f.input :name %>
+      <%= f.input :location %>
+      <%= f.input :description %>
+      <%= f.input :people_limit %>
+      <%= f.input :date, as: :date %>
+      <%= f.input :starts_at, as: :string, input_html: { type: 'time' } %>
+      <%= f.input :ends_at, as: :string, input_html: { type: 'time' } %>
+      <%= f.submit "Update Event" %>
+    <% end %>
+  </div>
+</div>
