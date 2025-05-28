@@ -1,2 +1,58 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="d-flex justify-content-between container mt-4">
+  <div class="d-flex">
+    <div class="description w-75 ">
+      <h1><%= @event.name %></h1>
+      <p>Location: <%= @event.location %></p>
+      <p>Description: <%= @event.description %></p>
+      <p>Date: <%= @event.date %></p>
+      <p>People Limit: <%= @event.people_limit %></p>
+      <p>Starts At: <%= @event.starts_at %></p>
+      <p>Ends At:<%= @event.ends_at %></p>
+    </div>
+
+    <div>
+      <p>Reviews:</p>
+      <ul>
+        <% @event.reviews.each do |review| %>
+          <li>Rating: <%= review.rating %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="attendees w-25 ">
+    <h2>People attending</h2>
+    <ul>
+      <% @event.event_users.each do |event_user| %>
+        <li><%= event_user.user.email %></li>
+      <% end %>
+    </ul>
+
+    <div class="d-flex justify-content-center">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Register
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0 text-center">
+        <h1 class="modal-title fs-4 w-100" id="exampleModalLabel">Registration Complete!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p>You're all set for the event 🎉</p>
+      </div>
+      <div class="modal-footer border-0 d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark">EVENT CHAT</button>
+      </div>
+    </div>
+  </div>
+</div>

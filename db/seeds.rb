@@ -120,6 +120,6 @@ puts "Creating reviews"
 
 Review.create!(rating: 4, comment: "Great hike!", user_id: juan.id, event_id: event1.id)
 Review.create!(rating: 3, comment: "Fun pub crawl.", user_id: jessica.id, event_id: event2.id)
-Review.create!(rating: 5.0, comment: "JS event was well organised!", user_id: lukasz.id, event_id: event4.id)
+Review.create!(rating: 5, comment: "JS event was well organised!", user_id: lukasz.id, event_id: event4.id)
 
 puts "Reviews created"
