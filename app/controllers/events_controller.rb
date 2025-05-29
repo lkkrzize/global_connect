@@ -1,11 +1,17 @@
 class EventsController < ApplicationController
-  
+
   def index
     @events = Event.all
   end
 
   def show
     @event = Event.find(params[:id])
+  end
+
+  def register
+    @event = Event.find(params[:id])
+    @event.event_users.create(user: current_user)
+    redirect_to @event
   end
 
   def new
@@ -33,5 +39,5 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :location, :description, :people_limit, :date, :starts_at, :ends_at)
   end
-  
+
 end
