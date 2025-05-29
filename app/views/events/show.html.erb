@@ -1,39 +1,55 @@
-<div class="d-flex justify-content-between container mt-4">
-  <div class="d-flex">
-    <div class="description w-75 ">
+<div class="container mt-4 bg-light">
+  <div class="d-flex justify-content-between">
+
+    <div class="description w-75">
       <h1><%= @event.name %></h1>
-      <p>Location: <%= @event.location %></p>
-      <p>Description: <%= @event.description %></p>
-      <p>Date: <%= @event.date %></p>
-      <p>People Limit:<%= @event.people_limit %></p>
-      <p>Starts At: <%= @event.starts_at %></p>
-      <p>Ends At:<%= @event.ends_at %></p>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <p><strong>Description:</strong> <%= @event.description %></p>
+      <p><strong>Date:</strong> <%= @event.date %> <strong>Starts At:</strong> <%= @event.starts_at %> <strong>Ends At:</strong> <%= @event.ends_at %></p>
+      <p><strong>Location:</strong> <%= @event.location %><strong> People Limit:</strong> <%= @event.people_limit %></p>
+
+      <div class="reviews p-3 rounded mt-3 mx-3 bg-light rounded">
+        <h2>Reviews</h2>
+        <ul>
+          <% @event.reviews.each do |review| %>
+            <li>
+              <strong>Rating:</strong> <%= '⭐' * review.rating %> |
+              <strong>Reviewer:</strong> <%= review.user.email %> |
+              <strong>Comment:</strong> <%= review.comment %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
 
-    <div>
-      <p>Reviews:</p>
-      <ul>
-        <% @event.reviews.each do |review| %>
-          <li>Rating: <%= review.rating %></li>
+    <div class="attendees container w-25 p-3 text-center">
+      <h2>People Attending</h2>
+      <ul class="list-unstyled">
+        <% @event.event_users.each do |event_user| %>
+          <li><%= event_user.user.email %></li>
         <% end %>
       </ul>
-    </div>
-  </div>
 
-
-  <div class="attendees w-25 ">
-    <h2>People attending</h2>
-    <ul>
-      <% @event.event_users.each do |event_user| %>
-        <li><%= event_user.user.email %></li>
+      <% if @event.event_users.exists?(user: current_user) %>
+        <%= form_with url: event_event_user_path(@event, current_user.event_users.find_by(event: @event)), method: :delete do %>
+          <button type="submit" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Unregister
+          </button>
+        <% end %>
+      <% else %>
+        <%= form_with url: event_event_users_path(@event), method: :post do %>
+          <button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Register
+          </button>
+        <% end %>
       <% end %>
-    </ul>
 
-    <div class="d-flex justify-content-center">
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Register
-      </button>
+      </div>
     </div>
   </div>
 </div>
@@ -50,7 +66,6 @@
         <p>You're all set for the event 🎉</p>
       </div>
       <div class="modal-footer border-0 d-flex justify-content-center">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-dark">EVENT CHAT</button>
       </div>
     </div>
