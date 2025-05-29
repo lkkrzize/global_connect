@@ -1,6 +1,10 @@
+.event-card-name {
+text-align: center;
+color: white;
+}
 .card {
   position: relative;
-  background-image: image-url("golden-border.PNG");
+  margin: 10 px;
   background-size: cover;
   background-position: center;
   border-radius: 8px;
@@ -9,16 +13,37 @@
   padding: 15px;
   transition: transform 0.2s;
   margin-bottom: 20px;
-  height: 100%;
+  height: 200px;
   display: flex;
   flex-direction: column;
 }
 
 .card-image {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-  max-height: 200px;
-  border-radius: 8px;
-  margin-bottom: 10px;
+
+}
+
+.event-card-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.event-card:hover .event-card-overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.clickable-container {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  gap: 20px;
 }
