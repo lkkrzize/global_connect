@@ -41,10 +41,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def chat
+    @event = Event.find(params[:id])
+    @message = Message.new
+  end
+
   private
 
   def event_params
     params.require(:event).permit(:name, :location, :description, :people_limit, :date, :starts_at, :ends_at, :photo)
   end
-
 end
