@@ -6,6 +6,6 @@
     <%= f.input :date, as: :date %>
     <%= f.input :starts_at, as: :string, input_html: { type: 'time' } %>
     <%= f.input :ends_at, as: :string, input_html: { type: 'time' } %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :photo, as: :file %>
     <%= f.submit "Submit" %>
 <% end %>
