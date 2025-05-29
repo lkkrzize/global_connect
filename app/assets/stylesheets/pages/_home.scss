@@ -1,1 +1,12 @@
-// Specific CSS for your home-page
+.container-home {
+  background-color: #f9f9f9;
+  text-align: center;
+}
+.logo-small {
+  width: 25%;
+  height: auto;
+}
+
+.min-vh-90 {
+    min-height: 90vh;
+}
