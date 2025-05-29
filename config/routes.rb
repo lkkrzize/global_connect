@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "events#index"
+  root to: "pages#home"
 
   resources :events do
     # resources :messages, only: []
