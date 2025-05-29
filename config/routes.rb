@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :messages, only: [:create]
     resources :event_users, only: [:create, :destroy]
-    # resources :reviews, only: []
+    resources :reviews, only: [:create]
   end
   get '/events/:id/chat', to: 'events#chat', as: :chat
 end

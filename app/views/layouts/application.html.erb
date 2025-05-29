@@ -11,13 +11,13 @@
   </head>
 
   <body class="min-vh-100 flex-column d-flex">
-    <% unless pages_home == 'landing' %>
+    <% unless controller_name == 'pages' && action_name == 'home' %>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <% end %>
 
     <div class="flex-grow-1">
-     <%= yield %>
+    <%= yield %>
     </div>
 
   </body>
