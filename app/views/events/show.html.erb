@@ -23,7 +23,9 @@
       <div class="reviews p-3 rounded mt-3 mx-3 bg-light rounded">
         <div class="d-flex justify-content-between align-items-center">
           <h2>Reviews</h2>
-          <%= link_to "Add a review", class: "btn btn-dark" %>
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#reviewModal">
+              Add a review
+            </button>
         </div>
         <ul>
           <% @event.reviews.each do |review| %>
@@ -94,6 +96,30 @@
       </div>
       <div class="modal-footer border-0 d-flex justify-content-center">
         <button type="button" class="btn btn-dark">EVENT CHAT</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0 text-center">
+        <h1 class="modal-title fs-4 w-100" id="reviewModalLabel">Add a Review for <%= @event.name %></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for([@event, @review]) do |f| %>
+          <div class="mb-3">
+            <%= f.input :rating, as: :integer, input_html: { min: 1, max: 5 }, label: "Rating (1-5)" %>
+          </div>
+          <div class="mb-3">
+            <%= f.input :comment, as: :text, label: "Comment" %>
+          </div>
+          <div class="modal-footer">
+            <%= f.button :submit, "Submit Review", class: "btn btn-dark" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
