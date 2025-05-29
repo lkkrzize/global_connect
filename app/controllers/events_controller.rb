@@ -18,6 +18,11 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def create
+    @event = Event.find(event_params)
+    @event.user = current_user
+  end
+
   def edit
     @event = Event.find(params[:id])
     redirect_to edit_event_path(@event), alert: "Only event organiser can edit the event" unless @event.user == current_user
@@ -34,10 +39,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def chat
+    @event = Event.find(params[:id])
+    @message = Message.new
+  end
+
   private
 
   def event_params
     params.require(:event).permit(:name, :location, :description, :people_limit, :date, :starts_at, :ends_at)
   end
-
 end
