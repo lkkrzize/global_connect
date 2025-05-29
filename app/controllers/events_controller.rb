@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @events = Event.all
@@ -6,7 +7,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @review = Review
+    # for review on show page
+    @review = Review.new
   end
 
   def register
@@ -19,9 +21,19 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def create
+    @event = Event.new(event_params)
+    @event.user = current_user
+    if @event.save
+      redirect_to @event
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def edit
     @event = Event.find(params[:id])
-    redirect_to edit_event_path(@event), alert: "Only event organiser can edit the event" unless @event.user == current_user
+    return redirect_to @event, alert: "Only event organiser can edit the event" unless @event.user == current_user
   end
 
   def update
@@ -38,7 +50,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :location, :description, :people_limit, :date, :starts_at, :ends_at)
+    params.require(:event).permit(:name, :location, :description, :people_limit, :date, :starts_at, :ends_at, :photo)
   end
 
 end
