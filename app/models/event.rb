@@ -6,4 +6,6 @@ class Event < ApplicationRecord
   has_many :users, through: :event_users
   has_many :messages, dependent: :destroy
   has_many :reviews, dependent: :destroy
+
+  
 end
