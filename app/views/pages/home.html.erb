@@ -1,21 +1,44 @@
 <div class="container-home">
   <div class="d-flex">
     <%# Left side writing --> %>
-    <div class="col-6 d-flex align-items-center justify-content-center min-vh-100">
-      <div>
-        <h1>Search for local events</h1>
-        <%= image_tag("GC-logo.jpg", alt: "Logo", class: "mb-3 logo-small") %>
+    <div class="col-6">
+      <h1>Search for local events</h1>
+      <%= image_tag("GC-logo.jpg", alt: "Logo", class: "mb-3 logo-small") %>
 
-        <br>
+      <br>
 
-        <button class="btn btn-primary" id="search-button">Use current location</button>
-        <p class="mt-3">Or enter a location to find events:</p>
-        <form action="/search" method="get">
-          <input type="text" name="location" placeholder="Enter location" required>
-          <button type="submit" class="btn btn-secondary">Search</button>
-        </form>
-      </div>
+      <button class="btn btn-primary" id="search-button">Use current location</button>
+      <p class="mt-3">Or enter a location to find events:</p>
+      <form action="/search" method="get">
+        <input type="text" name="location" placeholder="Enter location" required>
+        <button type="submit" class="btn btn-secondary">Search</button>
+      </form>
     </div>
+
+  <script>
+    document.getElementById("search-button").addEventListener("click", function (e) {
+      e.preventDefault();
+
+      if (!window.map) {
+        alert("Map not loaded.");
+        return;
+      }
+
+      const bounds = map.getBounds();
+      const sw = bounds.getSouthWest();
+      const ne = bounds.getNorthEast();
+
+      const params = new URLSearchParams({
+        sw_lat: sw.lat,
+        sw_lng: sw.lng,
+        ne_lat: ne.lat,
+        ne_lng: ne.lng
+      });
+
+      window.location.href = `/search?${params.toString()}`;
+    });
+  </script>
+
 
     <%# Right side: Reserved for Map --> %>
     <div class="col-6 min-vh-100">
