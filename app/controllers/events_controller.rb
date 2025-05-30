@@ -40,6 +40,31 @@ class EventsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+  def search
+    if params[:sw_lat] && params[:ne_lat]
+      # Search using map bounds
+      sw_lat = params[:sw_lat].to_f
+      sw_lng = params[:sw_lng].to_f
+      ne_lat = params[:ne_lat].to_f
+      ne_lng = params[:ne_lng].to_f
+
+      @events = Event.where(latitude: sw_lat..ne_lat, longitude: sw_lng..ne_lng)
+    elsif params[:location]
+      # Use geocoding to get lat/lng from location string
+      coordinates = Geocoder.search(params[:location]).first&.coordinates
+      if coordinates
+        lat, lng = coordinates
+        @events = Event.near([lat, lng], 50) # 50 miles or km
+      else
+        @events = Event.none
+        flash.now[:alert] = "Location not found"
+      end
+    else
+      @events = Event.all
+    end
+
+    render :index
+  end
 
   def chat
     @event = Event.find(params[:id])
