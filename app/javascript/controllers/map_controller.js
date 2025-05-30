@@ -8,7 +8,7 @@ export default class extends Controller {
     markers: Array
   }
 
-  connect() { 
+  connect() {
     console.log("hello")
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -31,35 +31,49 @@ export default class extends Controller {
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
- #attachSearchListener() {
+  #attachSearchListener() {
     const searchButton = document.getElementById("search-button")
 
     if (searchButton) {
       searchButton.addEventListener("click", (e) => {
         e.preventDefault()
 
-        if (!this.map) {
-          alert("Map not loaded.")
+        if (!navigator.geolocation) {
+          alert("Geolocation is not supported by your browser.")
           return
         }
 
-        const bounds = this.map.getBounds()
-        const sw = bounds.getSouthWest()
-        const ne = bounds.getNorthEast()
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords
 
-        const params = new URLSearchParams({
-          sw_lat: sw.lat,
-          sw_lng: sw.lng,
-          ne_lat: ne.lat,
-          ne_lng: ne.lng
-        })
+            // Define a radius (in degrees) around the user location
+            const radius = 0.5
 
-        window.location.href = `/search?${params.toString()}`
+            const sw_lat = latitude - radius
+            const ne_lat = latitude + radius
+            const sw_lng = longitude - radius
+            const ne_lng = longitude + radius
+
+            const params = new URLSearchParams({
+              sw_lat,
+              sw_lng,
+              ne_lat,
+              ne_lng
+            })
+
+            window.location.href = `/search?${params.toString()}`
+          },
+          (error) => {
+            alert("Unable to retrieve your location.")
+            console.error(error)
+          }
+        )
       })
     }
   }
-};
+}
