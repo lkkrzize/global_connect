@@ -18,12 +18,13 @@ export default class extends Controller {
     })
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+    this.#attachSearchListener()
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
+        .setLngLat([marker.lng, marker.lat])
         .addTo(this.map)
     })
   }
@@ -32,5 +33,33 @@ export default class extends Controller {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+  }
+
+ #attachSearchListener() {
+    const searchButton = document.getElementById("search-button")
+
+    if (searchButton) {
+      searchButton.addEventListener("click", (e) => {
+        e.preventDefault()
+
+        if (!this.map) {
+          alert("Map not loaded.")
+          return
+        }
+
+        const bounds = this.map.getBounds()
+        const sw = bounds.getSouthWest()
+        const ne = bounds.getNorthEast()
+
+        const params = new URLSearchParams({
+          sw_lat: sw.lat,
+          sw_lng: sw.lng,
+          ne_lat: ne.lat,
+          ne_lng: ne.lng
+        })
+
+        window.location.href = `/search?${params.toString()}`
+      })
+    }
   }
 };
