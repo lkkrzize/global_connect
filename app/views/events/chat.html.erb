@@ -2,21 +2,18 @@
 
 <div class="container chat">
 
+  <%= turbo_stream_from "event_#{@event.id}_messages" %>
   <div id="messages" class="messages">
     <% @event.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.user.profile_name %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
-      </div>
+      <%= render "messages/message", message: message %>
     <% end %>
   </div>
 </div>
 
 <%= simple_form_for [@event, @message],
-  html: {class: "d-flex w-25 mx-5 justify-content-center"} do |f|
+  # html: {class: "d-flex w-25 mx-5 justify-content-center",} do |f|
+  html: {class: "d-flex w-25 mx-5 justify-content-center",
+         data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f|
 %>
   <% other_user = current_user == @event.user %>
   <%= f.input :content,
