@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
   devise_for :users
   root to: "pages#home"
 
@@ -7,7 +8,9 @@ Rails.application.routes.draw do
     resources :event_users, only: [:create, :destroy]
     resources :reviews, only: [:create]
   end
-  
+
   get '/search', to: 'events#search'
   get '/events/:id/chat', to: 'events#chat', as: :chat
+
+  resources :profiles, only: [:show]
 end
