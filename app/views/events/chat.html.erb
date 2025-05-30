@@ -1,4 +1,4 @@
-<h4 style="padding: 20px;">You can chat about the event here</h1>
+<h4 class="m-3">Event: <%= @event.name %> at <%= @event.location %></h4>
 
 <div class="container chat">
 
@@ -23,3 +23,5 @@
   %>
   <%= f.submit "Send", class: "btn btn-primary mb-3" %>
 <% end %>
+
+<%= link_to "BACK", event_path(@event), class: "btn btn-primary mx-5" %>
