@@ -15,32 +15,7 @@
       </form>
     </div>
 
-  <script>
-    document.getElementById("search-button").addEventListener("click", function (e) {
-      e.preventDefault();
-
-      if (!window.map) {
-        alert("Map not loaded.");
-        return;
-      }
-
-      const bounds = map.getBounds();
-      const sw = bounds.getSouthWest();
-      const ne = bounds.getNorthEast();
-
-      const params = new URLSearchParams({
-        sw_lat: sw.lat,
-        sw_lng: sw.lng,
-        ne_lat: ne.lat,
-        ne_lng: ne.lng
-      });
-
-      window.location.href = `/search?${params.toString()}`;
-    });
-  </script>
-
-
-    <%# Right side: Reserved for Map --> %>
+    <%# Right side: Map --> %>
     <div class="col-6 min-vh-100">
       <div id="map" class="pt-4" style="height: 100%">
         <%= render "shared/app_map" %>
