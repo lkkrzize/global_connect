@@ -53,6 +53,10 @@
             Unregister
           </button>
         <% end %>
+      <% elsif @event.user == current_user %>
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#selfRegisterModal">
+          Register
+        </button>
       <% else %>
         <%= form_with url: event_event_users_path(@event), method: :post do %>
           <button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -60,8 +64,6 @@
           </button>
         <% end %>
       <% end %>
-
-      </div>
     </div>
   </div>
 </div>
@@ -78,7 +80,7 @@
         <p>You're all set for the event 🎉</p>
       </div>
       <div class="modal-footer border-0 d-flex justify-content-center">
-        <button type="button" class="btn btn-dark">EVENT CHAT</button>
+        <%= link_to "EVENT CHAT", chat_path(@event), class: "btn btn-dark" %>
       </div>
     </div>
   </div>
@@ -95,7 +97,24 @@
         <p>You have successfully unregistered from the event.</p>
       </div>
       <div class="modal-footer border-0 d-flex justify-content-center">
-        <button type="button" class="btn btn-dark">EVENT CHAT</button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="selfRegisterModal" tabindex="-1" aria-labelledby="selfRegisterLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0 text-center">
+        <h1 class="modal-title fs-4 w-100" id="selfRegisterLabel">Registration Not Allowed</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <p>You cannot register for your own event.</p>
+      </div>
+      <div class="modal-footer border-0 d-flex justify-content-center">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">OK</button>
       </div>
     </div>
   </div>
