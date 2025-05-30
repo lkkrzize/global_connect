@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resources :event_users, only: [:create, :destroy]
     # resources :reviews, only: []
   end
+  
+  get '/search', to: 'events#search'
 end
