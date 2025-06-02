@@ -15,7 +15,8 @@
 
   .messages {
     height: 100%;
-    overflow: scroll;
+    // overflow: scroll;
+    overflow: auto;
     padding: 1rem;
   }
 
@@ -57,11 +58,21 @@
 
   .message.received .message-content {
     align-self: flex-start;
-    background: $blue;
+    // background: $blue;
+    // background-color: #B9CCCA;
+    background: #0F5CB0;
     color: $light-gray;
   }
 
   .message.sent .message-info{
     align-self: flex-end;
   }
+}
+
+.chat-box {
+  border-radius: 12px;         /* round corners */
+  // border: 1px solid #ccc;      /* optional border */
+  background-color: #fff;      /* white background */
+  overflow: hidden;            /* ensures corners are rounded even with inner elements */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* optional subtle shadow */
 }
