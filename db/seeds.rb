@@ -111,7 +111,7 @@ event1 = Event.create!(
 )
 
 event2 = Event.create!(
-  name: "Berlin Pub Crawl",
+  name: "Pub Crawl",
   location: "Berlin, Germany",
   description: "Explore Berlin's best craft beer scene! We'll visit 4 amazing pubs in Kreuzberg and Friedrichshain. Great way to meet new people and taste local brews.",
   people_limit: 25,
@@ -123,7 +123,7 @@ event2 = Event.create!(
 )
 
 event3 = Event.create!(
-  name: "Madeira Trail Marathon",
+  name: "Trail Marathon",
   location: "Funchal, Madeira",
   description: "Challenging trail marathon through Madeira's stunning landscapes. For experienced runners only! Registration includes medal and post-race meal.",
   people_limit: 100,
@@ -159,7 +159,7 @@ event5 = Event.create!(
 )
 
 event6 = Event.create!(
-  name: "Photography Walk Prague",
+  name: "Photography Walk",
   location: "Prague, Czech Republic",
   description: "Capture Prague's golden hour magic! We'll walk through Old Town and Lesser Town, sharing photography tips and techniques.",
   people_limit: 12,
@@ -171,7 +171,7 @@ event6 = Event.create!(
 )
 
 event7 = Event.create!(
-  name: "Amsterdam Tech Meetup",
+  name: "Tech Meetup",
   location: "Amsterdam, Netherlands",
   description: "Monthly tech meetup discussing latest trends in web development, AI, and startups. Networking drinks included!",
   people_limit: 50,
