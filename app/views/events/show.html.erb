@@ -62,13 +62,20 @@
       <% else %>
         <%= form_with url: event_event_users_path(@event), method: :post do %>
           <button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Register
+            Register  <i class="fa-solid fa-user-plus"></i>
           </button>
         <% end %>
       <% end %>
+      <%= link_to chat_path(@event), class: "btn btn-dark", style: "margin-top: 20px;" do %>
+        Messages <i class="fa-solid fa-comments"></i>
+      <% end %>
+
+
     </div>
   </div>
 </div>
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
