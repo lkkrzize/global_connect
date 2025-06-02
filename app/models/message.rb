@@ -10,6 +10,6 @@ class Message < ApplicationRecord
     broadcast_append_to "event_#{event.id}_messages",
                         partial: "messages/message",
                         target: "messages",
-                        locals: { message: self }
+                        locals: { message: self, user: user }
   end
 end
