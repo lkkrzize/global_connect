@@ -1,4 +1,5 @@
 <div id="message-<%= message.id %>">
+  <%= image_tag user_avatar_image(message.user), class: "message-avatar" %>
   <small>
     <strong><%= message.user.email.split('@').first %></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>

@@ -1,3 +1,5 @@
+require 'open-uri'
+
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -64,7 +66,25 @@ jessica = User.create!(
   profile_name: "JessEstrella"
 )
 
-puts "#{User.count} users created!"
+puts "Adding profile photos..."
+
+# Attach profile photos from GitHub avatars
+juan_avatar = URI.open("https://avatars.githubusercontent.com/u/204338792?v=4")
+juan.photo.attach(io: juan_avatar, filename: "juan_avatar.jpg", content_type: "image/jpeg")
+
+shwetha_avatar = URI.open("https://avatars.githubusercontent.com/u/25467901?v=4")
+shwetha.photo.attach(io: shwetha_avatar, filename: "shwetha_avatar.jpg", content_type: "image/jpeg")
+
+vytautas_avatar = URI.open("https://avatars.githubusercontent.com/u/204168685?v=4")
+vytautas.photo.attach(io: vytautas_avatar, filename: "vytautas_avatar.jpg", content_type: "image/jpeg")
+
+lukasz_avatar = URI.open("https://avatars.githubusercontent.com/u/64506720?v=4")
+lukasz.photo.attach(io: lukasz_avatar, filename: "lukasz_avatar.jpg", content_type: "image/jpeg")
+
+jessica_avatar = URI.open("https://avatars.githubusercontent.com/u/204341762?v=4")
+jessica.photo.attach(io: jessica_avatar, filename: "jessica_avatar.jpg", content_type: "image/jpeg")
+
+puts "#{User.count} users created with profile photos!"
 
 puts "Creating Categories"
 
