@@ -68,16 +68,10 @@ color: white;
   }
 
 }
-.map-container {
+.map-container > div {
   border-radius: 3rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+   height: 800px;
 
-}
-
-body.events-index {
-  background-image: url('image.png') ; /* Replace with your image path */
-  background-size: cover; /* Ensure the image covers the entire background */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent tiling */
-  background-attachment: fixed; /* Optional: Make the background fixed */
 }
