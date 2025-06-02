@@ -23,7 +23,9 @@ class PagesController < ApplicationController
      @markers = @events.geocoded.map do |event|
     {
       lat: event.latitude,
-      lng: event.longitude
+      lng: event.longitude,
+      name: event.name,
+      details: event.description.truncate(100)
     }
     end
   end

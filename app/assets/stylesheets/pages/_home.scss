@@ -1,14 +1,52 @@
-.container-home {
-  background-color: #f9f9f9;
-  text-align: center;
-  padding-top: 250px;
-  padding-right: 200px;
-}
-.logo-small {
-  width: 25%;
-  height: auto;
+.img-fit {
+  object-fit: contain;
+  z-index: 0;
 }
 
-.min-vh-90 {
-    min-height: 90vh;
+.z-1 {
+  z-index: 1;
 }
+
+.bg-pink {
+  background-color: rgba(255, 198, 203, 1); /* Light pink background behind image */
+}
+
+.text-overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  padding: 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.home-page .container-fluid,
+.home-page .row,
+.home-page .col-md-6 {
+  height: 100vh;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+.mapboxgl-popup-content {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+
+.home-page .row {
+  display: flex;
+  flex-wrap: nowrap; 
+}
+
+
+
+

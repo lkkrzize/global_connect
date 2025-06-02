@@ -22,12 +22,28 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
-    this.markersValue.forEach((marker) => {
-      new mapboxgl.Marker()
-        .setLngLat([marker.lng, marker.lat])
-        .addTo(this.map)
+  this.markersValue.forEach((marker) => {
+    // Create a popup with event details
+    const popup = new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false
+    }).setHTML(`
+      <strong>${marker.name}</strong><br>
+      ${marker.details || ''}
+    `)
+
+    // Create the marker and add event listeners for hover
+    const mapMarker = new mapboxgl.Marker()
+      .setLngLat([marker.lng, marker.lat])
+      .setPopup(popup) // Attach popup to marker
+      .addTo(this.map)
+
+    // Show popup on mouse enter
+    mapMarker.getElement().addEventListener('mouseenter', () => popup.addTo(this.map))
+    // Hide popup on mouse leave
+    mapMarker.getElement().addEventListener('mouseleave', () => popup.remove())
     })
-  }
+   }
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
@@ -66,7 +82,7 @@ export default class extends Controller {
               ne_lng
             })
 
-            window.location.href = `/search?${params.toString()}`
+            window.location.href = `/events?${params.toString()}`
           },
           (error) => {
             alert("Unable to retrieve your location.")
