@@ -1,9 +1,10 @@
-<h1 class="mb-4">Events In The Area</h1>
+<h1 class="mb-4 ps-4">Events In The hello</h1>
+
 <div class="row ps-4">
-  <div class="col-lg-8">
-    <div class="row g-3">
+  <div class="col-lg-6">
+    <div class="row gx-0 gy-1">
       <% @events.each do |event| %>
-        <div class="col-md-4">
+        <div class="col-8 col-md-4">
           <%= link_to event_path(event), class: "card event-card bg-secondary h-100 clickable-container position-relative text-decoration-none" do %>
             <div class="event-card-image-wrapper">
               <img class="card-image" src="https://cdn8.dissolve.com/p/D2012_164_052/D2012_164_052_1200.jpg" alt="runner">
@@ -16,6 +17,14 @@
               <p class="mb-1 text-white">
                 📍 <%= event.location %>
               </p>
+              <p class="mb-1 text-white">
+                🏃‍♂️ <%= event.people_limit%> person limit
+              </p>
+              <p class="mb-1 text-white">
+                💬 <%= event.description %>
+              </p>
+
+
             </div>
           <% end %>
         </div>
@@ -26,9 +35,12 @@
   <div class="col-lg-4">
     <div
       class="d-flex align-items-center justify-content-center bg-light"
-      style="min-height:400px; height:80vh; border-radius:0.25rem;"
+      style="min-height:800px; height:90vh; border-radius:1rem; margin: auto;"
     >
-      <%= render "shared/app_map" %>
+     <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
     </div>
   </div>
 </div>

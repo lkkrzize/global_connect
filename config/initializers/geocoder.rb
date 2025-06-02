@@ -1,6 +1,11 @@
 Geocoder.configure(
+    timeout: 5, # seconds
+  lookup: :mapbox, # Defaults to :nominatim, which is less reliable but free
+  api_key: ENV['MAPBOX_API_KEY'],
+  units: :km # Defaults
+
   # Geocoding options
-  # timeout: 3,                 # geocoding service timeout (secs)
+  # timeout: 3,                   geocoding service timeout (secs)
   # lookup: :nominatim,         # name of geocoding service (symbol)
   # ip_lookup: :ipinfo_io,      # name of IP address geocoding service (symbol)
   # language: :en,              # ISO-639 language code
@@ -17,7 +22,6 @@ Geocoder.configure(
 
   # Calculation options
   # units: :mi,                 # :km for kilometers or :mi for miles
-  units: :km,
   # distances: :linear          # :spherical or :linear
 
   # Cache configuration
