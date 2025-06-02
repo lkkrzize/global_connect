@@ -1,25 +1,36 @@
-<div class="container-home">
-  <div class="d-flex">
-    <%# Left side writing --> %>
-    <div class="col-6">
-      <h1>Search for local events</h1>
-      <%= image_tag("GC-logo.jpg", alt: "Logo", class: "mb-3 logo-small") %>
+ <div class="home-page"> 
+  <div class="container-fluid px-0 p-0 bg-pink">
+  <div class="row g-0">
 
-      <br>
+    <!-- Left side: Image with overlay text -->
+    <div class="col-md-6 position-relative p-0 bg-pink">
+      <img src="<%= asset_path('GC-lp.png') %>" class="w-100 h-100 position-absolute img-fit" alt="Background">
 
-      <button class="btn btn-primary" id="search-button">Use current location</button>
-      <p class="mt-3">Or enter a location to find events:</p>
-      <form action="/search" method="get">
-        <input type="text" name="location" placeholder="Enter location" required>
-        <button type="submit" class="btn btn-secondary">Search</button>
-      </form>
+      <div class="position-relative z-1 d-flex justify-content-center align-items-center h-100">
+        <div class="text-overlay text-white text-center">
+          <h1 class="mb-4">Find Local Events</h1>
+
+          <!-- Geolocation button -->
+          <button class="btn btn-primary mb-3 w-100" id="search-button">Use current location</button>
+
+          <p class="mb-3">Or enter a location to find events:</p>
+
+          <!-- Manual location form -->
+          <form action="/events" method="get">
+            <input type="text" name="location" class="form-control mb-2" placeholder="Enter location" required>
+            <button type="submit" class="btn btn-secondary w-100">Search</button>
+          </form>
+        </div>
+      </div>
     </div>
 
-    <%# Right side: Map --> %>
-    <div class="col-6 min-vh-100">
-      <div id="map" class="pt-4" style="height: 100%">
+    <!-- Right side: Map -->
+    <div class="col-md-6 p-0">
+      <div id="map" class="w-100 min-vh-100">
         <%= render "shared/app_map" %>
       </div>
     </div>
+
   </div>
-</div>
+  </div>
+ </div>
