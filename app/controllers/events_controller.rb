@@ -2,7 +2,15 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :search]
 
   def index
-      @events = Event.all
+      search
+      @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        name: event.name,
+        details: event.description.truncate(100)
+      }
+    end
   end
 
   def show
@@ -61,12 +69,8 @@ def search
     @events = Event.where(latitude: sw_lat..ne_lat, longitude: sw_lng..ne_lng)
   else
     @events = Event.all
-  end
-
-  render :index
+  end\
 end
-
-
   def chat
     @event = Event.find(params[:id])
     @message = Message.new
