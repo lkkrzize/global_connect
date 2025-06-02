@@ -2,7 +2,18 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :search]
 
   def index
-    search
+
+      search
+      @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        name: event.name,
+         id: event.id,
+        details: event.description.truncate(100)
+      }
+    end
+
   end
 
   def show
