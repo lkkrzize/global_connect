@@ -19,11 +19,55 @@ Category.destroy_all
 
 puts "Seeding database"
 
-juan = User.create!(email: "juan@lewagon.com", password: "password")
-shwetha = User.create!(email: "shwetha@lewagon.com", password: "password")
-vytautas = User.create!(email: "vytautas@lewagon.com", password: "password")
-lukasz = User.create!(email: "lukasz@lewagon.com", password: "password")
-jessica = User.create!(email: "jessica@lewagon.com", password: "password")
+juan = User.create!(
+  email: "juan@lewagon.com",
+  password: "password",
+  first_name: "Juan",
+  last_name: "Lopez",
+  bio: "Product and industrial design graduate from Central Saint Martins. Worked as a pizza chef while studying and now learning to code to become a more desirable hire. Love exploring new cities through hiking and always up for good food conversations! Passionate about discovering hidden gems while traveling across Europe.",
+  location: "Madrid, Spain",
+  profile_name: "juanlopez003"
+)
+
+shwetha = User.create!(
+  email: "shwetha@lewagon.com",
+  password: "password",
+  first_name: "Shwetha",
+  last_name: "Marumada",
+  bio: "Tech enthusiast passionate about Web development and AI. Ex-software engineer who took a career break and now eager to upgrade my skillsets and return to work. Love meeting new people and exchanging ideas - always up for a good tech discussion over coffee! Dream of attending tech conferences around the world.",
+  location: "London, UK",
+  profile_name: "shwetha-m"
+)
+
+vytautas = User.create!(
+  email: "vytautas@lewagon.com",
+  password: "password",
+  first_name: "Vytautas",
+  last_name: "Briauka",
+  bio: "Former assistant site manager transitioning into web development. Passionate about technology and coding, looking to apply my project coordination skills and creativity to build innovative solutions. When not coding, I love staying active with running and exploring the Baltic coast. Always planning my next adventure race in different countries!",
+  location: "Vilnius, Lithuania",
+  profile_name: "Vytautas2025"
+)
+
+lukasz = User.create!(
+  email: "lukasz@lewagon.com",
+  password: "password",
+  first_name: "Lukasz",
+  last_name: "Krzizek",
+  bio: "Full-stack developer passionate about clean code and craft beer. Born in Prague, love teaching others about programming and organizing tech meetups. Always looking for the best breweries and coding communities while traveling through Europe.",
+  location: "Wroclaw, Poland",
+  profile_name: "lkkrzize"
+)
+
+jessica = User.create!(
+  email: "jessica@lewagon.com",
+  password: "password",
+  first_name: "Jessica",
+  last_name: "Estrella",
+  bio: "Account Manager and Event Management professional transitioning into web development. Worked closely with development teams and found myself wanting to learn more about coding and testing. After Le Wagon, I want to work as a Web Developer in a company that represents who I am and what I believe in. Love organizing events and discovering new destinations for unique experiences!",
+  location: "Berlin, Germany",
+  profile_name: "JessEstrella"
+)
 
 puts "users created"
 
