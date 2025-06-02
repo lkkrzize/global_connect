@@ -10,3 +10,21 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.display-user {
+  width: 50px;
+  height: 50px;
+  background-color: #0832A8; /* Google's blue */
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}

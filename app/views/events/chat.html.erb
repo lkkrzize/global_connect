@@ -1,27 +1,30 @@
-<h4 class="m-3">Event: <%= @event.name %> at <%= @event.location %></h4>
 
-<div class="container chat">
 
-  <%= turbo_stream_from "event_#{@event.id}_messages" %>
-  <div id="messages" class="messages">
-    <% @event.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
-    <% end %>
+<div class="container w-50">
+  <h4 class="m-3"><%= @event.name %> at <%= @event.location %></h4>
+  <div class="chat">
+
+    <%= turbo_stream_from "event_#{@event.id}_messages" %>
+    <div id="messages" class="messages">
+      <% @event.messages.each do |message| %>
+        <%= render "messages/message", message: message, user: current_user %>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<%= simple_form_for [@event, @message],
-  # html: {class: "d-flex w-25 mx-5 justify-content-center",} do |f|
-  html: {class: "d-flex w-25 mx-5 justify-content-center",
-         data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f|
-%>
-  <% other_user = current_user == @event.user %>
-  <%= f.input :content,
-    label: false,
-    # placeholder: "Message #{other_user.profile_name}",
-    wrapper_html: {class: "flex-grow-1"}
+  <%= simple_form_for [@event, @message],
+    # html: {class: "d-flex w-25 mx-5 justify-content-center",} do |f|
+    html: {class: "d-flex",
+          data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }} do |f|
   %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-<% end %>
+    <% other_user = current_user == @event.user %>
+    <%= f.input :content,
+      label: false,
+      # placeholder: "Message #{other_user.profile_name}",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <% end %>
+</div>
 
 <%= link_to "BACK", event_path(@event), class: "btn btn-primary mx-5" %>
