@@ -75,12 +75,6 @@ class EventsController < ApplicationController
     render :index
   end
 
-    @events = Event.where(latitude: sw_lat..ne_lat, longitude: sw_lng..ne_lng)
-  else
-    @events = Event.all
-  end
-end
-
   def chat
     @event = Event.find(params[:id])
     @message = Message.new
