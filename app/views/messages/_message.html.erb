@@ -1,7 +1,11 @@
-<div id="message-<%= message.id %>">
-  <small>
+<div id="message-<%= message.id %>"
+ class="message <%= message.user === user ? 'sent' : 'received' %>"
+  data-controller="message"
+   data-message-user-id-value="<%= message.user.id %>">
+  <small class="message-info">
+    <%= image_tag user_avatar_image(message.user), class: "message-avatar" %>
     <strong><%= message.user.email.split('@').first %></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>
-  <p><%= message.content %></p>
+  <p class="message-content"><%= message.content %></p>
 </div>

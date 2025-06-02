@@ -10,15 +10,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="min-vh-100 flex-column d-flex">
+  <body class="min-vh-100 flex-column d-flex" data-current-user-id="<%= current_user ? current_user.id : "" %>">
     <% unless controller_name == 'pages' && action_name == 'home' %>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <% end %>
-
-    <div class="flex-grow-1">
+    <div class="flex-grow-1 body-color">
     <%= yield %>
     </div>
-
   </body>
 </html>
