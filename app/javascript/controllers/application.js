@@ -17,7 +17,7 @@ function searchLocation(location) {
             const lon = data[0].lon;
 
             // Redirect to event show page with coordinates
-            window.location.href = `/search?lat=${lat}&lon=${lon}`;
+            window.location.href = `/events?lat=${lat}&lon=${lon}`;
         } else {
             alert("Location not found.");
         }
@@ -38,7 +38,7 @@ if (search) {
         const lon = position.coords.longitude;
 
         // Redirect to show page with current location
-        window.location.href = `/search?lat=${lat}&lon=${lon}`;
+        window.location.href = `/events?lat=${lat}&lon=${lon}`;
       }, function () {
         alert("Failed to get your location.");
       });
