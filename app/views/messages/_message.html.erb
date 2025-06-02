@@ -3,6 +3,7 @@
   data-controller="message"
    data-message-user-id-value="<%= message.user.id %>">
   <small class="message-info">
+    <%= image_tag user_avatar_image(message.user), class: "message-avatar" %>
     <strong><%= message.user.email.split('@').first %></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
   </small>
