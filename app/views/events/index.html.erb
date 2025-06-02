@@ -8,7 +8,6 @@
           <div class="col-6 col-md-4">
             <%= link_to event_path(event), class: "card event-card bg-secondary h-100 clickable-container position-relative text-decoration-none" do %>
               <div class="event-card-image-wrapper">
-                <%# <img class="card-image" src="https://cdn8.dissolve.com/p/D2012_164_052/D2012_164_052_1200.jpg" alt="runner"> %>
                 <%= image_tag event_banner_image(event), class: "card-image" %>
                 <h3 class="event-card-name text-white"><%= event.name %></h3>
               </div>
