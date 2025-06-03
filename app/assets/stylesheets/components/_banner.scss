@@ -1,7 +1,9 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding-bottom: 300px
+  padding-bottom: 300px;
+  margin: 0 24px;
+  border-radius: 4px;
 }
 
 .banner h1 {
@@ -17,4 +19,15 @@
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.reviews, .attendees, .detailed-description {
+  border-radius: 4px !important;
+}
+
+.event-chat {
+  border-radius: 12px !important;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
