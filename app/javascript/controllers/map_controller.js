@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
 
+
 // Connects to data-controller="map"
 export default class extends Controller {
   static values = {
@@ -29,6 +30,9 @@ export default class extends Controller {
     this.#setInitialMapView();
     this.#addMarkersToMap();
     this.#attachSearchListener();
+
+    this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+                                        mapboxgl: mapboxgl }))
   }
 
    #setInitialMapView() {
