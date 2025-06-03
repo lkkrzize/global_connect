@@ -9,7 +9,7 @@ class EventsController < ApplicationController
         lat: event.latitude,
         lng: event.longitude,
         name: event.name,
-         id: event.id,
+        id: event.id,
         details: event.description.truncate(100)
       }
     end
