@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.find_by(id: params[:id])
     if @event.nil?
     redirect_to events_path, alert: "Sorry, that event no longer exists."
     else
