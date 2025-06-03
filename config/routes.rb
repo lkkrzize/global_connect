@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   get '/events/:id/chat', to: 'events#chat', as: :chat
 
-  resources :profiles, only: [:show, :update]
+  resources :profiles, only: [:show, :edit, :update]
 end
