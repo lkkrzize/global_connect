@@ -161,16 +161,16 @@
         <h1 class="modal-title fs-4 w-100" id="reviewModalLabel">Add a Review for <%= @event.name %></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" data-controller="submit-review-button-behaviour">
         <%= simple_form_for([@event, @review]) do |f| %>
           <div class="mb-3">
-            <%= f.input :rating, as: :integer, input_html: { min: 1, max: 5 }, label: "Rating (1-5)" %>
+            <%= f.input :rating, as: :integer, input_html: { min: 1, max: 5, data: {action: "keyup->submit-review-button-behaviour#buttonBehaviour", submit_review_button_behaviour_target: "input"} }, label: "Rating (1-5)", required: true %>
           </div>
           <div class="mb-3">
-            <%= f.input :comment, as: :text, label: "Comment" %>
+            <%= f.input :comment, as: :text, label: "Comment", required: true, input_html: { data: {action: "keyup->submit-review-button-behaviour#buttonBehaviour", submit_review_button_behaviour_target: "input"} } %>
           </div>
           <div class="modal-footer">
-            <%= f.button :submit, "Submit Review", class: "btn btn-dark" %>
+            <%= f.button :submit, "Submit Review", class: "btn btn-dark disabled", data: {submit_review_button_behaviour_target: "button"} %>
           </div>
         <% end %>
       </div>
