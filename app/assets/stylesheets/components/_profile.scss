@@ -1,16 +1,16 @@
+// .banner {
+//   background-size: cover;
+//   background-position: center;
+//   padding: 150px 0;
+//   margin-top: 150px;
+//   display: flex;
+//   width: 85%;
+//   align-items: center;
+//    justify-content: center;
+//   margin-left: 100px;
 
-.banner {
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
-  margin-top: 150px;
-  display: flex;
-  width: 85%;
-  align-items: center;
-   justify-content: center;
-  margin-left: 100px;
-
-}
+// }
+// conflicts with _banner.scss
 
 .profile-image {
    align-items: center;
@@ -21,6 +21,8 @@
 }
 .banner-show {
   height: 200px;
+
+.banner-profile {
   background-size: cover;
   background-position: center;
   border-radius: 5rem;

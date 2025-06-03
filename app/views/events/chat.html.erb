@@ -1,7 +1,20 @@
-
-
+<div class="my-4 mx-5">
+<div class="d-flex justify-content-between align-items-stretch">
+  <div class="event-chat w-25 p-3 mx-1 mb-5 text-center bg-white">
+      <h5 class="m-3"><%= @event.name %> at <%= @event.location %> on <%= @event.date.strftime("%d %B %Y") %></h5>
+      <p>This event is organised by <%= link_to @event.user.email.split('@').first.capitalize, profile_path(@event.user.id) %></p>
+      <p>Attending by,</p>
+      <ul class="list-unstyled">
+        <% @event.event_users.each do |event_user| %>
+          <li><%= link_to event_user.user.email.split('@').first.capitalize, profile_path(event_user.user.id) %></li>
+        <% end %>
+      </ul>
+      <div class="text-center">
+        <%= link_to "BACK", event_path(@event), class: "btn-back btn-sm my-2 mx-5" %>
+      </div>
+  </div>
 <div class="container w-50">
-  <h4 class="m-3"><%= @event.name %> at <%= @event.location %> on <%= @event.date.strftime("%d %B %Y") %></h4>
+
   <div class="chat-box p-3">
   <div class="chat">
 
@@ -34,5 +47,5 @@
   <% end %>
   </div>
 </div>
-
-<%= link_to "BACK", event_path(@event), class: "btn btn-primary m-5" %>
+</div>
+</div>
