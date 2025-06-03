@@ -1,6 +1,7 @@
 .img-fit {
   object-fit: contain;
   z-index: 0;
+  filter: opacity(0.8);
 }
 
 .z-1 {
@@ -8,7 +9,7 @@
 }
 
 .bg-pink {
-  background-color: rgba(255, 198, 203, 1); /* Light pink background behind image */
+  background-color: rgba(255, 198, 203, 0.8); /* Light pink background behind image */
 }
 
 .text-overlay {
