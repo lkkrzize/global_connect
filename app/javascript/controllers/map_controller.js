@@ -26,10 +26,30 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     });
 
+    this.#setInitialMapView();
     this.#addMarkersToMap();
-    this.#fitMapToMarkers();
     this.#attachSearchListener();
   }
+
+   #setInitialMapView() {
+    const params = new URLSearchParams(window.location.search);
+    const lat = parseFloat(params.get('lat'));
+    const lng = parseFloat(params.get('lon')); // note: lon -> lng
+
+    if (!isNaN(lat) && !isNaN(lng)) {
+      // Center map on URL coordinates with a zoom level
+      this.map.setCenter([lng, lat]);
+      this.map.setZoom(14);
+    } else if (this.markersValue.length > 0) {
+      // Fit map to markers if no URL params
+      this.#fitMapToMarkers();
+    } else {
+      // Default fallback: center on somewhere reasonable or do nothing
+      this.map.setCenter([0, 0]);
+      this.map.setZoom(2);
+    }
+  }
+
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
