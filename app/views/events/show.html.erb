@@ -66,11 +66,11 @@
           </button>
         <% end %>
       <% end %>
-      <%= link_to chat_path(@event), class: "btn btn-dark", style: "margin-top: 20px;" do %>
-        Messages <i class="fa-solid fa-comments"></i>
+      <% if user_registered?(@event, current_user) %>
+        <%= link_to chat_path(@event), class: "btn btn-dark", style: "margin-top: 20px;" do %>
+          Messages <i class="fa-solid fa-comments"></i>
+        <% end %>
       <% end %>
-
-
     </div>
   </div>
 </div>
