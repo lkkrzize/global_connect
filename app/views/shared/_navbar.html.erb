@@ -20,7 +20,11 @@
 
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="display-user avatar dropdown menu"><%= current_user.email.split('@').first[0].upcase %></span>
+            <% if current_user.photo.attached? %>
+              <%= image_tag current_user.photo, alt: "User Avatar", class: "avatar dropdown menu" %>
+            <% else %>
+              <span class="display-user avatar dropdown menu"><%= current_user.email.split('@').first[0].upcase %></span>
+            <% end %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Profile", profile_path(current_user), class: "dropdown-item" %>
