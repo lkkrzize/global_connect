@@ -25,12 +25,35 @@
       <div class="reviews p-3 rounded mt-3 mx-4 mb-5 bg-light">
         <div class="d-flex justify-content-between align-items-center">
           <div class="">
-          <h4>Reviews </h4>
-          <p><%= @event.reviews.count %> global reviews</p>
+            <h4>Reviews </h4>
+            <p><%= @event.reviews.count %> global reviews</p>
           </div>
+
+          <%
+            can_add_review = user_signed_in? && (event_owner?(@event, current_user) ||
+            user_registered?(@event, current_user)) && @event.date.present? && @event.date < Date.today
+          %>
+          <% if can_add_review %>
             <button type="button" class="btn-register" data-bs-toggle="modal" data-bs-target="#reviewModal">
               Add a review
             </button>
+          <% else %>
+            <%
+              if !user_signed_in?
+                disabled_reason = "Please sign in to add a review."
+              elsif !(@event.date.present? && @event.date < Date.today)
+                disabled_reason = "Reviews can be added after the event date (#{@event.date.strftime('%B %d, %Y') if @event.date.present?})."
+              elsif !(event_owner?(@event, current_user) || user_registered?(@event, current_user))
+                disabled_reason = "You must be registered for the event or be the event owner to add a review."
+              else
+                disabled_reason = "You are not eligible to add a review at this time."
+              end
+            %>
+            <button type="button" class="btn-register" disabled title="<%= disabled_reason %>" style="opacity: 0.65; cursor: not-allowed;">
+              Add a review
+            </button>
+          <% end %>
+
         </div>
         <hr class="mt-0">
         <ul>
@@ -139,16 +162,16 @@
         <h1 class="modal-title fs-4 w-100" id="reviewModalLabel">Add a Review for <%= @event.name %></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" data-controller="submit-review-button-behaviour">
         <%= simple_form_for([@event, @review]) do |f| %>
           <div class="mb-3">
-            <%= f.input :rating, as: :integer, input_html: { min: 1, max: 5 }, label: "Rating (1-5)" %>
+            <%= f.input :rating, as: :integer, input_html: { min: 1, max: 5, data: {action: "keyup->submit-review-button-behaviour#buttonBehaviour", submit_review_button_behaviour_target: "input"} }, label: "Rating (1-5)", required: true %>
           </div>
           <div class="mb-3">
-            <%= f.input :comment, as: :text, label: "Comment" %>
+            <%= f.input :comment, as: :text, label: "Comment", required: true, input_html: { data: {action: "keyup->submit-review-button-behaviour#buttonBehaviour", submit_review_button_behaviour_target: "input"} } %>
           </div>
           <div class="modal-footer">
-            <%= f.button :submit, "Submit Review", class: "btn btn-dark" %>
+            <%= f.button :submit, "Submit Review", class: "btn btn-dark disabled", data: {submit_review_button_behaviour_target: "button"} %>
           </div>
         <% end %>
       </div>
