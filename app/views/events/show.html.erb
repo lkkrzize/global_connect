@@ -2,10 +2,10 @@
   <div class="d-flex justify-content-between">
 
     <div class="description w-75">
-      <br>
+      <%# <br> %>
 
       <div class="banner bg-light" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url( '<%= event_banner_image(@event) %>' );">
-        <div class="container mt-3">
+        <div class="container pt-3">
           <div class="d-flex flex-row justify-content-between align-items-top mb-3">
             <h1><%= @event.name %></h1>
             <% if @event.user == current_user %>
@@ -15,25 +15,29 @@
         </div>
       </div>
 
-      <div class="p-3 rounded mt-3 mx-4 bg-light">
-        <br>
+      <div class="detailed-description p-3 rounded mt-3 mx-4 bg-light">
+        <%# <br> %>
         <p><strong>Description:</strong> <%= @event.description %></p>
         <p><strong>Date:</strong> <%= @event.date %> <strong>Starts At:</strong> <%= @event.starts_at %> <strong>Ends At:</strong> <%= @event.ends_at %></p>
-        <p><strong>Location:</strong> <%= @event.location %><strong> People Limit:</strong> <%= @event.people_limit %></p>
+        <p><strong>Location:</strong> <%= @event.location %><strong> Capacity:</strong> <%= @event.people_limit %></p>
       </div>
 
       <div class="reviews p-3 rounded mt-3 mx-4 mb-5 bg-light">
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Reviews</h2>
-            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#reviewModal">
+          <div class="">
+          <h4>Reviews </h4>
+          <p><%= @event.reviews.count %> global reviews</p>
+          </div>
+            <button type="button" class="btn-register" data-bs-toggle="modal" data-bs-target="#reviewModal">
               Add a review
             </button>
         </div>
+        <hr class="mt-0">
         <ul>
           <% @event.reviews.each do |review| %>
             <li>
-              <strong>Rating:</strong> <%= '⭐' * review.rating %> |
-              <strong>Reviewer:</strong> <%= review.user.email %> |
+              <strong>Rating:</strong> <% stars = '&#9733;' * review.rating %> <span style="color: #F78E0F; font-size: 24px;"><%= stars.html_safe %></span> |
+              <strong>Reviewer:</strong> <%= review.user.email.split('@').first %> |
               <strong>Comment:</strong> <%= review.comment %>
             </li>
           <% end %>
@@ -41,7 +45,7 @@
       </div>
     </div>
 
-    <div class="attendees container w-25 p-3 mx-4 mb-5 text-center bg-light ms-auto">
+    <div class="attendees container rounded w-25 p-3 mx-4 mb-5 text-center bg-light ms-auto">
       <h2>People Attending</h2>
       <ul class="list-unstyled">
         <% @event.event_users.each do |event_user| %>
@@ -51,17 +55,20 @@
 
       <% if @event.event_users.exists?(user: current_user) %>
         <%= form_with url: event_event_user_path(@event, current_user.event_users.find_by(event: @event)), method: :delete do %>
-          <button type="submit" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+          <button type="submit" class="btn btn-outline-secondary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal2">
             Unregister
           </button>
         <% end %>
+        <%= link_to "Chat", chat_path(@event), class: "btn-chat" %>
       <% elsif @event.user == current_user %>
-        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#selfRegisterModal">
+        <%# <button type="button" class="btn-register mb-3" data-bs-toggle="modal" data-bs-target="#selfRegisterModal">
           Register
-        </button>
+        </button> %>
+        <%# <br> %>
+        <%= link_to "Chat", chat_path(@event), class: "btn-chat" %>
       <% else %>
         <%= form_with url: event_event_users_path(@event), method: :post do %>
-          <button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button type="submit" class="btn-register" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Register
           </button>
         <% end %>

@@ -1,7 +1,12 @@
 .was-validated .form-control:valid, .form-control.is-valid {
   background-image: none;
+  border-color: #DEE2E6;
 }
 
 .was-validated .form-select:valid:not([multiple]):not([size]), .was-validated .form-select[size="1"]:valid:not([multiple]), .form-select.is-valid:not([multiple]):not([size]), .form-select.is-valid[size="1"]:not([multiple]) {
   background-image: none;
+}
+
+.was-validated .form-select:valid, .form-select.is-valid {
+  border-color: #DEE2E6;
 }
