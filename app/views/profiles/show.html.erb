@@ -1,7 +1,29 @@
-<div class="container-fluid bg-light min-vh-100 py-4">
+<div class="container-fluid bg-light min-vh-100">
   <div class="row">
 
+    <!-- Left Column -->
+  <div class="col-md-7">
+  <div>
+    <div class="banner-show w-100 mb-3"
+         style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/topic_centers/2019-8/couple-hiking-mountain-climbing-1296x728-header.jpg?w=1155&h=1528); ">
+      <div class="profile-icon">
+        <span class="avatar"><%= current_user.email.split('@').first[0].upcase %></span>
+      </div>
+      <div class="profile-text">PROFILE</div>
+    </div>
+
+    <div class="profile-image"
+         style="background-image: url(<%= user_avatar_image(current_user) %>);">
+    </div>
+
+  </div>
+
+  <div class="bg-secondary rounded p-4 text-center text-dark mt-3" style="min-height:180px;">
+    Personal information
+  </div>
+</div>
     <div class="col-md-5">
+
       <div class="bg-white rounded p-4 mb-4">
         <h4 class="mb-3 text-center" style="font-weight:300;">Your Next Event</h4>
         <div class="mb-2"><strong>Event</strong>: Lorem ipsum dolor sit</div>
@@ -9,23 +31,34 @@
         <div class="mb-3"><strong>Location</strong>: Lorem ipsum</div>
       </div>
 
+
       <div class="bg-white rounded p-4">
         <h5 class="mb-3 text-center" style="font-weight:300;">Upcoming Events</h5>
-        <div class="mb-2"><strong>Event</strong>: Lorem ipsum dolor sit</div>
-        <div class="mb-2"><strong>Date</strong>: 10/05/2030</div>
-        <div><strong>Location</strong>: Lorem ipsum</div>
-      </div>
-    </div>
-      <div class="col-md-7 d-flex flex-column align-items-center">
-            <div class ="banner mb-3"style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/topic_centers/2019-8/couple-hiking-mountain-climbing-1296x728-header.jpg?w=1155&h=1528);"></div>
-            <div class="profile-image" style="background-image: url(<%= user_avatar_image(current_user) %>);"></div>
+        <div id="upcomingEventCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% @upcoming_events.each_with_index do |event, index| %>
+              <div class="carousel-item <%= 'active' if index == 0 %>">
+                <img src="<%= event_banner_image(event) %>" class="d-block w-100 rounded" alt="<%= event.name %>" style="max-height: 300px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block">
+                  <h6><strong>Event:</strong> <%= event.name %></h6>
+                  <p><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></p>
+                  <p><strong>Location:</strong> <%= event.location %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
 
-             <div class="mt-2 ps-5" style="font-size:2rem; font-weight:bold; letter-spacing:2px;">PROFILE</div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#upcomingEventCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#upcomingEventCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
 
-       <div class="bg-secondary rounded p-4 w-100 text-center text-dark" style="min-height:180px;">
-        Personal information
-      </div>
 
   </div>
 </div>
