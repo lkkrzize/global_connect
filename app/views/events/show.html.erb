@@ -53,18 +53,14 @@
         <% end %>
       </ul>
 
-      <% if @event.event_users.exists?(user: current_user) %>
+      <% if user_registered?(@event, current_user) %>
         <%= form_with url: event_event_user_path(@event, current_user.event_users.find_by(event: @event)), method: :delete do %>
           <button type="submit" class="btn btn-outline-secondary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal2">
             Unregister
           </button>
         <% end %>
         <%= link_to "Chat", chat_path(@event), class: "btn-chat" %>
-      <% elsif @event.user == current_user %>
-        <%# <button type="button" class="btn-register mb-3" data-bs-toggle="modal" data-bs-target="#selfRegisterModal">
-          Register
-        </button> %>
-        <%# <br> %>
+      <% elsif event_owner?(@event, current_user) %>
         <%= link_to "Chat", chat_path(@event), class: "btn-chat" %>
       <% else %>
         <%= form_with url: event_event_users_path(@event), method: :post do %>
