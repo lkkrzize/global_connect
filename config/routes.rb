@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create]
   end
 
-  
+
   get '/events/:id/chat', to: 'events#chat', as: :chat
 
-  resources :profiles, only: [:show]
+  
+  resources :profiles, only: [:show, :edit, :update]
 end
