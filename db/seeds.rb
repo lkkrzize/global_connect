@@ -151,7 +151,7 @@ jake.photo.attach(io: jake_avatar, filename: "jake_avatar.jpg", content_type: "i
 marco_avatar = URI.open("https://avatars.githubusercontent.com/u/65777698?v=4")
 marco.photo.attach(io: marco_avatar, filename: "marco_avatar.jpg", content_type: "image/jpeg")
 
-fiona_avatar = URI.open("https://media.istockphoto.com/id/1483329842/photo/studio-portrait-of-attractive-woman-wearing-shirt-and-laughing-while-sitting-at-isolated-grey.jpg?s=612x612&w=0&k=20&c=N4Puu0y0FaYrUMcaANbSs8SRF8IbTvsh-sr10fiCyqM=")
+fiona_avatar = File.open(Rails.root.join("app/assets/images/fiona.jpg"))
 fiona.photo.attach(io: fiona_avatar, filename: "fiona_avatar.jpg", content_type: "image/jpeg")
 
 deji_avatar = URI.open("https://avatars.githubusercontent.com/u/72709071?v=4")
