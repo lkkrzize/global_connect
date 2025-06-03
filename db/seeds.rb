@@ -7,12 +7,12 @@ require 'open-uri'
 puts "Cleaning the Database"
 
 Message.destroy_all
+Review.destroy_all
 EventUser.destroy_all
 EventCategory.destroy_all
-Review.destroy_all
 Event.destroy_all
-User.destroy_all
 Category.destroy_all
+User.destroy_all
 
 puts "Seeding database"
 
@@ -66,6 +66,67 @@ jessica = User.create!(
   profile_name: "JessEstrella"
 )
 
+jake = User.create!(
+  email: "jake@lewagon.com",
+  password: "password",
+  first_name: "Jake",
+  last_name: "Pople",
+  bio: "British sailor living full-time on a boat. Combines his love for the sea with a cheeky sense of humour and a surprisingly strong WiFi connection. Once hosted a meeting from the middle of the English Channel during a storm. Not even joking.",
+  location: "Brighton, UK",
+  profile_name: "sailingjake"
+)
+
+marco = User.create!(
+  email: "marco@lewagon.com",
+  password: "password",
+  first_name: "Marco",
+  last_name: "Ricci",
+  bio: "Italian food lover and pasta perfectionist. Grew up in Naples and claims his nonna invented carbonara. Recently set his kitchen on fire flambéing spaghetti — now known as 'fire-roasted alla Ricci'.",
+  location: "Naples, Italy",
+  profile_name: "marcopasta"
+)
+
+fiona = User.create!(
+  email: "fiona@lewagon.com",
+  password: "password",
+  first_name: "Fiona",
+  last_name: "Agnew",
+  bio: "Online social butterfly with the world’s worst internet. Hosts vibrant events full of laughter, buffering, and her classic catchphrase: 'Can you hear me now?' Lives for awkward Zoom freeze-frames.",
+  location: "Edinburgh, UK",
+  profile_name: "fionameetup"
+)
+
+deji = User.create!(
+  email: "deji@lewagon.com",
+  password: "password",
+  first_name: "Deji",
+  last_name: "Hastrup",
+  bio: "OpenAI enthusiast and bug magnet. Always first to discover mysterious errors nobody else can reproduce. Claims his console logs have developed sentience.",
+  location: "London, UK",
+  profile_name: "dejiAI"
+)
+
+ben = User.create!(
+  email: "ben@lewagon.com",
+  password: "password",
+  first_name: "Ben",
+  last_name: "McLaren",
+  bio: "Software Developer, UX/UI Designer & Club Captain of Outgoing Kobras FC. Wears many hats (literally). Has a yellow-themed life, questionable tea addiction, and suspiciously detailed knowledge of obscure football trivia.",
+  location: "Glasgow, UK",
+  profile_name: "yellowben"
+)
+
+louis = User.create!(
+  email: "louis@lewagon.com",
+  password: "password",
+  first_name: "Louis",
+  last_name: "Leslie",
+  bio: "Freelancer juggling 3D printing, houseplants, and spreadsheets. Known for giving business pitches while watering succulents. Believes every freelancer should own a mini greenhouse and a label maker.",
+  location: "Manchester, UK",
+  profile_name: "freelancelou"
+)
+
+
 puts "Adding profile photos..."
 
 # Attach profile photos from GitHub avatars
@@ -84,6 +145,25 @@ lukasz.photo.attach(io: lukasz_avatar, filename: "lukasz_avatar.jpg", content_ty
 jessica_avatar = URI.open("https://avatars.githubusercontent.com/u/204341762?v=4")
 jessica.photo.attach(io: jessica_avatar, filename: "jessica_avatar.jpg", content_type: "image/jpeg")
 
+jake_avatar = URI.open("https://avatars.githubusercontent.com/u/70224830?v=4")
+jake.photo.attach(io: jake_avatar, filename: "jake_avatar.jpg", content_type: "image/jpeg")
+
+marco_avatar = URI.open("https://avatars.githubusercontent.com/u/65777698?v=4")
+marco.photo.attach(io: marco_avatar, filename: "marco_avatar.jpg", content_type: "image/jpeg")
+
+fiona_avatar = URI.open("https://media.istockphoto.com/id/1483329842/photo/studio-portrait-of-attractive-woman-wearing-shirt-and-laughing-while-sitting-at-isolated-grey.jpg?s=612x612&w=0&k=20&c=N4Puu0y0FaYrUMcaANbSs8SRF8IbTvsh-sr10fiCyqM=")
+fiona.photo.attach(io: fiona_avatar, filename: "fiona_avatar.jpg", content_type: "image/jpeg")
+
+deji_avatar = URI.open("https://avatars.githubusercontent.com/u/72709071?v=4")
+deji.photo.attach(io: deji_avatar, filename: "deji_avatar.jpg", content_type: "image/jpeg")
+
+ben_avatar = URI.open("https://avatars.githubusercontent.com/u/47673163?v=4")
+ben.photo.attach(io: ben_avatar, filename: "ben_avatar.jpg", content_type: "image/jpeg")
+
+louis_avatar = URI.open("https://avatars.githubusercontent.com/u/31960969?v=4")
+louis.photo.attach(io: louis_avatar, filename: "louis_avatar.jpg", content_type: "image/jpeg")
+
+
 puts "#{User.count} users created with profile photos!"
 
 puts "Creating Categories"
@@ -99,7 +179,7 @@ puts "Categories created"
 puts "Creating Events"
 
 event1 = Event.create!(
-  name: "5 Miles Hike in Richmond Park",
+  name: "5 Miles Hike in Richmond Park 🏃‍♂️",
   location: "London, UK",
   description: "Easy morning hike through Richmond Park. Perfect for beginners! We'll meet at the main gate and explore the park's beautiful trails. Bring water and comfortable shoes.",
   people_limit: 15,
@@ -111,7 +191,7 @@ event1 = Event.create!(
 )
 
 event2 = Event.create!(
-  name: "Pub Crawl",
+  name: "Pub Crawl 🍻",
   location: "Berlin, Germany",
   description: "Explore Berlin's best craft beer scene! We'll visit 4 amazing pubs in Kreuzberg and Friedrichshain. Great way to meet new people and taste local brews.",
   people_limit: 25,
@@ -123,7 +203,7 @@ event2 = Event.create!(
 )
 
 event3 = Event.create!(
-  name: "Trail Marathon",
+  name: "Trail Marathon 🥈",
   location: "Funchal, Madeira",
   description: "Challenging trail marathon through Madeira's stunning landscapes. For experienced runners only! Registration includes medal and post-race meal.",
   people_limit: 100,
@@ -135,7 +215,7 @@ event3 = Event.create!(
 )
 
 event4 = Event.create!(
-  name: "JavaScript Masterclass",
+  name: "JavaScript Masterclass ⚙",
   location: "Paris, France",
   description: "Deep dive into modern JavaScript ES6+ features. Workshop includes hands-on coding, best practices, and Q&A session. Bring your laptop!",
   people_limit: 30,
@@ -147,7 +227,7 @@ event4 = Event.create!(
 )
 
 event5 = Event.create!(
-  name: "Classic Car Show Crete",
+  name: "Classic Car Show Crete 🏎",
   location: "Heraklion, Crete",
   description: "Vintage and supercar exhibition featuring rare European classics. Perfect for car enthusiasts! Food trucks and live music included.",
   people_limit: 200,
@@ -159,7 +239,7 @@ event5 = Event.create!(
 )
 
 event6 = Event.create!(
-  name: "Photography Walk",
+  name: "Photography Walk 📸",
   location: "Prague, Czech Republic",
   description: "Capture Prague's golden hour magic! We'll walk through Old Town and Lesser Town, sharing photography tips and techniques.",
   people_limit: 12,
@@ -171,7 +251,7 @@ event6 = Event.create!(
 )
 
 event7 = Event.create!(
-  name: "Tech Meetup",
+  name: "Tech Meetup 💻",
   location: "Amsterdam, Netherlands",
   description: "Monthly tech meetup discussing latest trends in web development, AI, and startups. Networking drinks included!",
   people_limit: 50,
@@ -181,6 +261,79 @@ event7 = Event.create!(
   user_id: shwetha.id,
   category_ids: [learning.id, social.id]
 )
+
+event8 = Event.create!(
+  name: "Sailing with Jake: Bring Sea Legs & Snacks 🌊",
+  location: "Brighton Marina, UK",
+  description: "Join Jake aboard his (mostly) waterproof sailboat for a nautical adventure. Expect British banter, dramatic wind forecasts, and a retelling of the time he accidentally invited seagulls to brunch.",
+  people_limit: 8,
+  date: Date.new(2025, 7, 19),
+  starts_at: Time.new(2025, 7, 19, 10, 0),
+  ends_at: Time.new(2025, 7, 19, 15, 0),
+  user_id: jake.id,
+  category_ids: [outdoor.id, social.id]
+)
+
+event9 = Event.create!(
+  name: "Pasta Party: Cooking with Marco 🍝",
+  location: "Naples, Italy",
+  description: "Make fresh pasta with Marco and hear how he once confused salt for sugar in front of a TV chef. Includes wine, chaos, and exactly zero measuring cups.",
+  people_limit: 12,
+  date: Date.new(2025, 6, 22),
+  starts_at: Time.new(2025, 6, 22, 17, 0),
+  ends_at: Time.new(2025, 6, 22, 20, 0),
+  user_id: marco.id,
+  category_ids: [food.id, social.id]
+)
+
+event10 = Event.create!(
+  name: "Online MeetUp by Fiona 🤝",
+  location: "Zoom (ish)",
+  description: "Hosted by Fiona. This is a *virtual* event that may or may not happen depending on her internet. Icebreakers, games, and at least one participant stuck saying 'Hellooooo?' for 5 minutes.",
+  people_limit: 20,
+  date: Date.new(2025, 6, 30),
+  starts_at: Time.new(2025, 6, 30, 19, 0),
+  ends_at: Time.new(2025, 6, 30, 21, 0),
+  user_id: fiona.id,
+  category_ids: [social.id]
+)
+
+event11 = Event.create!(
+  name: "OpenAI Night 👩‍💻",
+  location: "London, UK",
+  description: "Deji leads a workshop on AI — assuming he can get past the ‘unexpected token’ error that’s haunted him for weeks. Debugging live and possibly crying on the inside.",
+  people_limit: 25,
+  date: Date.new(2025, 7, 5),
+  starts_at: Time.new(2025, 7, 5, 18, 0),
+  ends_at: Time.new(2025, 7, 5, 20, 30),
+  user_id: deji.id,
+  category_ids: [learning.id]
+)
+
+event12 = Event.create!(
+  name: "Football, Frontend & Fifty Cups of Tea ⚽☕",
+  location: "Glasgow, UK",
+  description: "Ben mixes code and football talk in this caffeinated hangout. Come for the React tips, stay for the tea — and don’t mention VAR unless you want a lecture.",
+  people_limit: 20,
+  date: Date.new(2025, 6, 18),
+  starts_at: Time.new(2025, 6, 18, 16, 0),
+  ends_at: Time.new(2025, 6, 18, 19, 0),
+  user_id: ben.id,
+  category_ids: [learning.id, social.id]
+)
+
+event13 = Event.create!(
+  name: "Freelancing & Ferns: A Business Jungle 🌱",
+  location: "Manchester, UK",
+  description: "Louis shares freelancing wisdom surrounded by houseplants. Hear about his 3D printing mishaps, how he once invoiced the wrong client, and why plant care is essential for business growth.",
+  people_limit: 15,
+  date: Date.new(2025, 7, 10),
+  starts_at: Time.new(2025, 7, 10, 17, 30),
+  ends_at: Time.new(2025, 7, 10, 19, 30),
+  user_id: louis.id,
+  category_ids: [learning.id, social.id]
+)
+
 
 puts "Events created with categories assigned"
 
@@ -219,7 +372,49 @@ puts "Creating reviews for past events"
 
 Review.create!(rating: 5, comment: "Amazing hike! Juan was a great guide and the weather was perfect. Already looking forward to the next one!", user_id: shwetha.id, event_id: event1.id)
 Review.create!(rating: 4, comment: "Really enjoyed the trail and meeting new people. The pace was just right for beginners. Highly recommend!", user_id: lukasz.id, event_id: event1.id)
-Review.create!(rating: 5, comment: "Perfect morning activity! Great photos and even better company. Thanks for organizing Juan! 📸", user_id: vytautas.id, event_id: event1.id)
+Review.create!(rating: 5, comment: "Perfect morning activity! Great photos and even better company. Thanks for organizing Juan! 📸",
+ user_id: vytautas.id, event_id: event1.id)
+Review.create!(
+  rating: 5,
+  comment: "Jake's sailing knowledge is incredible, even if he almost lost his tea *and* his guests overboard mid-turn 😂. Would definitely get shipwrecked with him again.",
+  user_id: marco.id,
+  event_id: event8.id
+)
+
+Review.create!(
+  rating: 5,
+  comment: "Marco’s pasta night was top-tier. That said, he *did* set off the smoke alarm boiling water somehow. Italians, explain yourselves 🍝🔥",
+  user_id: fiona.id,
+  event_id: event9.id
+)
+
+Review.create!(
+  rating: 4,
+  comment: "Fiona’s virtual hangout was lovely… once her WiFi decided to attend the event. Spent the first 15 mins chatting with her frozen face 😅",
+  user_id: deji.id,
+  event_id: event10.id
+)
+
+Review.create!(
+  rating: 3,
+  comment: "Deji gave a passionate talk on OpenAI but spent 45 minutes debugging a typo while claiming it was a ‘model limitation’. Classic dev energy 💻😂",
+  user_id: ben.id,
+  event_id: event11.id
+)
+
+Review.create!(
+  rating: 5,
+  comment: "Ben ran the most stylish event I’ve been to—fonts on point, tea in hand, and even a slide dedicated to Kobras FC. Who else mixes CSS with football? ⚽🎨",
+  user_id: louis.id,
+  event_id: event12.id
+)
+
+Review.create!(
+  rating: 5,
+  comment: "Louis was so smooth talking about freelancing I almost signed a client during the Q&A. Now I just need to 3D print myself a career. 🌱🖨️",
+  user_id: jake.id,
+  event_id: event13.id
+)
 
 puts "Reviews created"
 
@@ -354,6 +549,49 @@ Message.create!(
   event_id: event7.id,
   created_at: 2.days.ago
 )
+
+Message.create!(
+  content: "Hope you all packed snacks—especially you, Ben. No one’s sharing again. 😆",
+  user_id: fiona.id,
+  event_id: event1.id,
+  created_at: 1.day.ago + 1.hour
+)
+
+Message.create!(
+  content: "Oi! I bring *vibes*, not snacks. Besides, Fiona’s protein bars taste like cardboard. 😂",
+  user_id: ben.id,
+  event_id: event1.id,
+  created_at: 1.day.ago + 2.hours
+)
+
+Message.create!(
+  content: "If I hear one more complaint about uphill climbs, I'm leaving you all behind. 💪⛰️",
+  user_id: marco.id,
+  event_id: event1.id,
+  created_at: 1.day.ago + 3.hours
+)
+
+Message.create!(
+  content: "Marco saying that as if he didn’t wheeze halfway up last time… receipts incoming 📸",
+  user_id: louis.id,
+  event_id: event1.id,
+  created_at: 1.day.ago + 4.hours
+)
+
+Message.create!(
+  content: "Can we all agree now: Deji’s in charge of directions. No more accidental 'shortcuts'.",
+  user_id: jake.id,
+  event_id: event1.id,
+  created_at: 1.day.ago + 5.hours
+)
+
+Message.create!(
+  content: "In my defense, Google Maps betrayed me. But fine—next time I’m bringing a compass. 🧭",
+  user_id: deji.id,
+  event_id: event1.id,
+  created_at: 1.day.ago + 6.hours
+)
+
 
 puts "Messages created"
 

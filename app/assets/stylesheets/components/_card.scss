@@ -1,22 +1,25 @@
 .event-card-name {
 text-align: center;
-color: white;
+color: black;
+padding-top: 16px;
 }
 .card {
   position: relative;
-  margin: 10 px;
+  margin: 10px;
   background-size: cover;
   background-position: center;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 15px;
   transition: transform 0.2s;
   margin-bottom: 20px;
   height: 200px;
   display: flex;
   flex-direction: column;
-  color: grey
+  color: grey;
+  background-color: #E2E3E5;
 }
 
 .card-image {
@@ -31,12 +34,13 @@ color: white;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.6);
   opacity: 0;
-    display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: opacity 0.2s ease-in-out;
   pointer-events: none;
+  padding: 16px;
 }
 
 .event-card:hover .event-card-overlay {
@@ -52,7 +56,8 @@ color: white;
 }
 
 .cards-section {
-  background-color: rgb(27, 55, 95);
+  // background-color: rgb(27, 55, 95);
+  background-color: #93CDD4;
   border-radius: 1rem;
   padding: 20px;
   margin: 0 auto;
@@ -69,9 +74,14 @@ color: white;
 
 }
 .map-container > div {
-  border-radius: 3rem;
+  // border-radius: 3rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   overflow: hidden;
-   height: 800px;
+  // height: 800px;
+}
 
+.map-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
