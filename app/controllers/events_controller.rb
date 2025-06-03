@@ -2,7 +2,18 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :search]
 
   def index
-    search
+
+      search
+      @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        name: event.name,
+         id: event.id,
+        details: event.description.truncate(100)
+      }
+    end
+
   end
 
   def show
@@ -79,7 +90,8 @@ class EventsController < ApplicationController
   def chat
     @event = Event.find(params[:id])
     @message = Message.new
-    if @event.event_users.find_by(user_id: current_user.id).nil?
+    # if @event.event_users.find_by(user_id: current_user.id).nil?
+    unless @event.event_users.exists?(user_id: current_user.id) || @event.user_id == current_user.id
       redirect_to event_path(@event)
     end
   end
