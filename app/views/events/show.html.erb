@@ -73,9 +73,16 @@
           </button>
         <% end %>
       <% end %>
+      <% if user_registered?(@event, current_user) %>
+        <%= link_to chat_path(@event), class: "btn btn-dark", style: "margin-top: 20px;" do %>
+          Messages <i class="fa-solid fa-comments"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
