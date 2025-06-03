@@ -4,12 +4,13 @@
     <!-- Left Column -->
   <div class="col-md-7">
   <div>
-    <div class="banner-show w-100 mb-3"
+    <div class="profile-banner w-100 mb-3"
          style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/topic_centers/2019-8/couple-hiking-mountain-climbing-1296x728-header.jpg?w=1155&h=1528); ">
       <div class="profile-icon">
         <span class="avatar"><%= current_user.email.split('@').first[0].upcase %></span>
       </div>
       <div class="profile-text">PROFILE</div>
+
     </div>
 
     <div class="profile-image"
@@ -18,23 +19,40 @@
 
   </div>
 
-  <div class="bg-secondary rounded p-4 text-center text-dark mt-3" style="min-height:180px;">
-    Personal information
+  <div class="bg-secondary rounded p-4 text-center text-dark mt-3" >
+    <h5 class= "mb-3">Edit profile info</h5>
+    <%= simple_form_for current_user, url: profile_path(current_user), method: :patch do |f| %>
+    <div class="mb-3">
+      <%= f.input :first_name, label: "First Name", input_html: { class: "form-control", placeholder: "Enter your first name" } %>
+    </div>
+    <div class="mb-3">
+      <%= f.input :bio, label: "Bio", as: :text, input_html: { class: "form-control", placeholder: "Tell us about yourself" } %>
+    </div>
+    <%= f.button :submit, "Save Changes", class: "btn btn-primary" %>
+  <% end %>
   </div>
 </div>
     <div class="col-md-5">
 
       <div class="bg-white rounded p-4 mb-4">
-        <h4 class="mb-3 text-center" style="font-weight:300;">Your Next Event</h4>
-        <div class="mb-2"><strong>Event</strong>: Lorem ipsum dolor sit</div>
-        <div class="mb-2"><strong>Date</strong>: 10/05/2030</div>
-        <div class="mb-3"><strong>Location</strong>: Lorem ipsum</div>
-      </div>
+          <h4 class="mb-3 text-center" style="font-weight:300;">Your Next Event</h4>
+          <% if @next_event %>
+            <div class="mb-2"><strong>Event:</strong> <%= @next_event.name %></div>
+            <div class="mb-2"><strong>Date:</strong> <%= @next_event.date.strftime('%b %-d, %Y') %></div>
+            <div class="mb-3"><strong>Location:</strong> <%= @next_event.location %></div>
+            <div class="mt-3">
+              <strong>Time Left:</strong>
+              <div id="countdown" data-event-date="<%= @next_event.date.iso8601 %>"></div>
+            </div>
+          <% else %>
+            <p>No upcoming events.</p>
+          <% end %>
+        </div>
 
 
       <div class="bg-white rounded p-4">
         <h5 class="mb-3 text-center" style="font-weight:300;">Upcoming Events</h5>
-        
+
         <div id="upcomingEventCarousel" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <% @upcoming_events.each_with_index do |event, index| %>

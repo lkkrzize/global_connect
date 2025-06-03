@@ -1,9 +1,11 @@
 class ProfilesController < ApplicationController
   # assigns the  id params to @user for show, edit and update
   before_action :set_user, only: [:show, :edit, :update]
+  
 
   def show
-      @upcoming_events = Event.where('date >= ?', Date.today).order(:date).limit(5)
+       @next_event = Event.where('date >= ?', Date.today).order(:date).first 
+       @upcoming_events = Event.where('date >= ?', Date.today).order(:date).limit(5)
   end
 
   def edit
@@ -30,5 +32,20 @@ class ProfilesController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to profile_path(@user), notice: 'Profile updated successfully.'
+    else
+      render :show, alert: 'Failed to update profile.'
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :bio)
   end
 end

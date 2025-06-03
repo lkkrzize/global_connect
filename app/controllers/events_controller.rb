@@ -6,21 +6,24 @@ class EventsController < ApplicationController
       search
       @markers = @events.map do |event|
       {
+        id: event.id,
         lat: event.latitude,
         lng: event.longitude,
         name: event.name,
-         id: event.id,
         details: event.description.truncate(100)
       }
     end
-
+    render :index
   end
 
   def show
-    @event = Event.find(params[:id])
-    # for review on show page
-    @review = Review.new
-  end
+    @event = Event.find_by(id: params[:id])
+    if @event.nil?
+    redirect_to events_path, alert: "Sorry, that event no longer exists."
+    else
+      @review = Review.new
+    end
+  end 
 
   def new
     @event = Event.new
@@ -74,17 +77,6 @@ class EventsController < ApplicationController
     else
       @events = Event.all
     end
-
-    @markers = @events.map do |event|
-      {
-        lat: event.latitude,
-        lng: event.longitude,
-        name: event.name,
-        details: event.description.truncate(100)
-      }
-    end
-
-    render :index
   end
 
   def chat

@@ -23,21 +23,19 @@
   height: 200px;
 }
 
-.banner-profile {
+.profile-banner{
+   height: 200px;
   background-size: cover;
   background-position: center;
-  border-radius: 5rem;
+  border-radius: 1rem;
+  margin-top: 2rem; 
   margin-bottom: 1rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
+
 }
 
 .profile-icon {
@@ -52,4 +50,17 @@
   font-weight: bold;
   color: white;
   margin-bottom: 0.5rem;
+}
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+form .form-label {
+  font-weight: bold;
+}
+
+form .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
 }
