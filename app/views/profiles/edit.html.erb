@@ -1,0 +1,22 @@
+<div class="container pt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4">
+      <%= simple_form_for(@user, url: profile_path(@user), method: :patch) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="row">
+        <h2 class="text-center mb-5">Edit your profile</h2>
+
+        <%= render "shared/user_form", f: f %>
+
+        <div class="col-12">
+          <%= f.button :submit, "Update Profile", class: "btn btn-primary btn-lg w-100" %>
+        </div>
+        <div class="col-12 mt-3 text-center">
+          <%= link_to "Back to Profile", profile_path(@user), class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
