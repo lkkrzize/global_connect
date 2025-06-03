@@ -1,0 +1,34 @@
+<div class="col-6 mb-3">
+  <%= f.input :first_name,
+    required: true,
+    input_html: { autocomplete: "given-name" }%>
+</div>
+<div class="col-6 mb-3">
+  <%= f.input :last_name,
+    required: true,
+    input_html: { autocomplete: "family-name" }%>
+</div>
+<div class="col-12 mb-3">
+  <%= f.input :profile_name,
+    required: true,
+    hint: "This is how others will see you",
+    input_html: { autocomplete: "nickname" }%>
+</div>
+<div class="col-12 mb-3">
+  <%= f.input :email,
+    required: true,
+    input_html: { autocomplete: "email" }%>
+</div>
+<div class="col-12 mb-3">
+  <%= f.input :bio,
+    required: false,
+    hint: "Tell us a bit about yourself",
+    input_html: { autocomplete: "off", rows: 4 } %>
+</div>
+<div class="col-12 mb-3">
+  <%= f.input :photo,
+    required: false,
+    as: :file,
+    label: "Profile picture",
+    hint: "Upload an image (optional)" %>
+</div>
