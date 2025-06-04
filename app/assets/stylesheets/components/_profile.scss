@@ -1,24 +1,6 @@
-// .banner {
-//   background-size: cover;
-//   background-position: center;
-//   padding: 150px 0;
-//   margin-top: 150px;
-//   display: flex;
-//   width: 85%;
-//   align-items: center;
-//    justify-content: center;
-//   margin-left: 100px;
-
-// }
-// conflicts with _banner.scss
-
-.profile-image {
-   align-items: center;
-  text-align: center;
 
 
 
-}
 .banner-show {
   height: 200px;
 }
@@ -28,7 +10,7 @@
   background-size: cover;
   background-position: center;
   border-radius: 1rem;
-  margin-top: 2rem; 
+  margin-top: 2rem;
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
@@ -39,28 +21,96 @@
 }
 
 .profile-icon {
-  width: 80px;
-  height: 80px;
-  background-color: rgba(70, 18, 238, 0.8);
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  display: flex; //
+  display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   font-weight: bold;
-  color: white;
   margin-bottom: 0.5rem;
 }
-form {
+.profile-text {
+  color: white;
+  font-size: 1.5rem;
+}
+.profile-form {
   max-width: 500px;
   margin: 0 auto;
 }
 
-form .form-label {
+.profile-form .form-label {
   font-weight: bold;
 }
 
-form .btn-primary {
+.profile-form .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.event-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding-top: 30px;
+}
+.event-card .overlay {
+  border-radius: 10px;
+  padding: 20px;
+}
+.event-card h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.time-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.timer-box {
+   background-color: rgba(0, 0, 0, 0.8);
+
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.countdown-timer {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ff5722;
+  text-align: center;
+  margin-top: 10px;
+}
+.personal-info-section {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.personal-info-section h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.personal-info-section .form-control {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px
+}
+
+.personal-info-section .btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.personal-info-section .btn-primary {
   background-color: #007bff;
   border-color: #007bff;
 }

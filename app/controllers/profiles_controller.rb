@@ -33,13 +33,4 @@ class ProfilesController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-
-  def update
-    @user = current_user
-    if @user.update(user_params)
-      redirect_to profile_path(@user), notice: 'Profile updated successfully.'
-    else
-      render :show, alert: 'Failed to update profile.'
-    end
-  end
 end
