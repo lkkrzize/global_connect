@@ -25,8 +25,10 @@
       <div class="reviews p-3 rounded mt-3 mx-4 mb-5 bg-light">
         <div class="d-flex justify-content-between align-items-center">
           <div class="">
-            <h4>Reviews </h4>
-            <p><%= @event.reviews.count %> global reviews</p>
+            <h4><strong> Reviews </strong> </h4>
+            <p>
+              🌍 <%= @event.reviews.count %> global review<%= 's' unless @event.reviews.count == 1 %>
+            </p>
           </div>
 
           <%
@@ -56,15 +58,18 @@
 
         </div>
         <hr class="mt-0">
-        <ul>
-          <% @event.reviews.each do |review| %>
-            <li>
-              <strong>Rating:</strong> <% stars = '&#9733;' * review.rating %> <span style="color: #F78E0F; font-size: 24px;"><%= stars.html_safe %></span> |
-              <strong>Reviewer:</strong> <%= review.user.email.split('@').first %> |
-              <strong>Comment:</strong> <%= review.comment %>
-            </li>
-          <% end %>
-        </ul>
+        <ul class="reviews-list list-unstyled p-0">
+            <% @event.reviews.each do |review| %>
+              <li class="review-item mb-4 p-3 border rounded shadow-sm">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <% stars = '★' * review.rating + '☆' * (5 - review.rating) %>
+                  <span class="text-warning fs-4"><%= stars %></span>
+                  <small class="text-muted"><strong>Reviewer: <%= review.user.email.split('@').first.capitalize %></strong></small>
+                </div>
+                <p class="mb-0">“<%= review.comment %>”</p>
+              </li>
+            <% end %>
+          </ul>
       </div>
     </div>
 
