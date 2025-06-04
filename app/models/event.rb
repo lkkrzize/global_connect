@@ -20,5 +20,8 @@ class Event < ApplicationRecord
     tsearch: { prefix: true }
   }
 
-  
+  # upcoming events Class Method
+  def self.upcoming
+    where(date: Date.today..).order(:date)
+  end
 end
