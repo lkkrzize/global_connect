@@ -27,33 +27,43 @@
     <!-- Right Column -->
     <div class="col-md-8">
       <% if @user == current_user %>
-        <div class="event-card">
-          <div class="overlay"
-            style="background-image: url(<%= @next_event ? event_banner_image(@next_event) : 'https://picsum.photos/600/400' %>); background-size: cover; background-position: center;">
-            <h4 class="mb-3 text-center text-white">Your Next Event</h4>
-            <% if @next_event %>
-              <h5 class="text-white"><%= @next_event.name %></h5>
-              <p class="text-white mb-1"><strong>Date:</strong> <%= @next_event.date.strftime('%b %-d, %Y') %></p>
-              <p class="text-white mb-1"><strong>Location:</strong> <%= @next_event.location %></p>
-              <p class="text-white"><%= truncate(@next_event.description, length: 100) %></p>
-            <% else %>
+        <!-- Your Next Event Card -->
+        <% if @next_event %>
+          <%= link_to event_path(@next_event), class: "text-decoration-none" do %>
+            <div class="event-card my-4">
+              <div class="overlay" style="background-image: url(<%= event_banner_image(@next_event) %>); background-size: cover; background-position: center;">
+                <h4 class="mb-3 text-center text-white">Your Next Event</h4>
+                <h5 class="text-white"><%= @next_event.name %></h5>
+                <p class="text-white mb-1"><strong>Date:</strong> <%= @next_event.date.strftime('%b %-d, %Y') %></p>
+                <p class="text-white mb-1"><strong>Location:</strong> <%= @next_event.location %></p>
+                <p class="text-white"><%= truncate(@next_event.description, length: 100) %></p>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="event-card my-4">
+            <div class="overlay" style="background-image: url('https://picsum.photos/600/400'); background-size: cover; background-position: center;">
+              <h4 class="mb-3 text-center text-white">Your Next Event</h4>
               <p class="text-white text-center">No upcoming events.</p>
-            <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
 
+        <!-- Upcoming Events List -->
         <% if @upcoming_events.any? %>
           <div class="mt-4">
             <h4 class="mb-3">Your Upcoming Events</h4>
             <% @upcoming_events.each do |event| %>
-              <div class="event-card mb-3">
-                <div class="overlay" style="background-image: url(<%= event_banner_image(event) %>); background-size: cover; background-position: center;">
-                  <h5 class="card-title text-white"><%= event.name %></h5>
-                  <p class="text-white mb-1"><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></p>
-                  <p class="text-white mb-1"><strong>Location:</strong> <%= event.location %></p>
-                  <p class="text-white"><%= truncate(event.description, length: 100) %></p>
+              <%= link_to event_path(event), class: "text-decoration-none" do %>
+                <div class="event-card mb-4">
+                  <div class="overlay" style="background-image: url(<%= event_banner_image(event) %>); background-size: cover; background-position: center;">
+                    <h5 class="text-white"><%= event.name %></h5>
+                    <p class="text-white mb-1"><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></p>
+                    <p class="text-white mb-1"><strong>Location:</strong> <%= event.location %></p>
+                    <p class="text-white"><%= truncate(event.description, length: 100) %></p>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           </div>
         <% end %>
