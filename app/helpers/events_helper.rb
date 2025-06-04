@@ -7,5 +7,13 @@ module EventsHelper
     event.user == user
   end
 
+  def event_banner_image(event)
+    if event.photo.attached?
+      url_for(event.photo)
+    elsif event.image_url.present?
+      event.image_url
+    else
+      "https://picsum.photos/seed/#{event.id}/600/400"
+    end
+  end
 end
-

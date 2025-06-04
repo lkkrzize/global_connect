@@ -187,7 +187,8 @@ event1 = Event.create!(
   starts_at: Time.new(2025, 5, 25, 9, 0),
   ends_at: Time.new(2025, 5, 25, 12, 0),
   user_id: juan.id,
-  category_ids: [outdoor.id, sports.id]
+  category_ids: [outdoor.id, sports.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749055229/A_vibrant_cover_picture_for_the_event_5_Miles_Hike_in_Richmond_Park._Easy_morning_hike_through_Rich_grsfv1.jpg"
 )
 
 event2 = Event.create!(
@@ -199,7 +200,8 @@ event2 = Event.create!(
   starts_at: Time.new(2025, 6, 15, 19, 0),
   ends_at: Time.new(2025, 6, 15, 23, 30),
   user_id: shwetha.id,
-  category_ids: [social.id, food.id]
+  category_ids: [social.id, food.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749055080/A_vibrant_cover_picture_for_the_event_Pub_Crawl._Explore_Berlin_s_best_craft_beer_scene_We_ll_visi_zlea6z.jpg"
 )
 
 event3 = Event.create!(
@@ -211,7 +213,8 @@ event3 = Event.create!(
   starts_at: Time.new(2025, 8, 24, 7, 0),
   ends_at: Time.new(2025, 8, 24, 15, 0),
   user_id: vytautas.id,
-  category_ids: [outdoor.id, sports.id]
+  category_ids: [outdoor.id, sports.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749054802/A_vibrant_cover_picture_for_the_event_JavaScript_Masterclass._Showcase_a_modern_sleek_design_with_ubfq0k.jpg"
 )
 
 event4 = Event.create!(
@@ -223,7 +226,8 @@ event4 = Event.create!(
   starts_at: Time.new(2025, 7, 12, 10, 0),
   ends_at: Time.new(2025, 7, 12, 17, 0),
   user_id: lukasz.id,
-  category_ids: [learning.id]
+  category_ids: [learning.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749054802/A_vibrant_cover_picture_for_the_event_JavaScript_Masterclass._Showcase_a_modern_sleek_design_with_ubfq0k.jpg"
 )
 
 event5 = Event.create!(
@@ -235,7 +239,8 @@ event5 = Event.create!(
   starts_at: Time.new(2025, 9, 20, 11, 0),
   ends_at: Time.new(2025, 9, 20, 18, 0),
   user_id: jessica.id,
-  category_ids: [social.id, food.id]
+  category_ids: [social.id, food.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749054615/A_vibrant_cover_picture_for_the_event_Classic_Car_Show_Crete._The_image_should_feature_a_stunning_cr3gsk.jpg"
 )
 
 event6 = Event.create!(
@@ -247,7 +252,8 @@ event6 = Event.create!(
   starts_at: Time.new(2025, 6, 28, 18, 0),
   ends_at: Time.new(2025, 6, 28, 21, 0),
   user_id: juan.id,
-  category_ids: [outdoor.id]
+  category_ids: [outdoor.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749054394/cover_picture_for_event_name_photograhy_walk._Capture_Prague_s_golden_hour_magic_We_ll_walk_throug_tc5ujx.jpg"
 )
 
 event7 = Event.create!(
@@ -259,7 +265,8 @@ event7 = Event.create!(
   starts_at: Time.new(2025, 6, 8, 18, 30),
   ends_at: Time.new(2025, 6, 8, 22, 0),
   user_id: shwetha.id,
-  category_ids: [learning.id, social.id]
+  category_ids: [learning.id, social.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749054202/A_vibrant_and_dynamic_event_cover_picture_for_a_Tech_Meetup_featuring_a_diverse_group_of_people_eng_cblmda.jpg"
 )
 
 event8 = Event.create!(
@@ -271,7 +278,8 @@ event8 = Event.create!(
   starts_at: Time.new(2025, 3, 15, 10, 0),
   ends_at: Time.new(2025, 3, 15, 15, 0),
   user_id: jake.id,
-  category_ids: [outdoor.id, social.id]
+  category_ids: [outdoor.id, social.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749054037/A_vibrant_scene_of_a_sailboat_on_a_sunny_day_with_Jake_Jake_is_a_guy_with_black_glasses_dark_brown_1_shw1tj.jpg"
 )
 
 event9 = Event.create!(
@@ -283,7 +291,8 @@ event9 = Event.create!(
   starts_at: Time.new(2025, 3, 28, 17, 0),
   ends_at: Time.new(2025, 3, 28, 20, 0),
   user_id: marco.id,
-  category_ids: [food.id, social.id]
+  category_ids: [food.id, social.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749053288/A_lively_pasta_party_scene_in_a_cozy_kitchen_with_friends_and_family_gathered_around_a_large_wooden_uqlm6x.jpg"
 )
 
 event10 = Event.create!(
@@ -295,7 +304,8 @@ event10 = Event.create!(
   starts_at: Time.new(2025, 4, 5, 19, 0),
   ends_at: Time.new(2025, 4, 5, 21, 0),
   user_id: fiona.id,
-  category_ids: [social.id]
+  category_ids: [social.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749053133/A_virtual_meeting_scene_with_diverse_participants_on_a_video_call_each_in_their_own_unique_home_off_jsjcsr.jpg"
 )
 
 event11 = Event.create!(
@@ -307,7 +317,8 @@ event11 = Event.create!(
   starts_at: Time.new(2025, 4, 18, 18, 0),
   ends_at: Time.new(2025, 4, 18, 20, 30),
   user_id: deji.id,
-  category_ids: [learning.id]
+  category_ids: [learning.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749052983/A_vibrant_and_dynamic_cover_picture_for_an_event_called_OpenAI_Night._The_image_should_feature_a_f_se79gf.jpg"
 )
 
 event12 = Event.create!(
@@ -319,7 +330,8 @@ event12 = Event.create!(
   starts_at: Time.new(2025, 4, 29, 16, 0),
   ends_at: Time.new(2025, 4, 29, 19, 0),
   user_id: ben.id,
-  category_ids: [learning.id, social.id]
+  category_ids: [learning.id, social.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749052691/A_vibrant_cover_image_for_the_event_Football_Frontend_Fifty_Cups_of_Tea_._The_image_should_fe_xizmiv.jpg"
 )
 
 event13 = Event.create!(
@@ -331,7 +343,8 @@ event13 = Event.create!(
   starts_at: Time.new(2025, 5, 12, 17, 30),
   ends_at: Time.new(2025, 5, 12, 19, 30),
   user_id: louis.id,
-  category_ids: [learning.id, social.id]
+  category_ids: [learning.id, social.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749052355/cover_image_for_the_eventFreelancing_Ferns_A_Business_Jungle_1_s8keur.jpg"
 )
 
 
@@ -654,25 +667,25 @@ Message.create!([
   {content: "Trying to get that perfect shot without tripping over cobblestones 😅", user_id: shwetha.id, event_id: event6.id, created_at: 5.days.ago}
 ])
 
-# Messages for Sailing with Jake 
+# Messages for Sailing with Jake
 Message.create!([
   {content: "Bring your sea legs, snacks, and your best British banter 🇬🇧", user_id: jake.id, event_id: event8.id, created_at: 8.days.ago},
   {content: "Is seasickness included in the itinerary? Asking for a friend 🤢", user_id: marco.id, event_id: event8.id, created_at: 7.days.ago}
 ])
 
-# Messages for Pasta Party with Marco 
+# Messages for Pasta Party with Marco
 Message.create!([
   {content: "Marco claims his nonna invented carbonara, but I’m here for the wine 🍷", user_id: marco.id, event_id: event9.id, created_at: 9.days.ago},
   {content: "I promise not to burn the kitchen this time! No guarantees though 🔥", user_id: fiona.id, event_id: event9.id, created_at: 8.days.ago}
 ])
 
-# Messages for Online Meetup by Fiona 
+# Messages for Online Meetup by Fiona
 Message.create!([
   {content: "If my WiFi dies, just pretend I’m saying something deep 🫠", user_id: fiona.id, event_id: event10.id, created_at: 10.days.ago},
   {content: "Hello? Is this thing on? Still here, I swear! 😅", user_id: deji.id, event_id: event10.id, created_at: 9.days.ago}
 ])
 
-# Messages for OpenAI Night 
+# Messages for OpenAI Night
 Message.create!([
   {content: "Debugging live on stage – the ultimate test of nerves 😬", user_id: deji.id, event_id: event11.id, created_at: 11.days.ago},
   {content: "Cheering for you from the audience, just don’t cry on stage! 😂", user_id: ben.id, event_id: event11.id, created_at: 10.days.ago}
@@ -684,7 +697,7 @@ Message.create!([
   {content: "Don’t mention VAR or you’ll get the full lecture! ☕", user_id: louis.id, event_id: event12.id, created_at: 11.days.ago}
 ])
 
-# Messages for Freelancing & Ferns 
+# Messages for Freelancing & Ferns
 Message.create!([
   {content: "If anyone needs me, I’ll be talking to my plants 🌿", user_id: louis.id, event_id: event13.id, created_at: 13.days.ago},
   {content: "Can I invoice a fern? Asking for a freelancer in need. 😄", user_id: jake.id, event_id: event13.id, created_at: 12.days.ago}
