@@ -1,5 +1,6 @@
 <div class="container pt-5">
   <div class="row justify-content-center">
+
     <div class="col-12 col-md-6 col-lg-4">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
@@ -26,6 +27,10 @@
         <%= render "devise/shared/links" %>
       </div>
     <% end %>
+    </div>
+    
+     <div class="col-12 col-md-6 col-lg-8 d-flex align-items-center justify-content-center">
+      <img src="https://files.slack.com/files-pri/T02NE0241-F08UQKD9NKC/image.png" alt="Registration Image" class="img-fluid rounded">
     </div>
   </div>
 </div>
