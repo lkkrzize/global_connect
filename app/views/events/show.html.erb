@@ -15,11 +15,15 @@
         </div>
       </div>
 
-      <div class="detailed-description p-3 rounded mt-3 mx-4 bg-light">
+      <div class="detailed-description p-3 rounded mt-3 mx-4 bg-light text-center">
         <%# <br> %>
-        <p><strong>Description:</strong> <%= @event.description %></p>
-        <p><strong>Date:</strong> <%= @event.date %> <strong>Starts At:</strong> <%= @event.starts_at %> <strong>Ends At:</strong> <%= @event.ends_at %></p>
-        <p><strong>Location:</strong> <%= @event.location %><strong> Capacity:</strong> <%= @event.people_limit %></p>
+        <h3 class="mb-3">📝 <strong>Description</strong></h3>
+        <p><%= @event.description %></p>
+        <p class="text-lg text-gray-800"> 🗓️ <strong>Date:</strong> <%= @event.date.strftime("%A, %B %-d, %Y") %></p>
+        <p class="text-gray-700">🕕 <strong>Time:</strong> 
+        <%= @event.starts_at.strftime("%I:%M %p") %> – <%= @event.ends_at.strftime("%I:%M %p") %></p>
+        <p> 📍 <strong>Location:</strong> <%= @event.location %> </p>
+        <p> 👯‍♂️ <strong> Capacity:</strong> <%= @event.people_limit %> people </p>
       </div>
 
       <div class="reviews p-3 rounded mt-3 mx-4 mb-5 bg-light">
