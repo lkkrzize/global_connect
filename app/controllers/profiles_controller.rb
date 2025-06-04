@@ -3,13 +3,8 @@ class ProfilesController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    if @user == current_user
-      @next_event = @user.next_event
-      @upcoming_events = @user.upcoming_events
-    else
-      @next_event = nil
-      @upcoming_events = []
-    end
+    @next_event = @user.next_event
+    @upcoming_events = @user.upcoming_events
   end
 
   def edit
