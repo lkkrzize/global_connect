@@ -1,0 +1,21 @@
+.mapboxgl-ctrl-geocoder {
+  max-width: none;
+  width: 100%;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+
+.mapboxgl-ctrl-geocoder--button {
+  display:none !important;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  width: 100%;
+  padding: 15px;
+}
+
+.suggestions-wrapper {
+  background-color: white;
+  color: black;
+}

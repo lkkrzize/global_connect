@@ -9,24 +9,38 @@
           <div class="d-flex flex-row justify-content-between align-items-top mb-3">
             <h1><%= @event.name %></h1>
             <% if @event.user == current_user %>
-              <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-warning" %>
+              <div class="d-flex justify-content-end gap-3">
+                <%= link_to edit_event_path(@event), class: "icon-button", title: "Edit", data: { bs_toggle: "tooltip" } do %>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                <% end %>
+
+                <%= link_to event_path(@event), method: :delete, data: { confirm: "Are you sure you want to delete this event?" }, class: "icon-button", title: "Delete" do %>
+                  <i class="fa-solid fa-trash"></i>
+                <% end %>
+              </div>
             <% end %>
           </div>
         </div>
       </div>
 
-      <div class="detailed-description p-3 rounded mt-3 mx-4 bg-light">
+      <div class="detailed-description p-3 rounded mt-3 mx-4 bg-light text-center">
         <%# <br> %>
-        <p><strong>Description:</strong> <%= @event.description %></p>
-        <p><strong>Date:</strong> <%= @event.date %> <strong>Starts At:</strong> <%= @event.starts_at %> <strong>Ends At:</strong> <%= @event.ends_at %></p>
-        <p><strong>Location:</strong> <%= @event.location %><strong> Capacity:</strong> <%= @event.people_limit %></p>
+        <h3 class="mb-3">📝 <strong>Description</strong></h3>
+        <p><%= @event.description %></p>
+        <p class="text-lg text-gray-800"> 🗓️ <strong>Date:</strong> <%= @event.date.strftime("%A, %B %-d, %Y") %></p>
+        <p class="text-gray-700">🕕 <strong>Time:</strong> 
+        <%= @event.starts_at.strftime("%I:%M %p") %> – <%= @event.ends_at.strftime("%I:%M %p") %></p>
+        <p> 📍 <strong>Location:</strong> <%= @event.location %> </p>
+        <p> 👯‍♂️ <strong> Capacity:</strong> <%= @event.people_limit %> people </p>
       </div>
 
       <div class="reviews p-3 rounded mt-3 mx-4 mb-5 bg-light">
         <div class="d-flex justify-content-between align-items-center">
           <div class="">
-            <h4>Reviews </h4>
-            <p><%= @event.reviews.count %> global reviews</p>
+            <h4><strong> Reviews </strong> </h4>
+            <p>
+              🌍 <%= @event.reviews.count %> global review<%= 's' unless @event.reviews.count == 1 %>
+            </p>
           </div>
 
           <%
@@ -56,15 +70,18 @@
 
         </div>
         <hr class="mt-0">
-        <ul>
-          <% @event.reviews.each do |review| %>
-            <li>
-              <strong>Rating:</strong> <% stars = '&#9733;' * review.rating %> <span style="color: #F78E0F; font-size: 24px;"><%= stars.html_safe %></span> |
-              <strong>Reviewer:</strong> <%= review.user.email.split('@').first %> |
-              <strong>Comment:</strong> <%= review.comment %>
-            </li>
-          <% end %>
-        </ul>
+        <ul class="reviews-list list-unstyled p-0">
+            <% @event.reviews.each do |review| %>
+              <li class="review-item mb-4 p-3 border rounded shadow-sm">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <% stars = '★' * review.rating + '☆' * (5 - review.rating) %>
+                  <span class="text-warning fs-4"><%= stars %></span>
+                  <small class="text-muted"><strong>Reviewer: <%= review.user.email.split('@').first.capitalize %></strong></small>
+                </div>
+                <p class="mb-0">“<%= review.comment %>”</p>
+              </li>
+            <% end %>
+          </ul>
       </div>
     </div>
 
@@ -76,26 +93,33 @@
         <% end %>
       </ul>
 
-      <% if user_registered?(@event, current_user) %>
-        <%= form_with url: event_event_user_path(@event, current_user.event_users.find_by(event: @event)), method: :delete do %>
-          <button type="submit" class="btn btn-outline-secondary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-            Unregister
-          </button>
+        <% if user_registered?(@event, current_user) %>
+          <%= form_with url: event_event_user_path(@event, current_user.event_users.find_by(event: @event)), method: :delete do %>
+            <button type="submit" class="btn btn-outline-secondary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+              Unregister
+            </button>
+          <% end %>
+          <%= link_to chat_path(@event), class: "btn-chat" do %>
+            Chat <i class="fa-solid fa-comments"></i>
+          <% end %>
+
+        <% elsif event_owner?(@event, current_user) %>
+          <%= link_to chat_path(@event), class: "btn-chat" do %>
+            Chat <i class="fa-solid fa-comments"></i>
+          <% end %>
+
+        <% else %>
+          <% if @event.date >= Date.today %>  <!-- Only show register if event is today or future -->
+            <%= form_with url: event_event_users_path(@event), method: :post do %>
+              <button type="submit" class="btn-register" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Register <i class="fa-solid fa-user-plus"></i>
+              </button>
+            <% end %>
+          <% else %>
+            <p class="text-danger">Registration closed. This event has already passed.</p>
+          <% end %>
         <% end %>
-        <%= link_to chat_path(@event), class: "btn-chat" do %>
-          Chat <i class="fa-solid fa-comments"></i>
-        <% end %>
-      <% elsif event_owner?(@event, current_user) %>
-        <%= link_to chat_path(@event), class: "btn-chat" do %>
-          Chat <i class="fa-solid fa-comments"></i>
-        <% end %>
-      <% else %>
-        <%= form_with url: event_event_users_path(@event), method: :post do %>
-          <button type="submit" class="btn-register" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Register <i class="fa-solid fa-user-plus"></i>
-          </button>
-        <% end %>
-      <% end %>
+
     </div>
   </div>
 </div>
