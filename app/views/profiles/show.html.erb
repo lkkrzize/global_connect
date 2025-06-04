@@ -29,7 +29,7 @@
         <div class="event-card">
           <div class="overlay"
             style="background-image: url(<%= event_banner_image(@next_event) %>); background-size: cover; background-position: center;">
-            <h4 class="mb-3 text-center text-white" style="font-weight:300 ">Your Next Event</h4>
+            <h4 class="mb-3 text-center text-white">Your Next Event</h4>
             <% if @next_event %>
               <div class="mb-2 text-white"><strong>Event:</strong> <%= @next_event.name %></div>
               <div class="mb-2 text-white"><strong>Date:</strong> <%= @next_event.date.strftime('%b %-d, %Y') %></div>

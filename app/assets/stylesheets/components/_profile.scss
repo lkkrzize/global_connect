@@ -56,10 +56,8 @@
   padding-top: 30px;
 }
 .event-card .overlay {
-  // background: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   padding: 20px;
-  color: #fff;
 }
 .event-card h4 {
   font-size: 1.5rem;
@@ -68,9 +66,9 @@
 }
 
 .time-left {
-  display: flex; /* Makes "Time Left" and timer inline */
-  align-items: center; /* Vertically aligns the text and timer */
-  gap: 10px; /* Adds spacing between "Time Left" and the timer */
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .timer-box {
@@ -101,4 +99,32 @@
   &:hover {
     background-color: #C8CBCF;
   }
+
+.personal-info-section {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.personal-info-section h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.personal-info-section .form-control {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px
+}
+
+.personal-info-section .btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+
+.personal-info-section .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
 }

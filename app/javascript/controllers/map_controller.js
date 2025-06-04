@@ -35,7 +35,7 @@ export default class extends Controller {
                                         mapboxgl: mapboxgl }))
   }
 
-   #setInitialMapView() {
+  #setInitialMapView() {
     const params = new URLSearchParams(window.location.search);
     const lat = parseFloat(params.get('lat'));
     const lng = parseFloat(params.get('lon')); // note: lon -> lng
