@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
-
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder'
 
 // Connects to data-controller="map"
 export default class extends Controller {
@@ -10,16 +10,7 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("hello");
-
-    // Check markers and log if id missing
-    this.markersValue.forEach((marker) => {
-      console.log("Marker:", marker);
-      if (!marker.id) {
-        console.error("Marker missing id!", marker);
-      }
-    });
-
+    console.log("Map controller connected");
     mapboxgl.accessToken = this.apiKeyValue;
 
     this.map = new mapboxgl.Map({
@@ -31,8 +22,15 @@ export default class extends Controller {
     this.#addMarkersToMap();
     this.#attachSearchListener();
 
-    this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-                                        mapboxgl: mapboxgl }))
+    // Only add the geocoder if MapboxGeocoder is available
+    if (typeof MapboxGeocoder !== 'undefined') {
+      this.map.addControl(
+        new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          mapboxgl: mapboxgl
+        })
+      );
+    }
   }
 
   #setInitialMapView() {
@@ -54,9 +52,9 @@ export default class extends Controller {
     }
   }
 
-
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
+      // Create a popup with the marker information
       const popup = new mapboxgl.Popup({
         closeButton: false,
         closeOnClick: false
@@ -65,6 +63,7 @@ export default class extends Controller {
         ${marker.details || ''}
       `);
 
+      // Add the marker to the map
       const mapMarker = new mapboxgl.Marker()
         .setLngLat([marker.lng, marker.lat])
         .setPopup(popup)
@@ -76,18 +75,20 @@ export default class extends Controller {
       markerElement.addEventListener('mouseenter', () => popup.addTo(this.map));
       markerElement.addEventListener('mouseleave', () => popup.remove());
 
-      // Redirect to event show page on click
+      // Redirect to event show page on click only if id exists
       markerElement.addEventListener('click', () => {
         if (marker.id) {
           window.location.href = `/events/${marker.id}`;
         } else {
-          console.error("Cannot redirect, marker.id is undefined", marker);
+          console.log("Info: This marker doesn't have an ID and won't redirect", marker);
         }
       });
     });
   }
 
   #fitMapToMarkers() {
+    if (this.markersValue.length === 0) return;
+
     const bounds = new mapboxgl.LngLatBounds();
     this.markersValue.forEach(marker => bounds.extend([marker.lng, marker.lat]));
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
