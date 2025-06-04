@@ -21,8 +21,8 @@
 }
 
 .profile-icon {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -87,4 +87,18 @@
   color: #ff5722;
   text-align: center;
   margin-top: 10px;
+}
+
+.btn-profile-edit {
+  color: black;
+  background-color: #D6D9DD;
+  border-color: #D6D9DD;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: inline-block;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  &:hover {
+    background-color: #C8CBCF;
+  }
 }

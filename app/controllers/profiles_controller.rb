@@ -1,11 +1,11 @@
 class ProfilesController < ApplicationController
   # assigns the  id params to @user for show, edit and update
   before_action :set_user, only: [:show, :edit, :update]
-  
 
   def show
-       @next_event = Event.where('date >= ?', Date.today).order(:date).first 
-       @upcoming_events = Event.where('date >= ?', Date.today).order(:date).limit(5)
+    @user = User.find(params[:id])
+    @next_event = Event.where('date >= ?', Date.today).order(:date).first
+    @upcoming_events = Event.where('date >= ?', Date.today).order(:date).limit(5)
   end
 
   def edit
