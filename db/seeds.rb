@@ -214,7 +214,7 @@ event3 = Event.create!(
   ends_at: Time.new(2025, 8, 24, 15, 0),
   user_id: vytautas.id,
   category_ids: [outdoor.id, sports.id],
-  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749054802/A_vibrant_cover_picture_for_the_event_JavaScript_Masterclass._Showcase_a_modern_sleek_design_with_ubfq0k.jpg"
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749065705/A_vibrant_cover_picture_for_the_event_Trail_Marathon._Challenging_trail_marathon_through_Madeira_s_zxhrpy.jpg"
 )
 
 event4 = Event.create!(
