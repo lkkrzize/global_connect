@@ -20,17 +20,21 @@
 
   </div>
 
-  <div class="bg-secondary rounded p-4 text-center text-dark mt-3" >
-    <h5 class= "mb-3">Edit profile info</h5>
-    <%= simple_form_for current_user, url: profile_path(current_user), method: :patch, html: { class: "profile-form" } do |f| %>
-    <div class="mb-3">
-      <%= f.input :first_name, label: "First Name", input_html: { class: "form-control", placeholder: "Enter your first name" } %>
-    </div>
-    <div class="mb-3">
-      <%= f.input :bio, label: "Bio", as: :text, input_html: { class: "form-control", placeholder: "Tell us about yourself" } %>
-    </div>
-    <%= f.button :submit, "Save Changes", class: "btn btn-primary" %>
-  <% end %>
+  <div class="personal-info-section bg-white rounded shadow-sm p-4 mt-3">
+    <h5 class="mb-4 text-center">Personal Information</h5>
+    <%= simple_form_for current_user, url: profile_path(current_user), method: :patch do |f| %>
+      <div class="mb-3">
+        <%= f.input :first_name, label: "First Name", input_html: { class: "form-control", placeholder: "Enter your first name" } %>
+      </div>
+      <div class="mb-3">
+        <%= f.input :bio, label: "Bio", as: :text, input_html: { class: "form-control", placeholder: "Tell us about yourself" } %>
+      </div>
+      <div class="d-flex justify-content-center gap-3">
+        <%= f.button :submit, "Save Changes", class: "btn btn-primary" %>
+        <%= link_to "Edit Info", edit_profile_path(current_user), class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+
   </div>
 </div>
 
@@ -39,7 +43,7 @@
         <div class="event-card">
           <div class="overlay"
             style="background-image: url(<%= event_banner_image(@next_event) %>); background-size: cover; background-position: center;">
-            <h4 class="mb-3 text-center text-white" style="font-weight:300 ">Your Next Event</h4>
+            <h4 class="mb-3 text-center text-white">Your Next Event</h4>
             <% if @next_event %>
               <div class="mb-2 text-white"><strong>Event:</strong> <%= @next_event.name %></div>
               <div class="mb-2 text-white"><strong>Date:</strong> <%= @next_event.date.strftime('%b %-d, %Y') %></div>
