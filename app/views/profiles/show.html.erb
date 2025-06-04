@@ -7,15 +7,16 @@
     <div class="profile-banner w-100 mb-3"
          style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/topic_centers/2019-8/couple-hiking-mountain-climbing-1296x728-header.jpg?w=1155&h=1528); ">
       <div class="profile-icon">
-        <span class="avatar"><%= current_user.email.split('@').first[0].upcase %></span>
+        <% if current_user.photo.attached? %>
+          <%= image_tag current_user.photo, alt: "User Avatar", class: "profile-icon" %>
+        <% else %>
+          <%= image_tag "default-profile-image.jpg", alt: "Default Avatar", class: "avatar dropdown menu" %>
+        <% end %>
       </div>
       <div class="profile-text">PROFILE</div>
 
     </div>
 
-    <div class="profile-image"
-         style="background-image: url(<%= user_avatar_image(current_user) %>);">
-    </div>
 
   </div>
 
@@ -32,36 +33,40 @@
   <% end %>
   </div>
 </div>
-    <div class="col-md-5">
 
-      <div class="bg-white rounded p-4 mb-4">
-          <h4 class="mb-3 text-center" style="font-weight:300;">Your Next Event</h4>
-          <% if @next_event %>
-            <div class="mb-2"><strong>Event:</strong> <%= @next_event.name %></div>
-            <div class="mb-2"><strong>Date:</strong> <%= @next_event.date.strftime('%b %-d, %Y') %></div>
-            <div class="mb-3"><strong>Location:</strong> <%= @next_event.location %></div>
-            <div class="mt-3">
-              <strong>Time Left:</strong>
-              <div id="countdown" data-event-date="<%= @next_event.date.iso8601 %>"></div>
-            </div>
-          <% else %>
-            <p>No upcoming events.</p>
-          <% end %>
+
+    <div class="col-md-5">
+        <div class="event-card">
+          <div class="overlay"
+            style="background-image: url(<%= event_banner_image(@next_event) %>); background-size: cover; background-position: center;">
+            <h4 class="mb-3 text-center text-white" style="font-weight:300 ">Your Next Event</h4>
+            <% if @next_event %>
+              <div class="mb-2 text-white"><strong>Event:</strong> <%= @next_event.name %></div>
+              <div class="mb-2 text-white"><strong>Date:</strong> <%= @next_event.date.strftime('%b %-d, %Y') %></div>
+              <div class="mb-3 text-white"><strong>Location:</strong> <%= @next_event.location %></div>
+              <div class="mt-3 text-white time-left">
+                <strong>Time Left:</strong>
+                <div id="countdown" data-event-date="<%= @next_event.date.iso8601 %>" class="countdown-timer timer-box"></div>
+              </div>
+            <% else %>
+              <p>No upcoming events.</p>
+            <% end %>
+          </div>
         </div>
 
 
-      <div class="bg-white rounded p-4">
-        <h5 class="mb-3 text-center" style="font-weight:300;">Upcoming Events</h5>
 
         <div id="upcomingEventCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
+          <div class="carousel-inner pt-4">
             <% @upcoming_events.each_with_index do |event, index| %>
               <div class="carousel-item <%= 'active' if index == 0 %>">
-                <img src="<%= event_banner_image(event) %>" class="d-block w-100 rounded" alt="<%= event.name %>" style="max-height: 300px; object-fit: cover;">
-                <div class="carousel-caption d-none d-md-block">
-                  <h6><strong>Event:</strong> <%= event.name %></h6>
-                  <p><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></p>
-                  <p><strong>Location:</strong> <%= event.location %></p>
+                <div class="event-card" style="background-image: url(<%= event_banner_image(event) %>); background-size: cover; background-position: center;">
+                  <div class="overlay">
+                    <h4 class="mb-3 text-center text-white">Upcoming Event</h4>
+                    <div class="mb-2 text-white"><strong>Event:</strong> <%= event.name %></div>
+                    <div class="mb-2 text-white"><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></div>
+                    <div class="mb-3 text-white"><strong>Location:</strong> <%= event.location %></div>
+                  </div>
                 </div>
               </div>
             <% end %>
@@ -76,7 +81,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-      </div>
+
 
 
   </div>
