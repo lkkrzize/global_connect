@@ -1,36 +1,38 @@
 <div class="container-fluid body-color min-vh-100 px-4">
   <div class="row">
     <!-- Left Column -->
-    <div class="col-md-4">
-      <div class="p-4 text-dark my-4" style="background-color: #93CDD4; border-radius: 10px;">
+    <div class="col-md-4 sticky-top">
+      <div class="p-4 text-dark my-4 profile-card">
         <div class="p-3">
           <% if @user.photo.attached? %>
             <%= image_tag @user.photo, alt: "User Avatar", class: "profile-icon" %>
           <% else %>
-            <span class="profile-icon" style="background-color: #0832A8; font-size: 120px; color: white;"><%= @user.email.split('@').first[0].upcase %></span>
+            <span class="profile-icon profile-icon-fallback">
+              <%= @user.email.split('@').first[0].upcase %>
+            </span>
           <% end %>
 
-          <h4 style="font-weight: bold;"><%= @user.first_name + " " + @user.last_name %></h4>
+          <h4 class="profile-name"><%= @user.first_name + " " + @user.last_name %></h4>
           <h6><%= @user.profile_name %></h6>
           <hr>
-          <p style="font-weight: 500; opacity: 0.8; color: #5E5F61;">About</p>
+          <p class="about-label">About</p>
           <p><%= @user.bio %></p>
           <% if @user == current_user %>
             <%= link_to edit_profile_path(@user), class: "btn-profile-edit my-2" do %>
               <i class="fa-solid fa-pen"></i> Edit profile
             <% end %>
           <% end %>
-      </div>
+        </div>
       </div>
     </div>
 
     <!-- Right Column -->
-    <div class="col-md-8">
+    <div class="col-md-8 overflow-auto py-4 scrollable-events">
       <% if @user == current_user %>
         <!-- Your Next Event Card -->
         <% if @next_event %>
           <%= link_to event_path(@next_event), class: "text-decoration-none" do %>
-            <div class="event-card my-4">
+            <div class="event-card">
               <div class="overlay" style="background-image: url(<%= event_banner_image(@next_event) %>); background-size: cover; background-position: center;">
                 <h4 class="mb-3 text-center text-white">Your Next Event</h4>
                 <h5 class="text-white"><%= @next_event.name %></h5>

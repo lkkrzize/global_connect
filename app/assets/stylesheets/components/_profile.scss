@@ -28,10 +28,19 @@
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
+.profile-icon-fallback {
+  background-color: #0832A8;
+  font-size: 120px;
+  color: white;
+}
 .profile-text {
   color: white;
   font-size: 1.5rem;
 }
+.profile-name {
+  font-weight: bold;
+}
+
 .profile-form {
   max-width: 500px;
   margin: 0 auto;
@@ -135,4 +144,18 @@
 .personal-info-section .btn-primary {
   background-color: #007bff;
   border-color: #007bff;
+}
+.scrollable-events {
+  max-height: calc(100vh - 40px);
+}
+
+.profile-card {
+  background-color: #93CDD4;
+  border-radius: 10px;
+}
+
+.about-label {
+  font-weight: 500;
+  opacity: 0.8;
+  color: #5E5F61;
 }
