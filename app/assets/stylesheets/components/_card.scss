@@ -4,7 +4,7 @@
   padding-top: 1em;
 }
 
-.card {
+.event-card.card, .cards-section .card {
   position: relative;
   margin: 10px;
   background-size: cover;
@@ -16,21 +16,16 @@
   transition: transform 0.2s;
   margin-bottom: 20px;
   height: 200px;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   color: grey;
   background-color: #E2E3E5;
 }
 
-
-.event-card.card {
-  padding: 0.9em;
-  margin-bottom: 1.25em;
-}
-
 .card-image {
   width: 100%;
-  height: 150px; 
+  height: 150px;
   object-fit: cover;
   object-position: center;
 }
@@ -66,14 +61,13 @@
 }
 
 .event-card.past-event:hover .event-card-overlay {
-  background-color: rgba(255, 0, 0, 0.4); /* red transparent */
+  background-color: rgba(255, 0, 0, 0.4);
 }
 
 .clickable-container {
   display: block;
   color: inherit;
   text-decoration: none;
-  gap: 20px;
 }
 
 .cards-section {
@@ -92,15 +86,37 @@
     text-align: center;
     margin-bottom: 1.25em;
   }
-}
 
-.map-container > div {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
+  .row {
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .col-6.col-md-4 {
+    flex: 0 0 calc(33.333% - 1rem);
+    max-width: calc(33.333% - 1rem);
+    min-width: 300px;
+
+    @media (max-width: 992px) {
+      flex: 0 0 calc(50% - 1rem);
+      max-width: calc(50% - 1rem);
+    }
+
+    @media (max-width: 768px) {
+      flex: 0 0 calc(100% - 1rem);
+      max-width: calc(100% - 1rem);
+      min-width: 280px;
+    }
+  }
 }
 
 .map-container {
   position: sticky;
   top: 0;
   height: 100vh;
+
+  > div {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
 }
