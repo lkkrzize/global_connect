@@ -15,8 +15,8 @@ class Event < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_events_and_location,
-  against: [ :title, :synopsis ],
+  against: [ :name, :location],
   using: {
-    tsearch: { prefix: true } 
+    tsearch: { prefix: true }
   }
 end
