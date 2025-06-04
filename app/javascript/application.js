@@ -4,5 +4,3 @@ import "controllers"
 import "@popperjs/core"
 import "bootstrap"
 import "controllers/countdown"
-import Rails from "@rails/ujs"
-Rails.start()
