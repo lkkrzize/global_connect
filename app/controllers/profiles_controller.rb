@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @next_event = Event.where('date >= ?', Date.today).order(:date).first
     @upcoming_events = Event.where('date >= ?', Date.today).order(:date).limit(5)
   end

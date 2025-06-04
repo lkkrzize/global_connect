@@ -19,4 +19,6 @@ class Event < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  
 end
