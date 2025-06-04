@@ -1,7 +1,11 @@
 <div class="my-4 mx-5">
 <div class="d-flex justify-content-between align-items-stretch">
   <div class="event-chat w-25 p-3 mx-1 mb-5 text-center bg-white">
-      <h5 class="m-3"><%= @event.name %> at <%= @event.location %> on <%= @event.date.strftime("%d %B %Y") %></h5>
+      <h5 class="m-3"><%= @event.name %></h5>
+      <p> 📍 <strong>Location:</strong> <%= @event.location %> </p>
+      <p class="text-lg text-gray-800"> 🗓️ <strong>Date:</strong> <%= @event.date.strftime("%A, %B %-d, %Y") %></p>
+      <p class="text-gray-700">🕕 <strong>Time:</strong>
+        <%= @event.starts_at.strftime("%I:%M %p") %> – <%= @event.ends_at.strftime("%I:%M %p") %></p>
       <p>This event is organised by <%= link_to @event.user.email.split('@').first.capitalize, profile_path(@event.user.id) %></p>
       <p>Attending by,</p>
       <ul class="list-unstyled">
@@ -10,7 +14,7 @@
         <% end %>
       </ul>
       <div class="text-center">
-        <%= link_to "BACK", event_path(@event), class: "btn-back btn-sm my-2 mx-5" %>
+        <%= link_to "Back", event_path(@event), class: "btn-back btn-sm my-2 mx-5" %>
       </div>
   </div>
 <div class="container w-50">
