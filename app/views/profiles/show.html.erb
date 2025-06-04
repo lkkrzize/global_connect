@@ -1,45 +1,31 @@
-<div class="container-fluid bg-light min-vh-100">
+<div class="container-fluid body-color min-vh-100">
   <div class="row">
-
     <!-- Left Column -->
-  <div class="col-md-7">
-  <div>
-    <div class="profile-banner w-100 mb-3"
-         style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/topic_centers/2019-8/couple-hiking-mountain-climbing-1296x728-header.jpg?w=1155&h=1528); ">
-      <div class="profile-icon">
-        <% if current_user.photo.attached? %>
-          <%= image_tag current_user.photo, alt: "User Avatar", class: "profile-icon" %>
-        <% else %>
-          <%= image_tag "default-profile-image.jpg", alt: "Default Avatar", class: "avatar dropdown menu" %>
-        <% end %>
-      </div>
-      <div class="profile-text">PROFILE</div>
+    <div class="col-md-4">
+      <div class="p-4 text-dark my-4" style="background-color: #93CDD4; border-radius: 10px;">
+        <div class="p-3">
+          <% if @user.photo.attached? %>
+            <%= image_tag @user.photo, alt: "User Avatar", class: "profile-icon" %>
+          <% else %>
+            <span class="profile-icon" style="background-color: #0832A8; font-size: 120px; color: white;"><%= @user.email.split('@').first[0].upcase %></span>
+          <% end %>
 
+          <h4 style="font-weight: bold;"><%= @user.first_name + " " + @user.last_name %></h4>
+          <h6><%= @user.profile_name %></h6>
+          <hr>
+          <p style="font-weight: 500; opacity: 0.8; color: #5E5F61;">About</p>
+          <p><%= @user.bio %></p>
+          <% if @user == current_user %>
+            <%= link_to edit_profile_path(@user), class: "btn-profile-edit my-2" do %>
+              <i class="fa-solid fa-pen"></i> Edit profile
+            <% end %>
+          <% end %>
+      </div>
+      </div>
     </div>
 
-
-  </div>
-
-  <div class="personal-info-section bg-white rounded shadow-sm p-4 mt-3">
-    <h5 class="mb-4 text-center">Personal Information</h5>
-    <%= simple_form_for current_user, url: profile_path(current_user), method: :patch do |f| %>
-      <div class="mb-3">
-        <%= f.input :first_name, label: "First Name", input_html: { class: "form-control", placeholder: "Enter your first name" } %>
-      </div>
-      <div class="mb-3">
-        <%= f.input :bio, label: "Bio", as: :text, input_html: { class: "form-control", placeholder: "Tell us about yourself" } %>
-      </div>
-      <div class="d-flex justify-content-center gap-3">
-        <%= f.button :submit, "Save Changes", class: "btn btn-primary" %>
-        <%= link_to "Edit Info", edit_profile_path(current_user), class: "btn btn-secondary" %>
-      </div>
-    <% end %>
-
-  </div>
-</div>
-
-
-    <div class="col-md-5">
+    <!-- Right Column -->
+    <div class="col-md-8">
         <div class="event-card">
           <div class="overlay"
             style="background-image: url(<%= event_banner_image(@next_event) %>); background-size: cover; background-position: center;">

@@ -1,0 +1,45 @@
+.form-actions {
+  text-align: center;
+  width: auto;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.form-inputs {
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 400px;
+}
+.h2 {
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 400px;
+}
+.login-form-container {
+  border: 1px solid black;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+.register-form-container {
+  border: 1px solid black;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+.form-actions .btn {
+  display: block;
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.form-actions .btn-primary {
+  margin-bottom: 10px;
+}
