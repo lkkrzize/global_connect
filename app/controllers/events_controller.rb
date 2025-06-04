@@ -1,10 +1,15 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :search]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search_by_location]
+
 
   def index
+    search_by_location
 
-      search
-      @markers = @events.map do |event|
+    if params[:query].present?
+      @events = Event.search_by_events_and_location(params[:query])
+    end
+
+    @markers = @events.map do |event|
       {
         id: event.id,
         lat: event.latitude,
@@ -13,6 +18,7 @@ class EventsController < ApplicationController
         details: event.description.truncate(100)
       }
     end
+
     render :index
   end
 
@@ -23,7 +29,7 @@ class EventsController < ApplicationController
     else
       @review = Review.new
     end
-  end 
+  end
 
   def new
     @event = Event.new
@@ -55,7 +61,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def search
+  def search_by_location
     if params[:location].present?
       # Manual location search
       coordinates = Geocoder.search(params[:location]).first&.coordinates

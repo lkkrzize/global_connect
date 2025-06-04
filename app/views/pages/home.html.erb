@@ -8,19 +8,19 @@
 
       <div class="position-relative z-1 d-flex justify-content-center align-items-center h-100">
         <div class="text-overlay text-white text-center">
-          <h1 class="mb-4">Find Local Events</h1>
+          <h1 class="mb-4"><strong>Find Local Events</strong></h1>
 
           <!-- Geolocation button -->
-          <button class="btn btn-primary mb-3 w-100" id="search-button">Use current location</button>
+          <button class="btn fancy-btn mb-3 w-100" id="search-button">Use current location</button>
 
-          <p class="mb-3">Or enter a location to find events:</p>
+          <p class="mb-3"><strong>Or enter a location to find events:</strong></p>
 
           <!-- Manual location form -->
           <form action="/events" method="get">
             <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>" class="mb-3 string optional event_location">
               <input type="text" name="location" data-address-autocomplete-target="address" class="form-control mb-2 d-none" placeholder="Enter location" required>
             </div>
-            <button type="submit" class="btn btn-secondary w-100">Search</button>
+            <button type="submit" class="btn subtle-btn w-100"><strong>Search</strong></button>
           </form>
         </div>
       </div>

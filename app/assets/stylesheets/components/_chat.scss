@@ -121,7 +121,7 @@
   display: inline-block;
 }
 
-.event-chat p a, .event-chat .list-unstyled a {
+.event-chat p a, .event-chat .list-unstyled a, .attendees .list-unstyled a {
   color: #F5781C;
   font-weight: bold;
   &:hover {
