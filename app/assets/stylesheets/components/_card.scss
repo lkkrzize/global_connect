@@ -64,6 +64,10 @@
   pointer-events: all;
 }
 
+.event-card.past-event:hover .event-card-overlay {
+  background-color: rgba(255, 0, 0, 0.4); /* red transparent */
+}
+
 .clickable-container {
   display: block;
   color: inherit;
