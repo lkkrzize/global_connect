@@ -267,9 +267,9 @@ event8 = Event.create!(
   location: "Brighton Marina, UK",
   description: "Join Jake aboard his (mostly) waterproof sailboat for a nautical adventure. Expect British banter, dramatic wind forecasts, and a retelling of the time he accidentally invited seagulls to brunch.",
   people_limit: 8,
-  date: Date.new(2025, 7, 19),
-  starts_at: Time.new(2025, 7, 19, 10, 0),
-  ends_at: Time.new(2025, 7, 19, 15, 0),
+  date: Date.new(2025, 3, 15),
+  starts_at: Time.new(2025, 3, 15, 10, 0),
+  ends_at: Time.new(2025, 3, 15, 15, 0),
   user_id: jake.id,
   category_ids: [outdoor.id, social.id]
 )
@@ -279,9 +279,9 @@ event9 = Event.create!(
   location: "Naples, Italy",
   description: "Make fresh pasta with Marco and hear how he once confused salt for sugar in front of a TV chef. Includes wine, chaos, and exactly zero measuring cups.",
   people_limit: 12,
-  date: Date.new(2025, 6, 22),
-  starts_at: Time.new(2025, 6, 22, 17, 0),
-  ends_at: Time.new(2025, 6, 22, 20, 0),
+  date: Date.new(2025, 3, 28),
+  starts_at: Time.new(2025, 3, 28, 17, 0),
+  ends_at: Time.new(2025, 3, 28, 20, 0),
   user_id: marco.id,
   category_ids: [food.id, social.id]
 )
@@ -291,9 +291,9 @@ event10 = Event.create!(
   location: "Zoom (ish)",
   description: "Hosted by Fiona. This is a *virtual* event that may or may not happen depending on her internet. Icebreakers, games, and at least one participant stuck saying 'Hellooooo?' for 5 minutes.",
   people_limit: 20,
-  date: Date.new(2025, 6, 30),
-  starts_at: Time.new(2025, 6, 30, 19, 0),
-  ends_at: Time.new(2025, 6, 30, 21, 0),
+  date: Date.new(2025, 4, 5),
+  starts_at: Time.new(2025, 4, 5, 19, 0),
+  ends_at: Time.new(2025, 4, 5, 21, 0),
   user_id: fiona.id,
   category_ids: [social.id]
 )
@@ -303,9 +303,9 @@ event11 = Event.create!(
   location: "London, UK",
   description: "Deji leads a workshop on AI — assuming he can get past the ‘unexpected token’ error that’s haunted him for weeks. Debugging live and possibly crying on the inside.",
   people_limit: 25,
-  date: Date.new(2025, 7, 5),
-  starts_at: Time.new(2025, 7, 5, 18, 0),
-  ends_at: Time.new(2025, 7, 5, 20, 30),
+  date: Date.new(2025, 4, 18),
+  starts_at: Time.new(2025, 4, 18, 18, 0),
+  ends_at: Time.new(2025, 4, 18, 20, 30),
   user_id: deji.id,
   category_ids: [learning.id]
 )
@@ -315,9 +315,9 @@ event12 = Event.create!(
   location: "Glasgow, UK",
   description: "Ben mixes code and football talk in this caffeinated hangout. Come for the React tips, stay for the tea — and don’t mention VAR unless you want a lecture.",
   people_limit: 20,
-  date: Date.new(2025, 6, 18),
-  starts_at: Time.new(2025, 6, 18, 16, 0),
-  ends_at: Time.new(2025, 6, 18, 19, 0),
+  date: Date.new(2025, 4, 29),
+  starts_at: Time.new(2025, 4, 29, 16, 0),
+  ends_at: Time.new(2025, 4, 29, 19, 0),
   user_id: ben.id,
   category_ids: [learning.id, social.id]
 )
@@ -327,9 +327,9 @@ event13 = Event.create!(
   location: "Manchester, UK",
   description: "Louis shares freelancing wisdom surrounded by houseplants. Hear about his 3D printing mishaps, how he once invoiced the wrong client, and why plant care is essential for business growth.",
   people_limit: 15,
-  date: Date.new(2025, 7, 10),
-  starts_at: Time.new(2025, 7, 10, 17, 30),
-  ends_at: Time.new(2025, 7, 10, 19, 30),
+  date: Date.new(2025, 5, 12),
+  starts_at: Time.new(2025, 5, 12, 17, 30),
+  ends_at: Time.new(2025, 5, 12, 19, 30),
   user_id: louis.id,
   category_ids: [learning.id, social.id]
 )
