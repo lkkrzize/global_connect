@@ -10,7 +10,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def next_event
-    user_events.upcoming.first 
+    user_events.upcoming.first
   end
 
   def upcoming_events
@@ -23,6 +23,7 @@ class User < ApplicationRecord
     Event.joins(:event_users) # returns all events where user is either attendee or the creator
         .where(event_users: { user_id: id }) # checks if user is attendee
         .or(Event.where(user_id: id)) # checks if user is creator of the event
+        .distinct # removes duplicates
   end
 
 

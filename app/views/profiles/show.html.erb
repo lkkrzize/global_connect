@@ -1,4 +1,4 @@
-<div class="container-fluid body-color min-vh-100">
+<div class="container-fluid body-color min-vh-100 px-4">
   <div class="row">
     <!-- Left Column -->
     <div class="col-md-4">
@@ -26,53 +26,43 @@
 
     <!-- Right Column -->
     <div class="col-md-8">
+      <% if @user == current_user %>
         <div class="event-card">
           <div class="overlay"
-            style="background-image: url(<%= event_banner_image(@next_event) %>); background-size: cover; background-position: center;">
+            style="background-image: url(<%= @next_event ? event_banner_image(@next_event) : 'https://picsum.photos/600/400' %>); background-size: cover; background-position: center;">
             <h4 class="mb-3 text-center text-white">Your Next Event</h4>
             <% if @next_event %>
-              <div class="mb-2 text-white"><strong>Event:</strong> <%= @next_event.name %></div>
-              <div class="mb-2 text-white"><strong>Date:</strong> <%= @next_event.date.strftime('%b %-d, %Y') %></div>
-              <div class="mb-3 text-white"><strong>Location:</strong> <%= @next_event.location %></div>
-              <div class="mt-3 text-white time-left">
-                <strong>Time Left:</strong>
-                <div id="countdown" data-event-date="<%= @next_event.date.iso8601 %>" class="countdown-timer timer-box"></div>
-              </div>
+              <h5 class="text-white"><%= @next_event.name %></h5>
+              <p class="text-white mb-1"><strong>Date:</strong> <%= @next_event.date.strftime('%b %-d, %Y') %></p>
+              <p class="text-white mb-1"><strong>Location:</strong> <%= @next_event.location %></p>
+              <p class="text-white"><%= truncate(@next_event.description, length: 100) %></p>
             <% else %>
-              <p>No upcoming events.</p>
+              <p class="text-white text-center">No upcoming events.</p>
             <% end %>
           </div>
         </div>
 
-
-
-        <div id="upcomingEventCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner pt-4">
-            <% @upcoming_events.each_with_index do |event, index| %>
-              <div class="carousel-item <%= 'active' if index == 0 %>">
-                <div class="event-card" style="background-image: url(<%= event_banner_image(event) %>); background-size: cover; background-position: center;">
-                  <div class="overlay">
-                    <h4 class="mb-3 text-center text-white">Upcoming Event</h4>
-                    <div class="mb-2 text-white"><strong>Event:</strong> <%= event.name %></div>
-                    <div class="mb-2 text-white"><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></div>
-                    <div class="mb-3 text-white"><strong>Location:</strong> <%= event.location %></div>
-                  </div>
+        <% if @upcoming_events.any? %>
+          <div class="mt-4">
+            <h4 class="mb-3">Your Upcoming Events</h4>
+            <% @upcoming_events.each do |event| %>
+              <div class="event-card mb-3">
+                <div class="overlay" style="background-image: url(<%= event_banner_image(event) %>); background-size: cover; background-position: center;">
+                  <h5 class="card-title text-white"><%= event.name %></h5>
+                  <p class="text-white mb-1"><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></p>
+                  <p class="text-white mb-1"><strong>Location:</strong> <%= event.location %></p>
+                  <p class="text-white"><%= truncate(event.description, length: 100) %></p>
                 </div>
               </div>
             <% end %>
           </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#upcomingEventCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#upcomingEventCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+        <% end %>
+      <% else %>
+        <div class="text-center py-5">
+          <h4>This user's events are private</h4>
+          <p class="text-muted">Event information is only visible to the profile owner.</p>
         </div>
-
-
-
+      <% end %>
+    </div>
   </div>
 </div>
