@@ -349,24 +349,67 @@ EventUser.create!(user_id: juan.id, event_id: event2.id)
 EventUser.create!(user_id: vytautas.id, event_id: event2.id)
 EventUser.create!(user_id: lukasz.id, event_id: event2.id)
 
+# Event 3: Trail Marathon (Upcoming)
 EventUser.create!(user_id: jessica.id, event_id: event3.id)
 EventUser.create!(user_id: shwetha.id, event_id: event3.id)
+EventUser.create!(user_id: ben.id, event_id: event3.id)
 
+# Event 4: JavaScript Masterclass (Upcoming)
 EventUser.create!(user_id: shwetha.id, event_id: event4.id)
 EventUser.create!(user_id: vytautas.id, event_id: event4.id)
 EventUser.create!(user_id: jessica.id, event_id: event4.id)
+EventUser.create!(user_id: lukasz.id, event_id: event4.id)
+EventUser.create!(user_id: marco.id, event_id: event4.id)
 
+# Event 5: Classic Car Show Crete (Upcoming)
 EventUser.create!(user_id: lukasz.id, event_id: event5.id)
 EventUser.create!(user_id: vytautas.id, event_id: event5.id)
+EventUser.create!(user_id: louis.id, event_id: event5.id)
 
+# Event 6: Photography Walk (Upcoming)
 EventUser.create!(user_id: jessica.id, event_id: event6.id)
 EventUser.create!(user_id: shwetha.id, event_id: event6.id)
+EventUser.create!(user_id: deji.id, event_id: event6.id)
 
+# Event 7: Tech Meetup (Upcoming)
 EventUser.create!(user_id: juan.id, event_id: event7.id)
 EventUser.create!(user_id: lukasz.id, event_id: event7.id)
 EventUser.create!(user_id: jessica.id, event_id: event7.id)
+EventUser.create!(user_id: shwetha.id, event_id: event7.id)
+EventUser.create!(user_id: ben.id, event_id: event7.id)
+
+# Event 8: Sailing with Jake (Upcoming)
+EventUser.create!(user_id: jake.id, event_id: event8.id)
+EventUser.create!(user_id: marco.id, event_id: event8.id)
+EventUser.create!(user_id: fiona.id, event_id: event8.id)
+
+# Event 9: Pasta Party with Marco (Upcoming)
+EventUser.create!(user_id: marco.id, event_id: event9.id)
+EventUser.create!(user_id: fiona.id, event_id: event9.id)
+EventUser.create!(user_id: louis.id, event_id: event9.id)
+
+# Event 10: Online Meetup by Fiona (Upcoming)
+EventUser.create!(user_id: fiona.id, event_id: event10.id)
+EventUser.create!(user_id: deji.id, event_id: event10.id)
+EventUser.create!(user_id: ben.id, event_id: event10.id)
+
+# Event 11: OpenAI Night (Upcoming)
+EventUser.create!(user_id: deji.id, event_id: event11.id)
+EventUser.create!(user_id: ben.id, event_id: event11.id)
+EventUser.create!(user_id: louis.id, event_id: event11.id)
+
+# Event 12: Football, Frontend & Fifty Cups of Tea (Upcoming)
+EventUser.create!(user_id: ben.id, event_id: event12.id)
+EventUser.create!(user_id: louis.id, event_id: event12.id)
+EventUser.create!(user_id: jake.id, event_id: event12.id)
+
+# Event 13: Freelancing & Ferns (Upcoming)
+EventUser.create!(user_id: louis.id, event_id: event13.id)
+EventUser.create!(user_id: jake.id, event_id: event13.id)
+EventUser.create!(user_id: marco.id, event_id: event13.id)
 
 puts "Event users created"
+
 
 puts "Creating reviews for past events"
 
@@ -420,7 +463,7 @@ puts "Reviews created"
 
 puts "Creating group chat messages"
 
-# Messages for the past event event1
+# Messages for the past event Hike
 Message.create!(
   content: "Hey everyone! Weather looks amazing for tomorrow's hike ☀️ Really excited to meet you all!",
   user_id: juan.id,
@@ -592,6 +635,60 @@ Message.create!(
   created_at: 1.day.ago + 6.hours
 )
 
+# Messages for Trail Marathon
+Message.create!([
+  {content: "Ready to run like my code depends on it! 🏃‍♀️", user_id: jessica.id, event_id: event3.id, created_at: 3.days.ago},
+  {content: "If I collapse, just keep running and don’t look back 😂", user_id: shwetha.id, event_id: event3.id, created_at: 2.days.ago}
+])
+
+# Messages for Classic Car Show Crete
+Message.create!([
+  {content: "Gonna pretend I know car models and impress everyone 😎", user_id: lukasz.id, event_id: event5.id, created_at: 5.days.ago},
+  {content: "Food trucks + vintage cars = best combo ever", user_id: vytautas.id, event_id: event5.id, created_at: 4.days.ago}
+])
+
+# Messages for Photography Walk
+
+Message.create!([
+  {content: "Golden hour and good company? Count me in! 📷", user_id: jessica.id, event_id: event6.id, created_at: 6.days.ago},
+  {content: "Trying to get that perfect shot without tripping over cobblestones 😅", user_id: shwetha.id, event_id: event6.id, created_at: 5.days.ago}
+])
+
+# Messages for Sailing with Jake 
+Message.create!([
+  {content: "Bring your sea legs, snacks, and your best British banter 🇬🇧", user_id: jake.id, event_id: event8.id, created_at: 8.days.ago},
+  {content: "Is seasickness included in the itinerary? Asking for a friend 🤢", user_id: marco.id, event_id: event8.id, created_at: 7.days.ago}
+])
+
+# Messages for Pasta Party with Marco 
+Message.create!([
+  {content: "Marco claims his nonna invented carbonara, but I’m here for the wine 🍷", user_id: marco.id, event_id: event9.id, created_at: 9.days.ago},
+  {content: "I promise not to burn the kitchen this time! No guarantees though 🔥", user_id: fiona.id, event_id: event9.id, created_at: 8.days.ago}
+])
+
+# Messages for Online Meetup by Fiona 
+Message.create!([
+  {content: "If my WiFi dies, just pretend I’m saying something deep 🫠", user_id: fiona.id, event_id: event10.id, created_at: 10.days.ago},
+  {content: "Hello? Is this thing on? Still here, I swear! 😅", user_id: deji.id, event_id: event10.id, created_at: 9.days.ago}
+])
+
+# Messages for OpenAI Night 
+Message.create!([
+  {content: "Debugging live on stage – the ultimate test of nerves 😬", user_id: deji.id, event_id: event11.id, created_at: 11.days.ago},
+  {content: "Cheering for you from the audience, just don’t cry on stage! 😂", user_id: ben.id, event_id: event11.id, created_at: 10.days.ago}
+])
+
+# Messages for Football, Frontend & Fifty Cups of Tea ⚽☕
+Message.create!([
+  {content: "Ready to mix React components with football tactics! ⚽", user_id: ben.id, event_id: event12.id, created_at: 12.days.ago},
+  {content: "Don’t mention VAR or you’ll get the full lecture! ☕", user_id: louis.id, event_id: event12.id, created_at: 11.days.ago}
+])
+
+# Messages for Freelancing & Ferns 
+Message.create!([
+  {content: "If anyone needs me, I’ll be talking to my plants 🌿", user_id: louis.id, event_id: event13.id, created_at: 13.days.ago},
+  {content: "Can I invoice a fern? Asking for a freelancer in need. 😄", user_id: jake.id, event_id: event13.id, created_at: 12.days.ago}
+])
 
 puts "Messages created"
 
