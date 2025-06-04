@@ -13,7 +13,7 @@ module EventsHelper
     else
       # Fallback to a consistent random image from Picsum for this event
       # if event.photo is not attached and event.image_url was removed.
-      "https://picsum.photos/seed/#{event.description}/600/400"
+      "https://picsum.photos/seed/#{event.name}/600/400"
     end
   end
 end
