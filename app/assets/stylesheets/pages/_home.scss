@@ -48,6 +48,52 @@ html, body {
   flex-wrap: nowrap; 
 }
 
+.animated-round-btn {
+  position: relative;
+  background-color: rgba(237, 99, 76, 1); /* main fill color */
+  color: white;
+  border: 3px solid rgba(237, 99, 76, 1);
+  border-radius: 30px; /* makes it rounded */
+  padding: 0.6em 1.5em;
+  font-weight: 600;
+  overflow: hidden;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
 
+ /*first button on landing page buttons*\
+/* The animated border effect */
+.fancy-btn {
+  background-color: rgba(237, 99, 76, 1);  /* Your color */
+  color: white;
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 0.6em 1.5em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
 
+.fancy-btn:hover {
+  background-color: white;
+  color: rgba(237, 99, 76, 1);
+  border: 2px solid rgba(237, 99, 76, 1);
+}
+/* second button on landing page */
+.subtle-btn {
+  background-color: rgba(255, 255, 255, 0.4); /* See-through */
+  color: rgba(237, 99, 76, 1);    /* Matches border */
+  border: 2px solid rgba(237, 99, 76, 1);
+  border-radius: 40px;
+  padding: 0.6em 1.5em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
 
+/* Optional hover effect to match your theme */
+.subtle-btn:hover {
+  background-color: rgba(237, 99, 76, 0.1); 
+  color: rgb(228, 99, 76);
+  border: 2px solid white;
+}
