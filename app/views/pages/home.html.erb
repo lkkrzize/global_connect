@@ -1,4 +1,4 @@
- <div class="home-page"> 
+<div class="home-page">
   <div class="container-fluid px-0 p-0 bg-pink">
   <div class="row g-0">
 
@@ -17,7 +17,9 @@
 
           <!-- Manual location form -->
           <form action="/events" method="get">
-            <input type="text" name="location" class="form-control mb-2" placeholder="Enter location" required>
+            <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="<%= ENV["MAPBOX_API_KEY"] %>" class="mb-3 string optional event_location">
+              <input type="text" name="location" data-address-autocomplete-target="address" class="form-control mb-2 d-none" placeholder="Enter location" required>
+            </div>
             <button type="submit" class="btn btn-secondary w-100">Search</button>
           </form>
         </div>
@@ -33,4 +35,4 @@
 
   </div>
   </div>
- </div>
+</div>
