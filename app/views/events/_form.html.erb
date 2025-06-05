@@ -9,5 +9,5 @@
     <%= f.input :starts_at, as: :string, input_html: { type: 'time' } %>
     <%= f.input :ends_at, as: :string, input_html: { type: 'time' } %>
     <%= f.input :photo, as: :file %>
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit", class: "btn-submit-event" %>
 <% end %>
