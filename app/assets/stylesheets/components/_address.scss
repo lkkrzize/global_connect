@@ -7,7 +7,7 @@
 
 
 .mapboxgl-ctrl-geocoder--button {
-  display:none !important;
+  display: none !important;
 }
 
 .mapboxgl-ctrl-geocoder--input {
@@ -18,4 +18,39 @@
 .suggestions-wrapper {
   background-color: white;
   color: black;
+}
+
+
+.mapboxgl-ctrl-geocoder--suggestion-item::before {
+  display: none !important;
+}
+
+.mapboxgl-ctrl-geocoder ul li {
+  list-style-type: none !important;
+}
+
+
+.mapboxgl-ctrl-geocoder ul li:not(:last-child) {
+  position: relative;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+
+.mapboxgl-ctrl-geocoder ul li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, #a0a0a0 50%, transparent 50%);
+  background-size: 16px 1px;
+  background-repeat: repeat-x;
+}
+
+
+.mapboxgl-ctrl-geocoder ul {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
 }

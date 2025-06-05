@@ -100,10 +100,12 @@
       </ul>
 
         <% if user_registered?(@event, current_user) %>
-          <%= form_with url: event_event_user_path(@event, current_user.event_users.find_by(event: @event)), method: :delete do %>
-            <button type="submit" class="btn btn-outline-secondary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal2">
-              Unregister
-            </button>
+          <% if @event.date >= Date.today %>
+            <%= form_with url: event_event_user_path(@event, current_user.event_users.find_by(event: @event)), method: :delete do %>
+              <button type="submit" class="btn btn-outline-secondary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                Unregister
+              </button>
+            <% end %>
           <% end %>
           <%= link_to chat_path(@event), class: "btn-chat" do %>
             Chat <i class="fa-solid fa-comments"></i>
@@ -115,7 +117,7 @@
           <% end %>
 
         <% else %>
-          <% if @event.date >= Date.today %>  <!-- Only show register if event is today or future -->
+          <% if @event.date >= Date.today %>
             <%= form_with url: event_event_users_path(@event), method: :post do %>
               <button type="submit" class="btn-register" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Register <i class="fa-solid fa-user-plus"></i>
