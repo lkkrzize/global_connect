@@ -20,7 +20,7 @@ class Event < ApplicationRecord
 
   # Add geocoding if you want automatic coordinate setting
   geocoded_by :location
-  after_validation :geocode
+  after_validation :geocode, if: :will_save_change_to_location?
 
   include PgSearch::Model
   pg_search_scope :search_by_events_and_location,
