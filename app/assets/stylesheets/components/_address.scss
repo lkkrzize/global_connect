@@ -106,6 +106,8 @@
   margin-top: 6px;
 }
 
-.mapboxgl-canvas {
-  border-radius: 1rem;
+.map-container {
+  .mapboxgl-canvas {
+    border-radius: 1rem;
+  }
 }
