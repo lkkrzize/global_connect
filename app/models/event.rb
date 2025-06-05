@@ -15,8 +15,7 @@ class Event < ApplicationRecord
   validates :date, presence: true
   validates :starts_at, presence: true
   validates :ends_at, presence: true
-  validate :end_time_after_start_time
-  validate :event_date_not_in_past
+
 
   # Add geocoding if you want automatic coordinate setting
   geocoded_by :location
