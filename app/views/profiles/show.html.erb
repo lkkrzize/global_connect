@@ -51,22 +51,141 @@
           </div>
         <% end %>
 
-        <!-- Upcoming Events List -->
+        <!-- Your Upcoming Events Section -->
         <% if @upcoming_events.any? %>
           <div class="mt-4">
-            <h4 class="mb-3">Your Upcoming Events</h4>
-            <% @upcoming_events.each do |event| %>
-              <%= link_to event_path(event), class: "text-decoration-none" do %>
-                <div class="event-card mb-4">
-                  <div class="overlay" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(<%= event_banner_image(event) %>); background-size: cover; background-position: center;">
-                    <h5 class="text-white"><%= event.name %></h5>
-                    <p class="text-white mb-1"><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></p>
-                    <p class="text-white mb-1"><strong>Location:</strong> <%= event.location %></p>
-                    <p class="text-white"><%= truncate(event.description, length: 100) %></p>
-                  </div>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="mb-0">Your Upcoming Events</h4>
+              <div>
+                <button class="btn btn-sm btn-primary me-2" id="carouselViewBtn">
+                  <i class="fa-solid fa-images"></i> Carousel
+                </button>
+                <button class="btn btn-sm btn-outline-primary" id="listViewBtn">
+                  <i class="fa-solid fa-list"></i> List
+                </button>
+              </div>
+            </div>
+
+            <!-- Carousel View (Default) -->
+            <div id="carouselView" style="display: block;">
+              <% upcoming_events = @upcoming_events.first(5) %>
+              <div id="upcomingEventCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner pt-4">
+                  <% upcoming_events.each_with_index do |event, index| %>
+                    <div class="carousel-item <%= 'active' if index == 0 %>">
+                      <%= link_to event_path(event), class: "text-decoration-none" do %>
+                        <div class="event-card" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(<%= event_banner_image(event) %>); background-size: cover; background-position: center;">
+                          <div class="overlay">
+                            <h4 class="mb-3 text-center text-white">Upcoming Event</h4>
+                            <div class="mb-2 text-white"><strong>Event:</strong> <%= event.name %></div>
+                            <div class="mb-2 text-white"><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></div>
+                            <div class="mb-3 text-white"><strong>Location:</strong> <%= event.location %></div>
+                            <% if event.description.present? %>
+                              <div class="mb-2 text-white"><%= truncate(event.description, length: 100) %></div>
+                            <% end %>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% end %>
                 </div>
+                <% if upcoming_events.size > 1 %>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#upcomingEventCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#upcomingEventCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                <% end %>
+              </div>
+            </div>
+
+            <!-- List View -->
+            <div id="listView" style="display: none;">
+              <% @upcoming_events.each do |event| %>
+                <%= link_to event_path(event), class: "text-decoration-none" do %>
+                  <div class="event-card mb-4">
+                    <div class="overlay" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(<%= event_banner_image(event) %>); background-size: cover; background-position: center;">
+                      <h5 class="text-white"><%= event.name %></h5>
+                      <p class="text-white mb-1"><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></p>
+                      <p class="text-white mb-1"><strong>Location:</strong> <%= event.location %></p>
+                      <p class="text-white"><%= truncate(event.description, length: 100) %></p>
+                    </div>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
+          </div>
+        <% end %>
+
+        <!-- Your Past Events Section -->
+        <% if @past_events&.any? %>
+          <div class="mt-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="mb-0">Your Past Events</h4>
+              <div>
+                <button class="btn btn-sm btn-primary me-2" id="pastCarouselViewBtn">
+                  <i class="fa-solid fa-images"></i> Carousel
+                </button>
+                <button class="btn btn-sm btn-outline-primary" id="pastListViewBtn">
+                  <i class="fa-solid fa-list"></i> List
+                </button>
+              </div>
+            </div>
+
+            <!-- Past Events Carousel View (Default) -->
+            <div id="pastCarouselView" style="display: block;">
+              <% past_events = @past_events.first(5) %>
+              <div id="pastEventCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner pt-4">
+                  <% past_events.each_with_index do |event, index| %>
+                    <div class="carousel-item <%= 'active' if index == 0 %>">
+                      <%= link_to event_path(event), class: "text-decoration-none" do %>
+                        <div class="event-card" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(<%= event_banner_image(event) %>); background-size: cover; background-position: center;">
+                          <div class="overlay">
+                            <h4 class="mb-3 text-center text-white">Past Event</h4>
+                            <div class="mb-2 text-white"><strong>Event:</strong> <%= event.name %></div>
+                            <div class="mb-2 text-white"><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></div>
+                            <div class="mb-3 text-white"><strong>Location:</strong> <%= event.location %></div>
+                            <% if event.description.present? %>
+                              <div class="mb-2 text-white"><%= truncate(event.description, length: 100) %></div>
+                            <% end %>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+                <% if past_events.size > 1 %>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#pastEventCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#pastEventCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                <% end %>
+              </div>
+            </div>
+
+            <!-- Past Events List View -->
+            <div id="pastListView" style="display: none;">
+              <% @past_events.each do |event| %>
+                <%= link_to event_path(event), class: "text-decoration-none" do %>
+                  <div class="event-card mb-4">
+                    <div class="overlay" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(<%= event_banner_image(event) %>); background-size: cover; background-position: center;">
+                      <h5 class="text-white"><%= event.name %></h5>
+                      <p class="text-white mb-1"><strong>Date:</strong> <%= event.date.strftime('%b %-d, %Y') %></p>
+                      <p class="text-white mb-1"><strong>Location:</strong> <%= event.location %></p>
+                      <p class="text-white"><%= truncate(event.description, length: 100) %></p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
           </div>
         <% end %>
       <% else %>
@@ -78,3 +197,61 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Upcoming events toggle
+    const carouselViewBtn = document.getElementById('carouselViewBtn');
+    const listViewBtn = document.getElementById('listViewBtn');
+    const carouselView = document.getElementById('carouselView');
+    const listView = document.getElementById('listView');
+
+    // Past events toggle
+    const pastCarouselViewBtn = document.getElementById('pastCarouselViewBtn');
+    const pastListViewBtn = document.getElementById('pastListViewBtn');
+    const pastCarouselView = document.getElementById('pastCarouselView');
+    const pastListView = document.getElementById('pastListView');
+
+    // Upcoming events functionality
+    if (carouselViewBtn && listViewBtn && carouselView && listView) {
+      carouselViewBtn.addEventListener('click', function() {
+        carouselView.style.display = 'block';
+        listView.style.display = 'none';
+        carouselViewBtn.classList.remove('btn-outline-primary');
+        carouselViewBtn.classList.add('btn-primary');
+        listViewBtn.classList.remove('btn-primary');
+        listViewBtn.classList.add('btn-outline-primary');
+      });
+
+      listViewBtn.addEventListener('click', function() {
+        carouselView.style.display = 'none';
+        listView.style.display = 'block';
+        listViewBtn.classList.remove('btn-outline-primary');
+        listViewBtn.classList.add('btn-primary');
+        carouselViewBtn.classList.remove('btn-primary');
+        carouselViewBtn.classList.add('btn-outline-primary');
+      });
+    }
+
+    // Past events functionality
+    if (pastCarouselViewBtn && pastListViewBtn && pastCarouselView && pastListView) {
+      pastCarouselViewBtn.addEventListener('click', function() {
+        pastCarouselView.style.display = 'block';
+        pastListView.style.display = 'none';
+        pastCarouselViewBtn.classList.remove('btn-outline-primary');
+        pastCarouselViewBtn.classList.add('btn-primary');
+        pastListViewBtn.classList.remove('btn-primary');
+        pastListViewBtn.classList.add('btn-outline-primary');
+      });
+
+      pastListViewBtn.addEventListener('click', function() {
+        pastCarouselView.style.display = 'none';
+        pastListView.style.display = 'block';
+        pastListViewBtn.classList.remove('btn-outline-primary');
+        pastListViewBtn.classList.add('btn-primary');
+        pastCarouselViewBtn.classList.remove('btn-primary');
+        pastCarouselViewBtn.classList.add('btn-outline-primary');
+      });
+    }
+  });
+</script>
