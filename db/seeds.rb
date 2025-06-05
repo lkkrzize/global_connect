@@ -173,6 +173,12 @@ social = Category.create!(name: "Social Events")
 learning = Category.create!(name: "Learning")
 food = Category.create!(name: "Food & Drinks")
 sports = Category.create!(name: "Sports")
+indoor = Category.find_or_create_by!(name: 'Indoor')
+entertainment = Category.find_or_create_by!(name: 'Entertainment')
+tech = Category.find_or_create_by!(name: 'Tech')
+work = Category.find_or_create_by!(name: 'Work')
+arts = Category.find_or_create_by!(name: 'Arts')
+music = Category.find_or_create_by!(name: 'Music')
 
 puts "Categories created"
 
@@ -334,6 +340,114 @@ event13 = Event.create!(
   category_ids: [learning.id, social.id]
 )
 
+event16 = Event.create!(
+  name: "Buffering & Banter: Virtual Open Mic Night 🎤🌀",
+  location: "Zoom (good luck)",
+  description: "Fiona hosts a comedy night where each joke might buffer halfway. BYOB and patience. Glitches welcome.",
+  people_limit: 20,
+  date: Date.new(2025, 6, 20),
+  starts_at: Time.new(2025, 6, 20, 19, 0),
+  ends_at: Time.new(2025, 6, 20, 21, 0),
+  user_id: fiona.id,
+  category_ids: [indoor.id, entertainment.id]
+)
+
+event17 = Event.create!(
+  name: "Debugging with Deji: Live Chaos Edition 🐞🧠",
+  location: "London, UK",
+  description: "Bring your weirdest bugs, and watch Deji accidentally break production and then fix it using sheer charisma.",
+  people_limit: 8,
+  date: Date.new(2025, 6, 15),
+  starts_at: Time.new(2025, 6, 15, 14, 0),
+  ends_at: Time.new(2025, 6, 15, 16, 0),
+  user_id: deji.id,
+  category_ids: [tech.id]
+)
+
+event18 = Event.create!(
+  name: "Yellow-Themed Picnic & Tea-Off 🍵🌼",
+  location: "Glasgow Park, UK",
+  description: "Ben invites you to a sunny (hopefully) day of tea, trivia, and yellow everything. Dress code: lemon zest.",
+  people_limit: 10,
+  date: Date.new(2025, 6, 14),
+  starts_at: Time.new(2025, 6, 14, 13, 0),
+  ends_at: Time.new(2025, 6, 14, 17, 0),
+  user_id: ben.id,
+  category_ids: [outdoor.id, food.id]
+)
+
+event19 = Event.create!(
+  name: "Spreadsheet Showdown & Succulent Swap 🪴📊",
+  location: "Manchester, UK",
+  description: "Louis hosts the nerdiest trade event ever: bring a houseplant and your cleanest pivot tables. Bonus points for color-coded graphs.",
+  people_limit: 9,
+  date: Date.new(2025, 6, 22),
+  starts_at: Time.new(2025, 6, 22, 11, 0),
+  ends_at: Time.new(2025, 6, 22, 13, 0),
+  user_id: louis.id,
+  category_ids: [indoor.id]
+)
+
+event20 = Event.create!(
+  name: "Karaoke Karaoke Karaoke 🎤",
+  location: "Karaoke bar (probably in your living room)",
+  description: "Join us for the most off-key singing session in history. From ‘Bohemian Rhapsody’ to ‘Barbie Girl,’ no song is safe.",
+  people_limit: 15,
+  date: Date.new(2025, 7, 5),
+  starts_at: Time.new(2025, 7, 5, 18, 0),
+  ends_at: Time.new(2025, 7, 5, 21, 0),
+  user_id: fiona.id,
+  category_ids: [entertainment.id, music.id]
+)
+
+event21 = Event.create!(
+  name: "DIY Disaster: The Home Improvement Challenge 🔨🤦‍♂️",
+  location: "Your place... unless you're brave enough to join us in person!",
+  description: "Bring your hammer, glue gun, and 7th cup of coffee. Bonus points if you’re not sure what you're building by the end of the day.",
+  people_limit: 10,
+  date: Date.new(2025, 7, 8),
+  starts_at: Time.new(2025, 7, 8, 10, 0),
+  ends_at: Time.new(2025, 7, 8, 17, 0),
+  user_id: ben.id,
+  category_ids: [outdoor.id, arts.id]
+)
+
+event22 = Event.create!(
+  name: "The Great British Bake-Off... With a Twist 🍰🎉",
+  location: "London, UK",
+  description: "Bake a cake, and then try to eat it while wearing oven mitts. We'll judge based on taste and the sheer level of frosting on your face.",
+  people_limit: 12,
+  date: Date.new(2025, 7, 12),
+  starts_at: Time.new(2025, 7, 12, 14, 0),
+  ends_at: Time.new(2025, 7, 12, 17, 0),
+  user_id: louis.id,
+  category_ids: [food.id, entertainment.id]
+)
+
+event23 = Event.create!(
+  name: "Future Tech: The Robo-Butler Showdown 🤖",
+  location: "Virtual - bring your tech and a sense of humor",
+  description: "Present your latest robot idea, whether it’s a vacuum cleaner with a personality or a tea maker that only works when it’s ‘feeling it.’",
+  people_limit: 8,
+  date: Date.new(2025, 7, 20),
+  starts_at: Time.new(2025, 7, 20, 15, 0),
+  ends_at: Time.new(2025, 7, 20, 17, 0),
+  user_id: deji.id,
+  category_ids: [tech.id, entertainment.id]
+)
+
+event24 = Event.create!(
+  name: "Boring Office Job: Escape Room Challenge 🕵️‍♂️💼",
+  location: "In the office (or your ‘home office’ aka couch)",
+  description: "You and your colleagues must escape a Zoom meeting that has gone on for 3 hours. Solve the riddles of time-wasting, email chains, and calendar invites.",
+  people_limit: 10,
+  date: Date.new(2025, 7, 25),
+  starts_at: Time.new(2025, 7, 25, 13, 0),
+  ends_at: Time.new(2025, 7, 25, 15, 0),
+  user_id: juan.id,
+  category_ids: [work.id, entertainment.id]
+)
+
 
 puts "Events created with categories assigned"
 
@@ -407,6 +521,50 @@ EventUser.create!(user_id: jake.id, event_id: event12.id)
 EventUser.create!(user_id: louis.id, event_id: event13.id)
 EventUser.create!(user_id: jake.id, event_id: event13.id)
 EventUser.create!(user_id: marco.id, event_id: event13.id)
+
+# Event 16: Buffering & Banter
+EventUser.create!(user_id: fiona.id, event_id: event16.id)
+EventUser.create!(user_id: marco.id, event_id: event16.id)
+EventUser.create!(user_id: deji.id, event_id: event16.id)
+
+# Event 17: Debugging Live
+EventUser.create!(user_id: deji.id, event_id: event17.id)
+EventUser.create!(user_id: ben.id, event_id: event17.id)
+
+# Event 18: Yellow-Themed Picnic
+EventUser.create!(user_id: ben.id, event_id: event18.id)
+EventUser.create!(user_id: jake.id, event_id: event18.id)
+EventUser.create!(user_id: fiona.id, event_id: event18.id)
+
+# Event 19: Spreadsheet Showdown
+EventUser.create!(user_id: louis.id, event_id: event19.id)
+EventUser.create!(user_id: marco.id, event_id: event19.id)
+EventUser.create!(user_id: ben.id, event_id: event19.id)
+
+# Event 20: Karaoke Karaoke Karaoke
+EventUser.create!(user_id: fiona.id, event_id: event20.id)
+EventUser.create!(user_id: marco.id, event_id: event20.id)
+EventUser.create!(user_id: jake.id, event_id: event20.id)
+
+# Event 21: DIY Disaster
+EventUser.create!(user_id: ben.id, event_id: event21.id)
+EventUser.create!(user_id: louis.id, event_id: event21.id)
+EventUser.create!(user_id: deji.id, event_id: event21.id)
+
+# Event 22: Great British Bake-Off
+EventUser.create!(user_id: louis.id, event_id: event22.id)
+EventUser.create!(user_id: ben.id, event_id: event22.id)
+EventUser.create!(user_id: fiona.id, event_id: event22.id)
+
+# Event 23: Robo-Butler Showdown
+EventUser.create!(user_id: deji.id, event_id: event23.id)
+EventUser.create!(user_id: jake.id, event_id: event23.id)
+EventUser.create!(user_id: marco.id, event_id: event23.id)
+
+# Event 24: Boring Office Job Escape Room
+EventUser.create!(user_id: juan.id, event_id: event24.id)
+EventUser.create!(user_id: ben.id, event_id: event24.id)
+EventUser.create!(user_id: louis.id, event_id: event24.id)
 
 puts "Event users created"
 
@@ -689,6 +847,85 @@ Message.create!([
   {content: "If anyone needs me, I’ll be talking to my plants 🌿", user_id: louis.id, event_id: event13.id, created_at: 13.days.ago},
   {content: "Can I invoice a fern? Asking for a freelancer in need. 😄", user_id: jake.id, event_id: event13.id, created_at: 12.days.ago}
 ])
+
+Message.create!(
+  content: "If I freeze mid-joke, just laugh anyway. Timing’s overrated.",
+  user_id: fiona.id,
+  event_id: event16.id,
+  created_at: 30.minutes.ago
+)
+
+Message.create!(
+  content: "Today's bug: Chrome thinks it's Firefox. I'm scared.",
+  user_id: deji.id,
+  event_id: event17.id,
+  created_at: 20.minutes.ago
+)
+
+Message.create!(
+  content: "I came for the tea, stayed for the matching socks.",
+  user_id: ben.id,
+  event_id: event18.id,
+  created_at: 15.minutes.ago
+)
+
+Message.create!(
+  content: "Anyone bringing aloe vera for the succulents? Or just Excel sheets?",
+  user_id: louis.id,
+  event_id: event19.id,
+  created_at: 10.minutes.ago
+)
+
+Message.create!(
+  content: "I’m going to break the mic, aren’t I? 😂",
+  user_id: fiona.id,
+  event_id: event20.id,
+  created_at: 1.hour.ago
+)
+
+Message.create!(
+  content: "Do we get extra points for the most ridiculous song choice?",
+  user_id: marco.id,
+  event_id: event20.id,
+  created_at: 50.minutes.ago
+)
+
+Message.create!(
+  content: "I’m just here to break stuff and drink coffee. Let’s do this!",
+  user_id: ben.id,
+  event_id: event21.id,
+  created_at: 30.minutes.ago
+)
+
+Message.create!(
+  content: "Does ‘accidentally creating modern art’ count as a win?",
+  user_id: louis.id,
+  event_id: event21.id,
+  created_at: 25.minutes.ago
+)
+
+Message.create!(
+  content: "My cake may collapse, but it will be delicious! 🍰",
+  user_id: louis.id,
+  event_id: event22.id,
+  created_at: 20.minutes.ago
+)
+
+Message.create!(
+  content: "Do I need to hire a robot assistant for this? 🤖",
+  user_id: jake.id,
+  event_id: event23.id,
+  created_at: 15.minutes.ago
+)
+
+Message.create!(
+  content: "I solved this escape room by strategically sending emails with subject lines like 'urgent' and 'fwd: important!'",
+  user_id: juan.id,
+  event_id: event24.id,
+  created_at: 10.minutes.ago
+)
+
+
 
 puts "Messages created"
 
