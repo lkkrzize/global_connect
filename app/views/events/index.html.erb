@@ -21,9 +21,12 @@
       <h2 class="mb-3 text-center "><strong>Upcoming Events</strong></h2>
       <div class="row gx-2 gy-3">
         <% @events.each do |event| %>
-          <div class="col-6 col-md-4 position-relative">
-              <div class='post-it-sellotape'> </div>
-            <%= link_to event_path(event), class: "card post-it event-card h-100 clickable-container  text-decoration-none #{'past-event' if event.date < Time.current}" do %>
+          <div class="col-6 col-md-4">
+            <% is_host = event.user == current_user %>
+            <%= link_to event_path(event), class: "card event-card h-100 clickable-container position-relative text-decoration-none #{'past-event' if event.date < Time.current}" do %>
+            <% if is_host %>
+              <div class="host-badge">You’re Hosting <i class="fa-solid fa-image-polaroid-user"></i></div>
+            <% end %>
               <div class="event-card-image-wrapper">
                 <%= image_tag event_banner_image(event), class: "card-image" %>
                 <h3 class="event-card-name"><%= event.name %></h3>

@@ -163,9 +163,34 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  border-radius: 10px;
 
   > div {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     overflow: hidden;
   }
 }
+
+/* host badge */
+
+.host-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: pink; /* golden sticky badge */
+  color: #333;
+  font-weight: bold;
+  padding: 0.4em 1em;
+  font-size: 0.8em;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+
+.host-badge::before {
+  content: "🎤";
+}
+
