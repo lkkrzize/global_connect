@@ -8,11 +8,15 @@
         <%= @event.starts_at.strftime("%I:%M %p") %> – <%= @event.ends_at.strftime("%I:%M %p") %></p>
       <p>This event is organised by <%= link_to @event.user.email.split('@').first.capitalize, profile_path(@event.user.id) %></p>
       <p>Attending by,</p>
-      <ul class="list-unstyled">
+    <div class="d-flex flex-column align-items-center">
+      <ul class= "list-unstyled">
         <% @event.event_users.each do |event_user| %>
-          <li><%= link_to event_user.user.email.split('@').first.capitalize, profile_path(event_user.user.id) %></li>
+          <li class="d-flex align-items-center mb-3">
+            <%= image_tag user_avatar_image(event_user.user), class: "rounded-circle me-3 shadow-sm", size: "40x40"  %>
+          <%= link_to event_user.user.email.split('@').first.capitalize, profile_path(event_user.user.id) %></li>
         <% end %>
       </ul>
+    </div>
       <div class="text-center">
         <%= link_to "Back", event_path(@event), class: "btn-back btn-sm my-2 mx-5" %>
       </div>
