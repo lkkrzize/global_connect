@@ -3,9 +3,14 @@ class ProfilesController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @user = User.find(params[:id])
-    @next_event = Event.where('date >= ?', Date.today).order(:date).first
-    @upcoming_events = Event.where('date >= ?', Date.today).order(:date).limit(5)
+    if @user == current_user
+      @next_event = @user.next_event
+      @upcoming_events = @user.upcoming_events
+    else
+      # prevents accidental data leakage, if error occours you haven't verified user on view page correctly
+      @next_event = nil
+      @upcoming_events = []
+    end
   end
 
   def edit
