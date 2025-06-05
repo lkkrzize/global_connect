@@ -93,6 +93,10 @@
         <h3><%= @event.event_users.count %> <i class="fa-solid fa-users" style="color: #0997AD;"></i> attended</h3>
       <% end %>
 
+      <div  class="event-organiser">
+        <p>This event is organised by <%= link_to @event.user.email.split('@').first.capitalize, profile_path(@event.user.id) %></p>
+      </div>
+
       <div class="d-flex flex-column align-items-center">
         <ul class="list-unstyled">
           <% @event.event_users.each do |event_user| %>
@@ -103,6 +107,7 @@
           <% end %>
         </ul>
       </div>
+
 
         <% if user_registered?(@event, current_user) %>
           <% if @event.date >= Date.today %>

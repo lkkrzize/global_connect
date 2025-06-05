@@ -27,7 +27,7 @@
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .suggestions-wrapper {
@@ -104,4 +104,10 @@
   color: #666;
   text-decoration: none;
   margin-top: 6px;
+}
+
+.map-container {
+  .mapboxgl-canvas {
+    border-radius: 1rem;
+  }
 }

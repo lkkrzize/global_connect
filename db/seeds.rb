@@ -362,7 +362,8 @@ event16 = Event.create!(
   starts_at: Time.new(2025, 6, 20, 19, 0),
   ends_at: Time.new(2025, 6, 20, 21, 0),
   user_id: fiona.id,
-  category_ids: [indoor.id, entertainment.id]
+  category_ids: [indoor.id, entertainment.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749134799/it_would_be_a_banner_for_the_event_name_Buffering_Banter_Virtual_Open_Mic_Night._Fiona_hosts_a_c_pcn3k3.jpg"
 )
 
 event17 = Event.create!(
@@ -374,7 +375,8 @@ event17 = Event.create!(
   starts_at: Time.new(2025, 6, 15, 14, 0),
   ends_at: Time.new(2025, 6, 15, 16, 0),
   user_id: deji.id,
-  category_ids: [tech.id]
+  category_ids: [tech.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749135210/Debugging_with_Deji_Live_Chaos_Edition._Deji_is_a_black_guy._Bring_your_weirdest_bugs_and_watch_De_znbafv.jpg"
 )
 
 event18 = Event.create!(
@@ -386,7 +388,8 @@ event18 = Event.create!(
   starts_at: Time.new(2025, 6, 14, 13, 0),
   ends_at: Time.new(2025, 6, 14, 17, 0),
   user_id: ben.id,
-  category_ids: [outdoor.id, food.id]
+  category_ids: [outdoor.id, food.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749135410/Yellow-Themed_Picnic_Tea-Off._Ben_invites_you_to_a_sunny_hopefully_day_of_tea_trivia_and_yello_ls95qw.jpg"
 )
 
 event19 = Event.create!(
@@ -398,7 +401,8 @@ event19 = Event.create!(
   starts_at: Time.new(2025, 6, 22, 11, 0),
   ends_at: Time.new(2025, 6, 22, 13, 0),
   user_id: louis.id,
-  category_ids: [indoor.id]
+  category_ids: [indoor.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749138411/Spreadsheet_Showdown_Succulent_Swap_Louis_hosts_the_nerdiest_trade_event_ever_bring_a_houseplant_ccusjv.jpg"
 )
 
 event20 = Event.create!(
@@ -410,7 +414,8 @@ event20 = Event.create!(
   starts_at: Time.new(2025, 7, 5, 18, 0),
   ends_at: Time.new(2025, 7, 5, 21, 0),
   user_id: fiona.id,
-  category_ids: [entertainment.id, music.id]
+  category_ids: [entertainment.id, music.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749138653/Karaoke_bar_probably_in_your_living_room_Join_us_for_the_most_off-key_singing_session_in_history._ucgrp4.jpg"
 )
 
 event21 = Event.create!(
@@ -422,7 +427,8 @@ event21 = Event.create!(
   starts_at: Time.new(2025, 7, 8, 10, 0),
   ends_at: Time.new(2025, 7, 8, 17, 0),
   user_id: ben.id,
-  category_ids: [outdoor.id, arts.id]
+  category_ids: [outdoor.id, arts.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749138865/DIY_Disaster_The_Home_Improvement_Challenge_Bring_your_hammer_glue_gun_and_7th_cup_of_coffee._Bo_ibjziq.jpg"
 )
 
 event22 = Event.create!(
@@ -434,7 +440,8 @@ event22 = Event.create!(
   starts_at: Time.new(2025, 7, 12, 14, 0),
   ends_at: Time.new(2025, 7, 12, 17, 0),
   user_id: louis.id,
-  category_ids: [food.id, entertainment.id]
+  category_ids: [food.id, entertainment.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749139387/The_Great_British_Bake-Off..._With_a_Twist_Bake_a_cake_and_then_try_to_eat_it_while_wearing_oven_m_kz0i4n.jpg"
 )
 
 event23 = Event.create!(
@@ -446,7 +453,8 @@ event23 = Event.create!(
   starts_at: Time.new(2025, 7, 20, 15, 0),
   ends_at: Time.new(2025, 7, 20, 17, 0),
   user_id: deji.id,
-  category_ids: [tech.id, entertainment.id]
+  category_ids: [tech.id, entertainment.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749139512/Future_Tech_The_Robo-Butler_Showdown_Present_your_latest_robot_idea_whether_it_s_a_vacuum_cleaner_vz1k3a.jpg"
 )
 
 event24 = Event.create!(
@@ -458,7 +466,8 @@ event24 = Event.create!(
   starts_at: Time.new(2025, 7, 25, 13, 0),
   ends_at: Time.new(2025, 7, 25, 15, 0),
   user_id: juan.id,
-  category_ids: [work.id, entertainment.id]
+  category_ids: [work.id, entertainment.id],
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749139667/Boring_Office_Job_Escape_Room_Challenge_You_and_your_colleagues_must_escape_a_Zoom_meeting_that_ha_dxncag.jpg"
 )
 
 
@@ -510,6 +519,7 @@ EventUser.create!(user_id: jake.id, event_id: event8.id)
 EventUser.create!(user_id: marco.id, event_id: event8.id)
 EventUser.create!(user_id: fiona.id, event_id: event8.id)
 EventUser.create!(user_id: lukasz.id, event_id: event8.id)
+EventUser.create!(user_id: jessica.id, event_id: event8.id)
 
 # Event 9: Pasta Party with Marco (Upcoming)
 EventUser.create!(user_id: marco.id, event_id: event9.id)
