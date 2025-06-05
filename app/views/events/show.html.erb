@@ -93,11 +93,16 @@
         <h3><%= @event.event_users.count %> <i class="fa-solid fa-users" style="color: #0997AD;"></i> attended</h3>
       <% end %>
 
-      <ul class="list-unstyled">
-        <% @event.event_users.each do |event_user| %>
-          <li><%= link_to event_user.user.email.split('@').first.capitalize, profile_path(event_user.user.id) %></li>
-        <% end %>
-      </ul>
+      <div class="d-flex flex-column align-items-center">
+        <ul class="list-unstyled">
+          <% @event.event_users.each do |event_user| %>
+            <li class="d-flex align-items-center mb-3">
+            <%= image_tag user_avatar_image(event_user.user), class: "rounded-circle me-3 shadow-sm", size: "40x40"  %>
+            <%= link_to event_user.user.email.split('@').first.capitalize, profile_path(event_user.user.id) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
 
         <% if user_registered?(@event, current_user) %>
           <% if @event.date >= Date.today %>
