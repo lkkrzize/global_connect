@@ -9,13 +9,14 @@ class EventsController < ApplicationController
       @events = Event.search_by_events_and_location(params[:query])
     end
 
-    @markers = @events.map do |event|
+    @markers = @events.geocoded.map do |event|
       {
-        id: event.id,
+        # id: event.id,
         lat: event.latitude,
         lng: event.longitude,
-        name: event.name,
-        details: event.description.truncate(100)
+        info_window_html: render_to_string(partial: "info_window", locals: {flat: flat})
+        # name: event.name,
+        # details: event.description.truncate(100)
       }
     end
 
