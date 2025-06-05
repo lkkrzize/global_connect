@@ -6,8 +6,8 @@
     <%= f.input :description %>
     <%= f.input :people_limit, label: "Capacity" %>
     <%= f.input :date, as: :date %>
-    <%= f.input :starts_at, as: :string, input_html: { type: 'time' } %>
-    <%= f.input :ends_at, as: :string, input_html: { type: 'time' } %>
+    <%= f.input :starts_at, as: :string, input_html: { type: 'time', value: f.object.starts_at&.strftime("%H:%M") } %>
+    <%= f.input :ends_at, as: :string, input_html: { type: 'time', value: f.object.ends_at&.strftime("%H:%M") } %>
     <%= f.input :photo, as: :file %>
     <%= f.submit "Submit", class: "btn-submit-event" %>
 <% end %>
