@@ -16,7 +16,7 @@
     <div class="cards-section p-4 w-100">
       <h2 class="mb-3 text-center">Upcoming Events</h2>
       <div class="row gx-2 gy-3">
-        <% @events.select { |event| event.date >= Date.current }.each do |event| %>
+        <% @events.select { |event| event.date >= Date.current }.sort_by(&:date).each do |event| %>
           <div class="col-6 col-md-4">
             <% is_host = event.user == current_user %>
             <%= link_to event_path(event), class: "card event-card h-100 clickable-container position-relative text-decoration-none" do %>
@@ -50,7 +50,7 @@
     <div class="cards-section p-4 w-100 mt-4">
       <h2 class="mb-3 text-center">Past Events</h2>
       <div class="row gx-2 gy-3">
-        <% @events.select { |event| event.date < Date.current }.each do |event| %>
+        <% @events.select { |event| event.date < Date.current }.sort_by(&:date).reverse.each do |event| %>
           <div class="col-6 col-md-4">
             <% is_host = event.user == current_user %>
             <%= link_to event_path(event), class: "card event-card h-100 clickable-container position-relative text-decoration-none past-event" do %>
