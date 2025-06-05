@@ -1,13 +1,25 @@
 <%= simple_form_for @event do |f| %>
     <%= f.input :name %>
     <%= f.input :location,
-      input_html: { data: { address_autocomplete_target: "location" }, class: "d-none" },
+      input_html: { data: { address_autocomplete_target: "address" }, class: "d-none" },
       wrapper_html: { data: { controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"] } } %>
     <%= f.input :description %>
     <%= f.input :people_limit, label: "Capacity" %>
     <%= f.input :date, as: :date %>
-    <%= f.input :starts_at, as: :string, input_html: { type: 'time', value: f.object.starts_at&.strftime("%H:%M") } %>
-    <%= f.input :ends_at, as: :string, input_html: { type: 'time', value: f.object.ends_at&.strftime("%H:%M") } %>
+    <%= f.input :starts_at, as: :string, 
+        input_html: { 
+          type: 'time', 
+          value: @event.starts_at&.strftime("%H:%M"),
+          class: 'form-control'
+        },
+        label: "Start time" %>
+    <%= f.input :ends_at, as: :string, 
+        input_html: { 
+          type: 'time', 
+          value: @event.ends_at&.strftime("%H:%M"),
+          class: 'form-control'
+        },
+        label: "End time" %>
     <%= f.input :photo, as: :file %>
     <%= f.submit "Submit", class: "btn-submit-event" %>
 <% end %>
