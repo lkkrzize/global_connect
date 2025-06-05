@@ -92,7 +92,9 @@
       <% else %>
         <h3><%= @event.event_users.count %> <i class="fa-solid fa-users" style="color: #0997AD;"></i> attended</h3>
       <% end %>
-
+      <div  class="event-organiser">
+        <p>This event is organised by <%= link_to @event.user.email.split('@').first.capitalize, profile_path(@event.user.id) %></p>
+      </div>
       <ul class="list-unstyled">
         <% @event.event_users.each do |event_user| %>
           <li><%= link_to event_user.user.email.split('@').first.capitalize, profile_path(event_user.user.id) %></li>

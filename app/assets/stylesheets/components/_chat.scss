@@ -137,3 +137,12 @@
   padding: 8px 22px;
   border-radius: 4px;
 }
+
+.event-organiser a {
+  color: #F5781C;
+  font-weight: bold;
+  &:hover {
+    color: #0F5CB0;
+    font-weight: bold;
+  }
+}
