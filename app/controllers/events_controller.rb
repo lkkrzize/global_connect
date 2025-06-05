@@ -11,12 +11,9 @@ class EventsController < ApplicationController
 
     @markers = @events.geocoded.map do |event|
       {
-        # id: event.id,
         lat: event.latitude,
         lng: event.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {flat: flat})
-        # name: event.name,
-        # details: event.description.truncate(100)
+        info_window_html: render_to_string(partial: "info_window", locals: {event: event })
       }
     end
 
@@ -26,7 +23,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by(id: params[:id])
     if @event.nil?
-    redirect_to events_path, alert: "Sorry, that event no longer exists."
+      redirect_to events_path, alert: "Sorry, that event no longer exists."
     else
       @review = Review.new
     end

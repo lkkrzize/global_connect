@@ -1,3 +1,2 @@
-<% id: event.id, %>
-<%= name: event.name %>
-<%= details: event.description.truncate(100) %>
+<%= link_to event.name, event_path(event) %>
+<%= link_to event.description.truncate(100), event_path(event) %>
