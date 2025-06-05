@@ -18,6 +18,10 @@ class User < ApplicationRecord
     user_events.upcoming
   end
 
+  def past_events
+    user_events.where('date < ?', Date.current).order(date: :desc)
+  end
+
   private
 
   def user_events
@@ -26,6 +30,4 @@ class User < ApplicationRecord
         .or(Event.where(user_id: id)) # checks if user is creator of the event
         .distinct # removes duplicates
   end
-
-
 end

@@ -6,10 +6,12 @@ class ProfilesController < ApplicationController
     if @user == current_user
       @next_event = @user.next_event
       @upcoming_events = @user.upcoming_events
+      @past_events = @user.past_events
     else
       # prevents accidental data leakage, if error occours you haven't verified user on view page correctly
       @next_event = nil
       @upcoming_events = []
+      @past_events = []
     end
   end
 
