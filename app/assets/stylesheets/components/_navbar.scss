@@ -1,14 +1,17 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  padding-top: 0.5px;
+  padding-bottom: 0.5x;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-brand img {
   width: 40px;
+  margin-left: 10px;
 }
 
 .display-user {
@@ -23,6 +26,14 @@
   align-items: center;
   justify-content: center;
   font-family: Arial, sans-serif;
+}
+
+.navbar-nav .nav-link {
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: rgba(237, 99, 76, 1);
 }
 
 a {

@@ -181,7 +181,7 @@
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: pink; /* golden sticky badge */
+  background-color: pink; 
   color: #333;
   font-weight: bold;
   padding: 0.4em 1em;
@@ -196,3 +196,50 @@
 .host-badge::before {
   content: "🎤";
 }
+
+
+/* Container for the search bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  border-radius: 30px;  /* Round corners */
+  border: 2px solid pink;  /* Pink border */
+  padding: 8px 8px;
+  max-width: 999px;
+  width: 100%;
+}
+
+/* Style for the input field */
+.search-input {
+  border: none;
+  outline: none;
+  padding: 8px 12px;
+  border-radius: 25px;
+  flex-grow: 1;
+  font-size: 16px;
+  background-color: transparent;  /* No background color */
+  color: #333;  /* Text color */
+}
+
+/* Style for the search button */
+.btn-pink {
+  background-color: pink;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+  max-width: fit-content;
+  width: 100%;
+}
+
+.btn-pink:hover {
+  background-color: #93CDD4;
+}
+
+.form-control {
+  border-radius: 15px;
+}
+
