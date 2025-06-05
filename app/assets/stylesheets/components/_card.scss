@@ -6,11 +6,9 @@
 
 .event-card.card, .cards-section .card {
   position: relative;
-  margin: 10px;
   background-size: cover;
   background-position: center;
   border-radius: 8px;
-  overflow: hidden;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 15px;
   transition: transform 0.2s;
@@ -21,13 +19,14 @@
   flex-direction: column;
   color: grey;
   background-color: #E2E3E5;
+  margin: auto;
 }
 
 .card-image {
   width: 100%;
   height: 150px;
-  object-fit: cover;
-  object-position: center;
+  border-radius: 6px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .event-card-overlay {
@@ -55,6 +54,54 @@
   }
 }
 
+.event-card {
+  background-color: #0a335e;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+  transition: all 0.2s ease-in-out;
+  color: white;
+}
+
+/* Index page styling */
+
+.post-it {
+  background-color: #0a335e;
+  color: white;
+  width: 250px;
+  height: 250px;
+  margin-top: 15px;
+  overflow: visible;
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 10px rgba(255,255,255,0.6),  /* inner shine */
+    0 0 5px rgba(0,0,0,0.1);  
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  padding: 20px;
+  transition: transform 0.2s ease;
+  backdrop-filter: blur(1px);
+}
+
+.post-it:hover {
+  transform: rotate(0deg) scale(1.03); /* small lift on hover */
+}
+
+.post-it-sellotape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  transform: translateX(-50%) rotate(-2deg);
+  width: 40px;
+  height: 20px;
+  background: pink;
+  border-radius: 10px;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px white;
+  z-index: 9999;
+}
+
 .event-card:hover .event-card-overlay {
   opacity: 1;
   pointer-events: all;
@@ -74,6 +121,7 @@
   background-color: #93CDD4;
   border-radius: 1rem;
   padding: 1.25em;
+  padding-top: 40px;
   margin: 0 auto;
   max-width: 95%;
   display: flex;
@@ -93,6 +141,7 @@
   }
 
   .col-6.col-md-4 {
+    overflow: visible !important;
     flex: 0 0 calc(33.333% - 1rem);
     max-width: calc(33.333% - 1rem);
     min-width: 300px;
@@ -114,9 +163,34 @@
   position: sticky;
   top: 0;
   height: 100vh;
+  border-radius: 10px;
 
   > div {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     overflow: hidden;
   }
 }
+
+/* host badge */
+
+.host-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: pink; /* golden sticky badge */
+  color: #333;
+  font-weight: bold;
+  padding: 0.4em 1em;
+  font-size: 0.8em;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+
+.host-badge::before {
+  content: "🎤";
+}
+
