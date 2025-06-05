@@ -1,4 +1,5 @@
-<div class="row align-items-stretch">
+<div class="row align-items-stretch bg-pink">
+>
 
 
   <div class="row justify-content-center">
@@ -9,18 +10,20 @@
             class: "form-control",
             placeholder: "Type a keyword"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Search", name: "", class: "btn btn-fancy" %>
     <% end %>
   </div>
 </div>
 
+
   <div class="col-lg-8 d-flex align-items-center justify-content-center my-3">
     <div class="cards-section p-4 w-100">
-      <h2 class="mb-3 text-center ">Upcoming Events</h2>
+      <h2 class="mb-3 text-center "><strong>Upcoming Events</strong></h2>
       <div class="row gx-2 gy-3">
         <% @events.each do |event| %>
-          <div class="col-6 col-md-4">
-            <%= link_to event_path(event), class: "card event-card h-100 clickable-container position-relative text-decoration-none #{'past-event' if event.date < Time.current}" do %>
+          <div class="col-6 col-md-4 position-relative">
+              <div class='post-it-sellotape'> </div>
+            <%= link_to event_path(event), class: "card post-it event-card h-100 clickable-container  text-decoration-none #{'past-event' if event.date < Time.current}" do %>
               <div class="event-card-image-wrapper">
                 <%= image_tag event_banner_image(event), class: "card-image" %>
                 <h3 class="event-card-name"><%= event.name %></h3>
