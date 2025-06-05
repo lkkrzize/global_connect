@@ -509,6 +509,7 @@ EventUser.create!(user_id: ben.id, event_id: event7.id)
 EventUser.create!(user_id: jake.id, event_id: event8.id)
 EventUser.create!(user_id: marco.id, event_id: event8.id)
 EventUser.create!(user_id: fiona.id, event_id: event8.id)
+EventUser.create!(user_id: lukasz.id, event_id: event8.id)
 
 # Event 9: Pasta Party with Marco (Upcoming)
 EventUser.create!(user_id: marco.id, event_id: event9.id)
