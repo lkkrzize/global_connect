@@ -1,4 +1,4 @@
-<div class="row justify-content-center">
+<div class="d-flex justify-content-center">
   <div class="col-sm-8 my-3">
     <%= form_with url: events_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
@@ -11,9 +11,9 @@
   </div>
 </div>
 
-<div class="row align-items-stretch bg-pink">
+<div class="d-flex align-items-stretch bg-pink">
   <div class="col-lg-8 d-flex flex-column my-3">
-    <div class="cards-section p-4 w-100">
+    <div class="cards-section w-100">
       <h2 class="mb-3 text-center">Upcoming Events</h2>
       <div class="row gx-2 gy-3">
         <% @events.select { |event| event.date >= Date.current }.sort_by(&:date).each do |event| %>
@@ -82,9 +82,9 @@
     </div>
   </div>
 
-  <div class="col-lg-4 p-3 mt-3">
+  <div class="col-lg-4 my-3">
     <div class="map-container d-flex justify-content-center">
-      <div style="width: 100%;">
+      <div style="width: 100%; position: relative;">
         <%= render "shared/app_map" %>
       </div>
     </div>
