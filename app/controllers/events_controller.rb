@@ -36,6 +36,10 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
+
+    # Combine date with time inputs
+    combine_date_and_time
+
     if @event.save
       redirect_to @event
     else
@@ -52,10 +56,17 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     if @event.user != current_user
       redirect_to event_path(@event), alert: "You can not change event details"
-    elsif @event.update(event_params)
-      redirect_to event_path(@event), notice: "Event has been updated"
     else
-      render :edit, status: :unprocessable_entity
+      @event.assign_attributes(event_params)
+
+      
+      combine_date_and_time
+
+      if @event.save
+        redirect_to event_path(@event), notice: "Event has been updated"
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 
@@ -100,7 +111,30 @@ class EventsController < ApplicationController
 
   private
 
+  def combine_date_and_time
+    if @event.date.present? && params[:event][:starts_at].present? && params[:event][:ends_at].present?
+      start_time = Time.parse(params[:event][:starts_at])
+      end_time = Time.parse(params[:event][:ends_at])
+
+      @event.starts_at = DateTime.new(
+        @event.date.year,
+        @event.date.month,
+        @event.date.day,
+        start_time.hour,
+        start_time.min
+      )
+
+      @event.ends_at = DateTime.new(
+        @event.date.year,
+        @event.date.month,
+        @event.date.day,
+        end_time.hour,
+        end_time.min
+      )
+    end
+  end
+
   def event_params
-    params.require(:event).permit(:name, :location, :description, :people_limit, :date, :starts_at, :ends_at, :photo)
+    params.require(:event).permit(:name, :location, :description, :people_limit, :date, :photo, category_ids: [])
   end
 end
