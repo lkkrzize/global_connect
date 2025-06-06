@@ -202,9 +202,9 @@ event2 = Event.create!(
   location: "Berlin, Germany",
   description: "Explore Berlin's best craft beer scene! We'll visit 4 amazing pubs in Kreuzberg and Friedrichshain. Great way to meet new people and taste local brews.",
   people_limit: 25,
-  date: Date.new(2025, 6, 15),
-  starts_at: Time.new(2025, 6, 15, 19, 0),
-  ends_at: Time.new(2025, 6, 15, 23, 30),
+  date: Date.new(2025, 5, 15),
+  starts_at: Time.new(2025, 5, 15, 19, 0),
+  ends_at: Time.new(2025, 5, 15, 23, 30),
   user_id: shwetha.id,
   category_ids: [social.id, food.id],
   image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749055080/A_vibrant_cover_picture_for_the_event_Pub_Crawl._Explore_Berlin_s_best_craft_beer_scene_We_ll_visi_zlea6z.jpg"
@@ -215,9 +215,9 @@ event3 = Event.create!(
   location: "Funchal, Madeira",
   description: "Challenging trail marathon through Madeira's stunning landscapes. For experienced runners only! Registration includes medal and post-race meal.",
   people_limit: 100,
-  date: Date.new(2025, 8, 24),
-  starts_at: Time.new(2025, 8, 24, 7, 0),
-  ends_at: Time.new(2025, 8, 24, 15, 0),
+  date: Date.new(2025, 4, 24),
+  starts_at: Time.new(2025, 4, 24, 7, 0),
+  ends_at: Time.new(2025, 4, 24, 15, 0),
   user_id: vytautas.id,
   category_ids: [outdoor.id, sports.id],
   image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749065705/A_vibrant_cover_picture_for_the_event_Trail_Marathon._Challenging_trail_marathon_through_Madeira_s_zxhrpy.jpg"
@@ -241,9 +241,9 @@ event5 = Event.create!(
   location: "Heraklion, Crete",
   description: "Vintage and supercar exhibition featuring rare European classics. Perfect for car enthusiasts! Food trucks and live music included.",
   people_limit: 200,
-  date: Date.new(2025, 9, 20),
-  starts_at: Time.new(2025, 9, 20, 11, 0),
-  ends_at: Time.new(2025, 9, 20, 18, 0),
+  date: Date.new(2025, 2, 20),
+  starts_at: Time.new(2025, 2, 20, 11, 0),
+  ends_at: Time.new(2025, 2, 20, 18, 0),
   user_id: jessica.id,
   category_ids: [social.id, food.id],
   image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749054615/A_vibrant_cover_picture_for_the_event_Classic_Car_Show_Crete._The_image_should_feature_a_stunning_cr3gsk.jpg"
@@ -293,12 +293,12 @@ event9 = Event.create!(
   location: "Naples, Italy",
   description: "Make fresh pasta with Marco and hear how he once confused salt for sugar in front of a TV chef. Includes wine, chaos, and exactly zero measuring cups.",
   people_limit: 12,
-  date: Date.new(2025, 3, 28),
-  starts_at: Time.new(2025, 3, 28, 17, 0),
-  ends_at: Time.new(2025, 3, 28, 20, 0),
+  date: Date.new(2025, 6, 28),
+  starts_at: Time.new(2025, 6, 28, 17, 0),
+  ends_at: Time.new(2025, 6, 28, 20, 0),
   user_id: marco.id,
   category_ids: [food.id, social.id],
-  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749053288/A_lively_pasta_party_scene_in_a_cozy_kitchen_with_friends_and_family_gathered_around_a_large_wooden_uqlm6x.jpg"
+  image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749206989/image_ektedd.png"
 )
 
 event10 = Event.create!(
@@ -306,9 +306,9 @@ event10 = Event.create!(
   location: "Zoom (ish)",
   description: "Hosted by Fiona. This is a *virtual* event that may or may not happen depending on her internet. Icebreakers, games, and at least one participant stuck saying 'Hellooooo?' for 5 minutes.",
   people_limit: 20,
-  date: Date.new(2025, 4, 5),
-  starts_at: Time.new(2025, 4, 5, 19, 0),
-  ends_at: Time.new(2025, 4, 5, 21, 0),
+  date: Date.new(2025, 7, 5),
+  starts_at: Time.new(2025, 7, 5, 19, 0),
+  ends_at: Time.new(2025, 7, 5, 21, 0),
   user_id: fiona.id,
   category_ids: [social.id],
   image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749053133/A_virtual_meeting_scene_with_diverse_participants_on_a_video_call_each_in_their_own_unique_home_off_jsjcsr.jpg"
@@ -332,9 +332,9 @@ event12 = Event.create!(
   location: "Glasgow, UK",
   description: "Ben mixes code and football talk in this caffeinated hangout. Come for the React tips, stay for the tea — and don’t mention VAR unless you want a lecture.",
   people_limit: 20,
-  date: Date.new(2025, 4, 29),
-  starts_at: Time.new(2025, 4, 29, 16, 0),
-  ends_at: Time.new(2025, 4, 29, 19, 0),
+  date: Date.new(2025, 6, 29),
+  starts_at: Time.new(2025, 6, 29, 16, 0),
+  ends_at: Time.new(2025, 6, 29, 19, 0),
   user_id: ben.id,
   category_ids: [learning.id, social.id],
   image_url: "https://res.cloudinary.com/dsdn6atc1/image/upload/v1749052691/A_vibrant_cover_image_for_the_event_Football_Frontend_Fifty_Cups_of_Tea_._The_image_should_fe_xizmiv.jpg"
@@ -476,117 +476,128 @@ puts "Events created with categories assigned"
 puts "Creating event registrations"
 
 # Past event attendees
-EventUser.create!(user_id: shwetha.id, event_id: event1.id)
+
 EventUser.create!(user_id: lukasz.id, event_id: event1.id)
 EventUser.create!(user_id: vytautas.id, event_id: event1.id)
 
 # Upcoming events - where users are registering for events
-EventUser.create!(user_id: juan.id, event_id: event2.id)
+
 EventUser.create!(user_id: vytautas.id, event_id: event2.id)
 EventUser.create!(user_id: lukasz.id, event_id: event2.id)
 
-# Event 3: Trail Marathon (Upcoming)
-EventUser.create!(user_id: jessica.id, event_id: event3.id)
+# Event 3: Trail Marathon (past)
+
 EventUser.create!(user_id: shwetha.id, event_id: event3.id)
 EventUser.create!(user_id: ben.id, event_id: event3.id)
 
 # Event 4: JavaScript Masterclass (Upcoming)
-EventUser.create!(user_id: shwetha.id, event_id: event4.id)
+
 EventUser.create!(user_id: vytautas.id, event_id: event4.id)
 EventUser.create!(user_id: jessica.id, event_id: event4.id)
 EventUser.create!(user_id: lukasz.id, event_id: event4.id)
 EventUser.create!(user_id: marco.id, event_id: event4.id)
 
-# Event 5: Classic Car Show Crete (Upcoming)
-EventUser.create!(user_id: lukasz.id, event_id: event5.id)
+# Event 5: Classic Car Show Crete (past event)
+
 EventUser.create!(user_id: vytautas.id, event_id: event5.id)
 EventUser.create!(user_id: louis.id, event_id: event5.id)
 
 # Event 6: Photography Walk (Upcoming)
-EventUser.create!(user_id: jessica.id, event_id: event6.id)
+
 EventUser.create!(user_id: shwetha.id, event_id: event6.id)
 EventUser.create!(user_id: deji.id, event_id: event6.id)
 
 # Event 7: Tech Meetup (Upcoming)
-EventUser.create!(user_id: juan.id, event_id: event7.id)
+
 EventUser.create!(user_id: lukasz.id, event_id: event7.id)
 EventUser.create!(user_id: jessica.id, event_id: event7.id)
 EventUser.create!(user_id: shwetha.id, event_id: event7.id)
 EventUser.create!(user_id: ben.id, event_id: event7.id)
 
 # Event 8: Sailing with Jake (Upcoming)
-EventUser.create!(user_id: jake.id, event_id: event8.id)
+
 EventUser.create!(user_id: marco.id, event_id: event8.id)
 EventUser.create!(user_id: fiona.id, event_id: event8.id)
 EventUser.create!(user_id: lukasz.id, event_id: event8.id)
 EventUser.create!(user_id: jessica.id, event_id: event8.id)
 
 # Event 9: Pasta Party with Marco (Upcoming)
-EventUser.create!(user_id: marco.id, event_id: event9.id)
+
 EventUser.create!(user_id: fiona.id, event_id: event9.id)
 EventUser.create!(user_id: louis.id, event_id: event9.id)
+EventUser.create!(user_id: lukasz.id, event_id: event9.id)
+EventUser.create!(user_id: shwetha.id, event_id: event9.id)
+EventUser.create!(user_id: ben.id, event_id: event9.id)
+EventUser.create!(user_id: deji.id, event_id: event9.id)
 
 # Event 10: Online Meetup by Fiona (Upcoming)
-EventUser.create!(user_id: fiona.id, event_id: event10.id)
+
 EventUser.create!(user_id: deji.id, event_id: event10.id)
 EventUser.create!(user_id: ben.id, event_id: event10.id)
+EventUser.create!(user_id: shwetha.id, event_id: event10.id)
+EventUser.create!(user_id: marco.id, event_id: event10.id)
 
 # Event 11: OpenAI Night (Upcoming)
-EventUser.create!(user_id: deji.id, event_id: event11.id)
+
 EventUser.create!(user_id: ben.id, event_id: event11.id)
 EventUser.create!(user_id: louis.id, event_id: event11.id)
 
 # Event 12: Football, Frontend & Fifty Cups of Tea (Upcoming)
-EventUser.create!(user_id: ben.id, event_id: event12.id)
+
 EventUser.create!(user_id: louis.id, event_id: event12.id)
 EventUser.create!(user_id: jake.id, event_id: event12.id)
 
 # Event 13: Freelancing & Ferns (Upcoming)
-EventUser.create!(user_id: louis.id, event_id: event13.id)
+
 EventUser.create!(user_id: jake.id, event_id: event13.id)
 EventUser.create!(user_id: marco.id, event_id: event13.id)
+EventUser.create!(user_id: ben.id, event_id: event13.id)
+EventUser.create!(user_id: shwetha.id, event_id: event13.id)
+EventUser.create!(user_id: vytautas.id, event_id: event13.id)
 
 # Event 16: Buffering & Banter
-EventUser.create!(user_id: fiona.id, event_id: event16.id)
+
 EventUser.create!(user_id: marco.id, event_id: event16.id)
 EventUser.create!(user_id: deji.id, event_id: event16.id)
 
 # Event 17: Debugging Live
-EventUser.create!(user_id: deji.id, event_id: event17.id)
+
 EventUser.create!(user_id: ben.id, event_id: event17.id)
+EventUser.create!(user_id: jake.id, event_id: event17.id)
+EventUser.create!(user_id: marco.id, event_id: event17.id)
 
 # Event 18: Yellow-Themed Picnic
-EventUser.create!(user_id: ben.id, event_id: event18.id)
+
 EventUser.create!(user_id: jake.id, event_id: event18.id)
 EventUser.create!(user_id: fiona.id, event_id: event18.id)
 
 # Event 19: Spreadsheet Showdown
-EventUser.create!(user_id: louis.id, event_id: event19.id)
+
 EventUser.create!(user_id: marco.id, event_id: event19.id)
 EventUser.create!(user_id: ben.id, event_id: event19.id)
 
 # Event 20: Karaoke Karaoke Karaoke
-EventUser.create!(user_id: fiona.id, event_id: event20.id)
+
 EventUser.create!(user_id: marco.id, event_id: event20.id)
 EventUser.create!(user_id: jake.id, event_id: event20.id)
 
 # Event 21: DIY Disaster
-EventUser.create!(user_id: ben.id, event_id: event21.id)
+
 EventUser.create!(user_id: louis.id, event_id: event21.id)
 EventUser.create!(user_id: deji.id, event_id: event21.id)
 
 # Event 22: Great British Bake-Off
-EventUser.create!(user_id: louis.id, event_id: event22.id)
+
 EventUser.create!(user_id: ben.id, event_id: event22.id)
 EventUser.create!(user_id: fiona.id, event_id: event22.id)
 
 # Event 23: Robo-Butler Showdown
-EventUser.create!(user_id: deji.id, event_id: event23.id)
+
 EventUser.create!(user_id: jake.id, event_id: event23.id)
 EventUser.create!(user_id: marco.id, event_id: event23.id)
 
 # Event 24: Boring Office Job Escape Room
-EventUser.create!(user_id: juan.id, event_id: event24.id)
+
 EventUser.create!(user_id: ben.id, event_id: event24.id)
 EventUser.create!(user_id: louis.id, event_id: event24.id)
 
@@ -608,16 +619,16 @@ Review.create!(
 
 Review.create!(
   rating: 5,
-  comment: "Marco’s pasta night was top-tier. That said, he *did* set off the smoke alarm boiling water somehow. Italians, explain yourselves 🍝🔥",
+  comment: "Captain Jake really knows his stuff — except when he yelled ‘hard to port!’ and we all just stared blankly. 10/10 would panic sail with him again. 🫡⛵",
   user_id: fiona.id,
-  event_id: event9.id
+  event_id: event8.id
 )
 
 Review.create!(
   rating: 4,
-  comment: "Fiona’s virtual hangout was lovely… once her WiFi decided to attend the event. Spent the first 15 mins chatting with her frozen face 😅",
-  user_id: deji.id,
-  event_id: event10.id
+  comment: "Started as a relaxing cruise, ended with Jake using a flip-flop to steer and yelling 'I am the wind now!' Still not sure if it was planned. Brilliant chaos.",
+  user_id: lukasz.id,
+  event_id: event8.id
 )
 
 Review.create!(
@@ -627,17 +638,32 @@ Review.create!(
   event_id: event11.id
 )
 
-Review.create!(
-  rating: 5,
-  comment: "Ben ran the most stylish event I’ve been to—fonts on point, tea in hand, and even a slide dedicated to Kobras FC. Who else mixes CSS with football? ⚽🎨",
-  user_id: louis.id,
-  event_id: event12.id
-)
 
 Review.create!(
   rating: 5,
   comment: "Louis was so smooth talking about freelancing I almost signed a client during the Q&A. Now I just need to 3D print myself a career. 🌱🖨️",
   user_id: jake.id,
+  event_id: event13.id
+)
+
+Review.create!(
+  rating: 5,
+  comment: "Louis casually dropped 'just raise your rates' like it was a life hack and not a spiritual awakening. I now invoice in confidence and vibes.",
+  user_id: ben.id,
+  event_id: event13.id
+)
+
+Review.create!(
+  rating: 4,
+  comment: "Went in thinking freelancing was unstable. Left with a Notion dashboard, a 5-year plan, and a crippling desire to brand myself. Thanks, Louis.",
+  user_id: shwetha.id,
+  event_id: event13.id
+)
+
+Review.create!(
+  rating: 5,
+  comment: "Somehow Louis convinced me that burnout is a mindset and that coffee is a deductible. I’m legally a business now, apparently.",
+  user_id: vytautas.id,
   event_id: event13.id
 )
 
@@ -844,8 +870,10 @@ Message.create!([
 
 # Messages for Pasta Party with Marco
 Message.create!([
-  {content: "Marco claims his nonna invented carbonara, but I’m here for the wine 🍷", user_id: marco.id, event_id: event9.id, created_at: 9.days.ago},
-  {content: "I promise not to burn the kitchen this time! No guarantees though 🔥", user_id: fiona.id, event_id: event9.id, created_at: 8.days.ago}
+  {content: "Marco claims his nonna invented carbonara, but I’m here for the wine 🍷", user_id: ben.id, event_id: event9.id, created_at: 9.days.ago},
+  {content: "I promise not to burn the kitchen this time! No guarantees though 🔥", user_id: fiona.id, event_id: event9.id, created_at: 8.days.ago},
+  {content: "Marco pasta night was top-tier in his last event. That said, he *did* set off the smoke alarm boiling water somehow. Still came back for another class hehe 🍝🔥", 
+   user_id: deji.id, event_id: event9.id, created_at: 3.days.ago}
 ])
 
 # Messages for Online Meetup by Fiona
