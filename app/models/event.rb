@@ -40,14 +40,9 @@ class Event < ApplicationRecord
     errors.add(:ends_at, 'must be after start time') if ends_at <= starts_at
   end
 
-  def event_date_not_in_past
-    return unless date
-    errors.add(:date, 'cannot be in the past') if date < Date.current
-  end
-
   def date_cannot_be_in_the_past
     if date.present? && date < Date.today
-      errors.add(:date, "can't be in the past")
+      errors.add(:date, "Can't be in the past")
     end
   end
 end
