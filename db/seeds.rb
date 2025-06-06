@@ -355,7 +355,7 @@ event13 = Event.create!(
 
 event16 = Event.create!(
   name: "Buffering & Banter: Virtual Open Mic Night 🎤🌀",
-  location: "Zoom (good luck)",
+  location: "Monaco",
   description: "Fiona hosts a comedy night where each joke might buffer halfway. BYOB and patience. Glitches welcome.",
   people_limit: 20,
   date: Date.new(2025, 6, 20),
@@ -420,7 +420,7 @@ event20 = Event.create!(
 
 event21 = Event.create!(
   name: "DIY Disaster: The Home Improvement Challenge 🔨🤦‍♂️",
-  location: "Your place... unless you're brave enough to join us in person!",
+  location: "Kaunas, Lithuania",
   description: "Bring your hammer, glue gun, and 7th cup of coffee. Bonus points if you’re not sure what you're building by the end of the day.",
   people_limit: 10,
   date: Date.new(2025, 7, 8),
