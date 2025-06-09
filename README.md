@@ -4,7 +4,7 @@
 
 ## Overview
 
-Global Connect is a web application for discovering, organizing, and attending events. Users can create and manage events, register as attendees, chat with other participants, and leave reviews after events. The platform features event search, interactive maps, user profiles, and a robust review system to enhance community engagement.
+Global Connect is a web application for discovering, organising, and attending events. Users can create and manage events, register as attendees, chat with other participants, and leave reviews after events. The platform features event search, interactive maps, user profiles, and a robust review system to enhance community engagement.
 
 ## Features
 
@@ -13,7 +13,7 @@ Global Connect is a web application for discovering, organizing, and attending e
 - **User Registration:** Register for events and see who else is attending.
 - **Chat:** Event attendees can chat before and during the event (chat is disabled after the event date).
 - **Reviews:** Leave and view reviews for events after they have taken place.
-- **Interactive Map:** Visualize event locations on an interactive map.
+- **Interactive Map:** Visualise event locations on an interactive map.
 - **User Profiles:** View your hosted and attended events.
 
 ## Tech Stack
